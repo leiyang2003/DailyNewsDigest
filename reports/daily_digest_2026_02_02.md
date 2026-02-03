@@ -1,0 +1,64 @@
+以下为新闻日期 **2026-02-02** 的摘要，涵盖金融、AI、中美关系、日本政治。
+
+---
+
+## 金融
+
+- **KKR主導コンソーシアム、シンガポールのデータセンター企業を約100億ドル超で買収へ**
+  链接：[KKR主導コンソーシアム、シンガポールのデータセンター企業を約100億ドル超で買収へ](https://www.wsj.com/business/deals/kkr-led-group-set-to-buy-singapore-data-center-firm-valued-at-over-10-billion-a022c5e3)
+  KKRが主導するコンソーシアムが、シンガポールのST Telemedia Global Data Centresを約100億ドル超で買収する交渉を進めている。AI需要の高まりを背景に、アジア最大級のデータセンター取引となる可能性がある。
+
+- **ドルが5カ月ぶり大幅高、金・銀急落－ウォーシュ氏FRB議長指名の影響**
+  链接：[ドルが5カ月ぶり大幅高、金・銀急落－ウォーシュ氏FRB議長指名の影響](https://www.theheadline.jp/paper/20260202)
+  トランプ米大統領がケビン・ウォーシュ元FRB理事をFRB議長候補として指名すると表明、市場はタカ派と受け止めてドル高・金銀安の動きに。主要株も下落し、市場心理が揺れた。
+
+## AI
+
+- **中国、地上と宇宙でAI競争を加速–衛星搭載LLMによるリアルタイム推論を実現**
+  链接：[中国、地上と宇宙でAI競争を加速–衛星搭載LLMによるリアルタイム推論を実現](https://www.citynewsservice.cn/articles/china-biz-buzz/daily-buzz/daily-buzz-2-february-2026-7kr5p08n)
+  ADAspaceがアリババのLLM「Qwen‑3」を搭載した衛星により、軌道上でリアルタイム推論が可能なAI処理システムを構築開始。地上・宇宙でのAI処理競争が加速。
+
+- **米国では「AIバブル」、中国企業は過小評価：資本が中国AI企業へ流入**
+  链接：[米国では「AIバブル」、中国企業は過小評価：資本が中国AI企業へ流入](https://economy.ac/news/2025/12/202512285121)
+  米国ではAI関連株にバブル懸念が広がる一方、中国のAI企業は割安と評価され、ETFなどを通じて資本が大量に流入している。
+
+## 中美关系
+
+- **習近平主席、“世界AI協力機構”構想をAPECで提案**
+  链接：[習近平主席、“世界AI協力機構”構想をAPECで提案](https://english.aawsat.com/technology/5203807-chinas-xi-pushes-global-ai-body-apec-counter-us)
+  APECで習近平氏が「世界人工知能協力機構」設立を提案。AIを国際公共財とし、多国間協力を推進する構想を打ち出した。
+
+- **米中両国、AI分野で協力を—対立ではなく協調を提言**
+  链接：[米中両国、AI分野で協力を—対立ではなく協調を提言](https://www.investing.com/news/economy-news/china-us-need-to-have-cooperation-in-ai-says-uschina-relations-committee-head-3944260)
+  米中関係委員会の議長が、AI分野において米中が協力すべきだと発言。両国間の重複を避け、協調による技術進展を促進すべきとの立場。
+
+## 日本政治
+
+- **発表：自民・維新、衆院で300議席超の勢い—朝日新聞の調査**
+  链接：[発表：自民・維新、衆院で300議席超の勢い—朝日新聞の調査](https://www.theheadline.jp/paper/20260202)
+  朝日新聞の調査で、自民党と日本維新の会が衆議院で計300議席超を獲得しうる勢いであることが判明。今後の政権構図に重大な影響を及ぼす可能性。
+
+- **自民・維新の連立に94%が前向き–朝日・東大調査**
+  链接：[自民・維新の連立に94%が前向き–朝日・東大調査](https://www.theheadline.jp/paper/20260202)
+  朝日新聞と東京大学の調査により、自民公認候補の94%が国民民主党との連立に前向きであることが分かった。連立拡大の可能性が高まる。
+
+- **雪と寒波が選挙情勢に影響—投票準備やポスター設置に混乱も**
+  链接：[雪と寒波が選挙情勢に影響—投票準備やポスター設置に混乱も](https://www.theguardian.com/world/2026/jan/28/japan-snap-general-election-sanae-takaichi-weather-snow)
+  日本全国で記録的な大雪が選挙準備に混乱を招き、ポスター設置や投票所準備に支障。16日間という短期選挙に気象状況が投票率などに影響を与える可能性。
+
+- **最新世論調査：自民・維新連立、衆院で2/3以上の議席獲得を視野**
+  链接：[最新世論調査：自民・維新連立、衆院で2/3以上の議席獲得を視野](https://www.japantimes.co.jp/news/2026/02/02/japan/politics/opinion-polls-2026-elections/)
+  朝日新聞の調査によれば、自民・維新連立が衆院465議席のうち300以上、2/3超の議席を獲得する可能性が高いとの予測が示された。法案通過が容易になる可能性。
+
+---
+
+## 引用链接汇总
+
+1. https://www.wsj.com/business/deals/kkr-led-group-set-to-buy-singapore-data-center-firm-valued-at-over-10-billion-a022c5e3
+2. https://www.theheadline.jp/paper/20260202
+3. https://www.citynewsservice.cn/articles/china-biz-buzz/daily-buzz/daily-buzz-2-february-2026-7kr5p08n
+4. https://economy.ac/news/2025/12/202512285121
+5. https://english.aawsat.com/technology/5203807-chinas-xi-pushes-global-ai-body-apec-counter-us
+6. https://www.investing.com/news/economy-news/china-us-need-to-have-cooperation-in-ai-says-uschina-relations-committee-head-3944260
+7. https://www.theguardian.com/world/2026/jan/28/japan-snap-general-election-sanae-takaichi-weather-snow
+8. https://www.japantimes.co.jp/news/2026/02/02/japan/politics/opinion-polls-2026-elections/
