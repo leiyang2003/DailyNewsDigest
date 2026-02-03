@@ -217,3 +217,4 @@ DailyNewsDigest/
 - **未设置 OPENAI_API_KEY**：在项目根目录创建 `.env`，写入 `OPENAI_API_KEY=你的密钥`，或导出环境变量 `export OPENAI_API_KEY=...`。
 - **请求超时**：单次请求默认超时 1 小时（`DIGEST_TIMEOUT=3600`），超时后会自动重试最多 2 次。若仍不够，可在 `.env` 中设置 `DIGEST_TIMEOUT=7200`（2 小时）。若网络受限，可设置 `HTTP_PROXY` / `HTTPS_PROXY` 使用代理。
 - **某天没有某主题新闻**：模型会如实写「当日该主题报道较少」并少列几条，属正常情况。
+# DailyNewsDigest
