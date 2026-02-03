@@ -1,0 +1,26 @@
+[
+  {
+    "example1": "中国の製造業が支配的になりつつある。",
+    "example1_translation": "中国的制造业正变得具有支配地位。",
+    "example2": "経済が回復しつつある。",
+    "example2_translation": "经济正在恢复中。",
+    "grammar": "つつある",
+    "meaning_zh": "正在…中"
+  },
+  {
+    "example1": "ドイツとしてもアメリカへの支持は重要です。",
+    "example1_translation": "即使对于德国来说，支持美国也是重要的。",
+    "example2": "雨が降ったとしても出かけます。",
+    "example2_translation": "即使下雨也要出去。",
+    "grammar": "としても",
+    "meaning_zh": "即使…也…"
+  },
+  {
+    "grammar": "にわたって",
+    "meaning_zh": "贯穿…",
+    "example1": "この議論は数週間にわたって続けられた。",
+    "example1_translation": "这场讨论持续了几个星期。",
+    "example2": "全国にわたって影響を与えた。",
+    "example2_translation": "对全国造成了影响。"
+  }
+]
