@@ -30,7 +30,7 @@ cp .env.example .env
 
 ## 网页应用（统一入口）
 
-运行 Flask 后，在浏览器打开 **http://127.0.0.1:5001/** 进入首页，从首页可进入以下模块：
+运行 Flask 后，在浏览器打开 **http://127.0.0.1:5000/** 进入首页，从首页可进入以下模块：
 
 - **新闻摘要**：按日期查看当日摘要（需先运行 `digest.py`）
 - **播客稿**：按日期查看当日日语播客稿（需先运行 `podcast.py`）
@@ -42,7 +42,7 @@ cd DailyNewsDigest
 python app.py
 ```
 
-浏览器访问：http://127.0.0.1:5001/
+浏览器访问：http://127.0.0.1:5000/
 
 ## 使用（命令行生成数据）
 
@@ -64,10 +64,10 @@ python digest.py --no-save
 python digest.py --quiet
 ```
 
-报告会保存到 `reports/` 目录：
-- `daily_digest_YYYY-MM-DD.md`：正文总结 + 文末「引用链接汇总」
-- `daily_digest_YYYY-MM-DD_urls.txt`：仅链接列表（一行一个 URL），便于复制或脚本处理
-- `daily_digest_YYYY-MM-DD.json`：**URL 与 Summary 的 JSON**，含 `report_date`、`items`（每条含 `title`、`url`、`summary`、`category` 分类）、`urls` 数组，便于程序读取与后期访问
+报告会保存到 `reports/` 目录（日期用下划线，如 `daily_digest_2026_02_02.json`）：
+- `daily_digest_YYYY_MM_DD.md`：正文总结 + 文末「引用链接汇总」
+- `daily_digest_YYYY_MM_DD_urls.txt`：仅链接列表（一行一个 URL），便于复制或脚本处理
+- `daily_digest_YYYY_MM_DD.json`：**URL 与 Summary 的 JSON**，含 `report_date`、`items`（每条含 `title`、`url`、`summary`、`category` 分类）、`urls` 数组，便于程序读取与后期访问
 
 ## Podcast 脚本生成（原子新闻 / 主播美香）
 
@@ -110,7 +110,7 @@ python tts.py --no-save    # 只做预处理与分块并打印，不调用 TTS�
 python tts.py --date 2026-02-02 --sync
 ```
 
-会额外生成 `reports/podcast_YYYY-MM-DD_sync.json`。启动网页应用（`python app.py`）后，从首页点击「播客音频/同步朗读」或访问 `http://127.0.0.1:5001/sync_reader.html?date=2026-02-02`（将日期改为你生成的日期）。页面会加载该日期的 mp3 与 sync JSON，播放时按句高亮当前句；点击某句可跳转到该句播放。
+会额外生成 `reports/podcast_YYYY-MM-DD_sync.json`。启动网页应用（`python app.py`）后，从首页点击「播客音频/同步朗读」或访问 `http://127.0.0.1:5000/sync_reader.html?date=2026-02-02`（将日期改为你生成的日期）。页面会加载该日期的 mp3 与 sync JSON，播放时按句高亮当前句；点击某句可跳转到该句播放。
 
 ## 日语要点抽取（N1-N2 单词与文法）
 
@@ -129,7 +129,7 @@ python japanese_points.py --date 2026-02-02
 
 **2. 启动网页应用**
 
-从首页（http://127.0.0.1:5001/）点击「日语要点抽取」，或直接访问 `http://127.0.0.1:5001/japanese_points.html`。
+从首页（http://127.0.0.1:5000/）点击「日语要点抽取」，或直接访问 `http://127.0.0.1:5000/japanese_points.html`。
 
 **3. 页面功能**
 
@@ -209,7 +209,7 @@ DailyNewsDigest/
 ## 时区与「昨日」说明
 
 - 默认以 **北京时间（Asia/Shanghai）** 的「昨日」为准。脚本会按该时区计算昨天日期（如 2026年02月02日），在 prompt 中写明「昨日」即该日期，并说明新闻来源可能用其他时区，以该日期为基准筛选。
-- 报告文件名按**新闻日期**命名，如 `daily_digest_2026-02-02.md` 表示 2 月 2 日的新闻摘要。
+- 报告文件名按**新闻日期**命名（日期用下划线），如 `daily_digest_2026_02_02.md` 表示 2 月 2 日的新闻摘要。
 - 可在 `.env` 中设置 `DIGEST_TIMEZONE=Asia/Shanghai`（或其它 IANA 时区）覆盖默认。
 
 ## 故障排查

@@ -6,9 +6,9 @@
   <title>ニュース概要 - Daily News Digest</title>
   <link rel="stylesheet" href="/static/base.css">
   <style>
-    body { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: #fff; color: var(--color-text); }
-    .header { display: flex; align-items: center; justify-content: space-between; padding: var(--gap-lg) var(--page-padding-home); max-width: 960px; margin: 0 auto; border-bottom: 1px solid var(--color-border-light); }
-    .brand { font-size: 1.1rem; font-weight: 600; color: #1e3a5f; }
+    body { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: #f0f0f0; color: var(--color-text); }
+    .header { display: flex; align-items: center; justify-content: space-between; padding: var(--gap-lg) var(--page-padding-home); max-width: 960px; margin: 0 auto; background: #fff; }
+    .brand { font-size: 2rem; font-weight: 700; color: #1e3a5f; }
     .nav-top { display: flex; gap: var(--gap-xl); flex-wrap: wrap; }
     .nav-top a { color: var(--color-text); text-decoration: none; font-size: var(--font-size-small); padding-bottom: 2px; border-bottom: 2px solid transparent; }
     .nav-top a:hover { color: var(--color-link); }
@@ -36,7 +36,7 @@
 </head>
 <body>
   <header class="header">
-    <a href="index.html" class="brand">Daily News Digest</a>
+    <span class="brand">原子新闻</span>
     <nav class="nav-top">
       <a href="index.html">ホーム</a>
       <a href="digest.html" class="active">ニュース概要</a>
@@ -135,7 +135,7 @@
     setMessage("読み込み中…");
     content.innerHTML = "";
     filtersEl.style.display = "none";
-    fetch("/reports/daily_digest_" + date + ".json")
+    fetch("/reports/daily_digest_" + date.replace(/-/g, "_") + ".json")
       .then(function (r) {
         if (!r.ok) throw new Error("この日付のデータがありません。python digest.py --date " + date + " を先に実行してください。");
         return r.json();
@@ -168,7 +168,10 @@
 
   var d = new Date();
   d.setDate(d.getDate() - 1);
-  dateInput.value = d.toISOString().slice(0, 10);
+  var y = d.getFullYear();
+  var m = String(d.getMonth() + 1).padStart(2, "0");
+  var day = String(d.getDate()).padStart(2, "0");
+  dateInput.value = y + "-" + m + "-" + day;
   loadData();
 })();
   </script>

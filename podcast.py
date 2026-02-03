@@ -42,8 +42,9 @@ def _chat(system: str, user: str, timeout: int = TIMEOUT) -> str:
 
 
 def load_digest_json(report_date: str) -> dict:
-    """加载指定日期的摘要 JSON。"""
-    path = OUTPUT_DIR / f"daily_digest_{report_date}.json"
+    """加载指定日期的摘要 JSON。文件名格式为 daily_digest_YYYY_MM_DD.json。"""
+    file_prefix = report_date.replace("-", "_")
+    path = OUTPUT_DIR / f"daily_digest_{file_prefix}.json"
     if not path.exists():
         raise FileNotFoundError(f"未找到摘要文件: {path}，请先运行 digest.py 生成该日期的摘要。")
     with open(path, "r", encoding="utf-8") as f:
