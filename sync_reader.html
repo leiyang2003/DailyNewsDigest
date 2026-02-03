@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>同期朗読 - Daily News Digest</title>
+  <link rel="stylesheet" href="/static/base.css">
+  <style>
+    body { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: var(--color-bg); color: var(--color-text); }
+    .header { display: flex; align-items: center; justify-content: space-between; padding: var(--gap-lg) var(--page-padding-home); max-width: 960px; margin: 0 auto; background: #fff; border-bottom: 1px solid var(--color-border-light); }
+    .brand { font-size: 1.1rem; font-weight: 600; color: #1e3a5f; text-decoration: none; }
+    .nav-top { display: flex; gap: var(--gap-xl); flex-wrap: wrap; }
+    .nav-top a { color: var(--color-text); text-decoration: none; font-size: var(--font-size-small); padding-bottom: 2px; border-bottom: 2px solid transparent; }
+    .nav-top a:hover { color: var(--color-link); }
+    .nav-top a.active { color: var(--color-link); border-bottom-color: var(--color-link); }
+    .main-wrap { max-width: 42rem; margin: 0 auto; padding: var(--gap-xl) var(--page-padding-home); }
+    .instruction { text-align: center; font-size: var(--font-size-small); color: var(--color-hint); margin-bottom: var(--gap-lg); line-height: 1.5; }
+    .toolbar { display: flex; align-items: center; gap: var(--gap-md); flex-wrap: wrap; margin-bottom: var(--gap-md); }
+    #message { margin-bottom: var(--gap-md); font-size: var(--font-size-small); color: var(--color-hint); }
+    .text-card { background: #fff; border-radius: var(--radius-md); padding: var(--gap-xl); box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: var(--gap-lg); min-height: 200px; }
+    .text { line-height: 1.7; font-size: var(--font-size-body); color: var(--color-text-body); }
+    .sentence { display: inline; transition: background 0.15s; padding: 0 1px; }
+    .sentence.highlight { background: var(--color-highlight); border-radius: var(--radius-sm); }
+    .sentence:hover { cursor: pointer; }
+    #audioWrap { margin-top: var(--gap-lg); }
+    #audioWrap audio { display: block; width: 100%; height: 48px; }
+    #audioWrap.hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="brand">Daily News Digest</a>
+    <nav class="nav-top">
+      <a href="index.html">ホーム</a>
+      <a href="digest.html">ニュース概要</a>
+      <a href="podcast.html">ポッドキャスト台本</a>
+      <a href="sync_reader.html" class="active">同期朗読</a>
+      <a href="japanese_points.html">日本語学習</a>
+    </nav>
+  </header>
+  <main class="main-wrap">
+    <p class="instruction">音声に合わせてテキストが進行します。文をクリックしてジャンプできます。</p>
+    <div class="toolbar">
+      <label>日付 <input type="date" id="dateInput"></label>
+      <button type="button" id="loadBtn">読み込む</button>
+    </div>
+    <div id="message" class="hint"></div>
+    <div class="text-card">
+      <div id="text" class="text"></div>
+    </div>
+    <div id="audioWrap" class="hidden">
+      <audio id="audio" controls></audio>
+    </div>
+  </main>
+
+  <script>
+(function () {
+  const params = new URLSearchParams(location.search);
+  const dateFromUrl = params.get("date");
+  const dateInputEl = document.getElementById("dateInput");
+  if (dateFromUrl && dateInputEl) {
+    dateInputEl.value = dateFromUrl;
+  }
+
+  const dateInput = document.getElementById("dateInput");
+  const loadBtn = document.getElementById("loadBtn");
+  const message = document.getElementById("message");
+  const audioWrap = document.getElementById("audioWrap");
+  const audio = document.getElementById("audio");
+  const textEl = document.getElementById("text");
+
+  function setMessage(msg, isError) {
+    message.textContent = msg;
+    message.className = isError ? "error" : "hint";
+  }
+
+  function findCurrentIndex(segments, currentTime) {
+    for (let i = 0; i < segments.length; i++) {
+      const s = segments[i];
+      if (currentTime >= s.start && currentTime < s.end) return i;
+    }
+    if (segments.length && currentTime >= segments[segments.length - 1].end) return segments.length - 1;
+    return -1;
+  }
+
+  function updateHighlight(segments, currentTime, spans) {
+    const idx = findCurrentIndex(segments, currentTime);
+    spans.forEach(function (span, i) { span.classList.toggle("highlight", i === idx); });
+  }
+
+  loadBtn.addEventListener("click", async function () {
+    const date = dateInput.value;
+    if (!date) {
+      setMessage("日付を選択するか、?date=YYYY-MM-DD で指定してください。", true);
+      return;
+    }
+    setMessage("読み込み中…");
+    const base = "/reports";
+    const audioUrl = base + "/podcast_" + date + ".mp3";
+    const syncUrl = base + "/podcast_" + date + "_sync.json";
+    try {
+      const [audioResp, syncResp] = await Promise.all([
+        fetch(audioUrl),
+        fetch(syncUrl)
+      ]);
+      if (!audioResp.ok || !syncResp.ok) {
+        setMessage("この日付の音声または sync データがありません。python tts.py --date " + date + " --sync を先に実行してください。", true);
+        return;
+      }
+      const segments = await syncResp.json();
+      if (!Array.isArray(segments) || segments.length === 0) {
+        setMessage("sync データが空です。", true);
+        return;
+      }
+      audio.src = audioUrl;
+      audioWrap.classList.remove("hidden");
+      textEl.innerHTML = "";
+      const spans = [];
+      segments.forEach(function (seg, i) {
+        const span = document.createElement("span");
+        span.className = "sentence";
+        span.dataset.start = seg.start;
+        span.dataset.end = seg.end;
+        span.dataset.index = i;
+        span.textContent = seg.text;
+        span.addEventListener("click", function () {
+          audio.currentTime = seg.start;
+          audio.play();
+        });
+        textEl.appendChild(span);
+        if (i < segments.length - 1) textEl.appendChild(document.createTextNode(" "));
+        spans.push(span);
+      });
+      audio.addEventListener("timeupdate", function () {
+        updateHighlight(segments, audio.currentTime, spans);
+      });
+      audio.addEventListener("loadedmetadata", function () {
+        updateHighlight(segments, audio.currentTime, spans);
+      });
+      setMessage(date + " を読み込みました。" + segments.length + " 文。文をクリックでジャンプできます。");
+    } catch (e) {
+      setMessage("読み込みに失敗しました: " + e.message, true);
+    }
+  });
+
+  if (dateFromUrl && loadBtn) {
+    loadBtn.click();
+  } else {
+    var d = new Date();
+    d.setDate(d.getDate() - 1);
+    dateInput.value = d.toISOString().slice(0, 10);
+    loadBtn.click();
+  }
+})();
+  </script>
+</body>
+</html>

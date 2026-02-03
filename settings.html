@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>設定 - Daily News Digest</title>
+  <link rel="stylesheet" href="/static/base.css">
+  <style>
+    body { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: #fff; color: var(--color-text); }
+    .header { display: flex; align-items: center; justify-content: space-between; padding: var(--gap-lg) var(--page-padding-home); max-width: 960px; margin: 0 auto; border-bottom: 1px solid var(--color-border-light); }
+    .brand { font-size: 1.1rem; font-weight: 600; color: #1e3a5f; text-decoration: none; }
+    .nav-top { display: flex; gap: var(--gap-xl); flex-wrap: wrap; }
+    .nav-top a { color: var(--color-text); text-decoration: none; font-size: var(--font-size-small); }
+    .nav-top a:hover { color: var(--color-link); }
+    .nav-top a.active { text-decoration: underline; color: var(--color-link); }
+    .main { max-width: 640px; margin: 0 auto; padding: var(--gap-xl) var(--page-padding-home); }
+    .page-title { font-size: var(--font-size-h1-home); font-weight: 600; margin: 0 0 var(--gap-xl); }
+    .settings-section { margin-bottom: var(--gap-xl); }
+    .settings-section h2 { font-size: var(--font-size-h2); font-weight: 600; margin: 0 0 var(--gap-md); color: var(--color-text); }
+    .settings-options { display: flex; gap: var(--gap-lg); flex-wrap: wrap; }
+    .settings-options label { display: flex; align-items: center; gap: var(--gap-sm); cursor: pointer; font-size: var(--font-size-body); }
+    .settings-options input[type="radio"] { accent-color: var(--color-link); }
+    .btn-save { padding: var(--gap-sm) var(--gap-lg); border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; background: var(--color-link); color: #fff; border: none; font-family: inherit; }
+    .btn-save:hover { opacity: 0.9; }
+    #saveMessage { margin-top: var(--gap-md); font-size: var(--font-size-small); }
+    #saveMessage.success { color: var(--color-link); }
+    #saveMessage.error { color: var(--color-error); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="brand">Daily News Digest</a>
+    <nav class="nav-top">
+      <a href="index.html">ホーム</a>
+      <a href="digest.html">ニュース概要</a>
+      <a href="podcast.html">ポッドキャスト台本</a>
+      <a href="sync_reader.html">同期朗読</a>
+      <a href="japanese_points.html">日本語学習</a>
+      <a href="settings.html" class="active">設定</a>
+    </nav>
+  </header>
+  <main class="main">
+    <h1 class="page-title">ユーザー設定</h1>
+    <section class="settings-section">
+      <h2>更新周期</h2>
+      <p class="hint" style="margin-bottom: var(--gap-md);">データの更新間隔を選択してください。</p>
+      <div class="settings-options">
+        <label>
+          <input type="radio" name="update_cycle" value="minute">
+          毎分
+        </label>
+        <label>
+          <input type="radio" name="update_cycle" value="ten_minutes">
+          毎10分
+        </label>
+        <label>
+          <input type="radio" name="update_cycle" value="day" checked>
+          毎日
+        </label>
+      </div>
+      <button type="button" class="btn-save" id="btnSave">保存</button>
+      <div id="saveMessage" class="hint"></div>
+    </section>
+  </main>
+  <script>
+(function () {
+  const messageEl = document.getElementById("saveMessage");
+
+  function setMessage(text, type) {
+    messageEl.textContent = text;
+    messageEl.className = type === "success" ? "success" : type === "error" ? "error" : "hint";
+  }
+
+  async function loadSettings() {
+    try {
+      const r = await fetch("/api/settings");
+      const data = await r.json();
+      const cycle = (data.update_cycle === "minute" || data.update_cycle === "ten_minutes" || data.update_cycle === "day") ? data.update_cycle : "day";
+      const radio = document.querySelector('input[name="update_cycle"][value="' + cycle + '"]');
+      if (radio) radio.checked = true;
+    } catch (e) {
+      setMessage("設定の読み込みに失敗しました。", "error");
+    }
+  }
+
+  document.getElementById("btnSave").addEventListener("click", async function () {
+    const cycle = document.querySelector('input[name="update_cycle"]:checked').value;
+    setMessage("保存中…", "");
+    try {
+      const r = await fetch("/api/settings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ update_cycle: cycle })
+      });
+      if (!r.ok) {
+        const err = await r.json().catch(function () { return {}; });
+        throw new Error(err.error || "保存に失敗しました。");
+      }
+      setMessage("保存しました。", "success");
+    } catch (e) {
+      setMessage(e.message || "保存に失敗しました。", "error");
+    }
+  });
+
+  loadSettings();
+})();
+  </script>
+</body>
+</html>

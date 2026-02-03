@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ポッドキャスト台本 - Daily News Digest</title>
+  <link rel="stylesheet" href="/static/base.css">
+  <style>
+    body { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: var(--color-bg); color: var(--color-text); }
+    .header { display: flex; align-items: center; justify-content: space-between; padding: var(--gap-lg) var(--page-padding-home); max-width: 960px; margin: 0 auto; background: #fff; border-bottom: 1px solid var(--color-border-light); }
+    .brand { font-size: 1.1rem; font-weight: 600; color: #1e3a5f; text-decoration: none; }
+    .nav-top { display: flex; gap: var(--gap-xl); flex-wrap: wrap; }
+    .nav-top a { color: var(--color-text); text-decoration: none; font-size: var(--font-size-small); padding-bottom: 2px; border-bottom: 2px solid transparent; }
+    .nav-top a:hover { color: var(--color-link); }
+    .nav-top a.active { color: var(--color-link); border-bottom-color: var(--color-link); }
+    .main-wrap { max-width: 720px; margin: 0 auto; padding: var(--gap-xl) var(--page-padding-home); }
+    .card { background: #fff; border-radius: var(--radius-md); padding: var(--gap-xl); box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: var(--gap-lg); }
+    .page-title { font-size: 1.5rem; font-weight: 700; color: var(--color-text); margin: 0 0 var(--gap-sm); }
+    .meta { font-size: var(--font-size-small); color: var(--color-hint); margin-bottom: var(--gap-xl); }
+    .toolbar { display: flex; align-items: center; gap: var(--gap-md); flex-wrap: wrap; margin-bottom: var(--gap-lg); }
+    #message { margin-bottom: var(--gap-md); font-size: var(--font-size-small); color: var(--color-hint); }
+    .script-body { font-size: var(--font-size-body); line-height: 1.7; }
+    .script-body .segment { margin-bottom: var(--gap-xl); }
+    .script-body .segment-head { font-weight: 700; margin-bottom: var(--gap-sm); display: flex; align-items: center; gap: var(--gap-sm); }
+    .script-body .segment-head.opening { color: var(--color-link); border-left: 4px solid var(--color-link); padding-left: var(--gap-md); }
+    .script-body .segment-head.closing { color: var(--color-error); border-left: 4px solid var(--color-error); padding-left: var(--gap-md); }
+    .script-body .segment-head.pill { background: var(--color-text); color: #fff; padding: var(--gap-sm) var(--gap-md); border-radius: 999px; border: none; display: inline-block; }
+    .script-body .segment-head.recap { font-weight: 600; margin-bottom: var(--gap-sm); }
+    .script-body .segment-content { color: var(--color-text-body); white-space: pre-wrap; }
+    .script-body .segment.recap-box .segment-content { background: var(--color-bg); border-radius: var(--radius-md); padding: var(--gap-lg); border: 1px solid var(--color-border-light); }
+    .actions { display: flex; gap: var(--gap-md); flex-wrap: wrap; margin-top: var(--gap-xl); padding-top: var(--gap-lg); border-top: 1px solid var(--color-border-light); }
+    .actions .btn-primary { background: var(--color-link); color: #fff; border: none; padding: var(--gap-sm) var(--gap-lg); border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; font-family: inherit; }
+    .actions .btn-primary:hover { opacity: 0.9; }
+    .actions .btn-secondary { background: #fff; color: var(--color-text-muted); border: 1px solid var(--color-border); padding: var(--gap-sm) var(--gap-lg); border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; font-family: inherit; }
+    .actions .btn-secondary:hover { background: var(--color-bg); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html" class="brand">Daily News Digest</a>
+    <nav class="nav-top">
+      <a href="index.html">ホーム</a>
+      <a href="digest.html">ニュース概要</a>
+      <a href="podcast.html" class="active">ポッドキャスト台本</a>
+      <a href="sync_reader.html">同期朗読</a>
+      <a href="japanese_points.html">日本語学習</a>
+    </nav>
+  </header>
+  <main class="main-wrap">
+    <div class="toolbar">
+      <label>日付 <input type="date" id="dateInput"></label>
+      <button type="button" id="btnLoad">読み込む</button>
+    </div>
+    <div id="message" class="hint"></div>
+    <div id="card" class="card" style="display: none;">
+      <h1 class="page-title">ポッドキャスト台本</h1>
+      <p class="meta" id="meta">日付: <span id="metaDate"></span> | ホスト:美香</p>
+      <div id="content" class="script-body"></div>
+      <div class="actions">
+        <a href="#" id="btnTts" class="btn-primary" style="text-decoration: none; color: inherit;">音声を生成 (TTS)</a>
+        <button type="button" id="btnSave" class="btn-secondary">Markdownとして保存</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+(function () {
+  const dateInput = document.getElementById("dateInput");
+  const btnLoad = document.getElementById("btnLoad");
+  const message = document.getElementById("message");
+  const card = document.getElementById("card");
+  const content = document.getElementById("content");
+  const metaDate = document.getElementById("metaDate");
+  const btnTts = document.getElementById("btnTts");
+  const btnSave = document.getElementById("btnSave");
+
+  const SEGMENT_LABELS = {
+    "1. 开场": { style: "opening", label: "OPENING" },
+    "2. 金融": { style: "pill", label: "金融セグメント" },
+    "2. AI": { style: "pill", label: "AI セグメント" },
+    "2. 中美关系": { style: "pill", label: "米中関係セグメント" },
+    "2. 日本政治": { style: "pill", label: "日本政治セグメント" },
+    "3. 本日总结": { style: "recap", label: "本日を振り返って", box: true },
+    "4. 结束语": { style: "closing", label: "CLOSING" }
+  };
+
+  let currentDate = "";
+  let rawText = "";
+
+  function setMessage(msg, isError) {
+    message.textContent = msg;
+    message.className = isError ? "error" : "hint";
+  }
+
+  function escapeHtml(s) {
+    const div = document.createElement("div");
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  function parseScript(text) {
+    const lines = text.split("\n");
+    const sections = [];
+    let i = 0;
+    while (i < lines.length) {
+      const line = lines[i];
+      const m = line.match(/^##\s+(.+)$/);
+      if (m) {
+        const title = m[1].trim();
+        const body = [];
+        i++;
+        while (i < lines.length && !lines[i].match(/^##\s+/)) {
+          body.push(lines[i]);
+          i++;
+        }
+        sections.push({ title: title, body: body.join("\n").trim() });
+        continue;
+      }
+      i++;
+    }
+    return sections;
+  }
+
+  function renderScript(sections) {
+    content.innerHTML = "";
+    sections.forEach(function (sec) {
+      const cfg = SEGMENT_LABELS[sec.title] || { style: "pill", label: sec.title };
+      const seg = document.createElement("div");
+      seg.className = "segment" + (cfg.box ? " recap-box" : "");
+      const head = document.createElement("div");
+      head.className = "segment-head " + cfg.style;
+      head.textContent = cfg.label;
+      const body = document.createElement("div");
+      body.className = "segment-content";
+      body.textContent = sec.body;
+      seg.appendChild(head);
+      seg.appendChild(body);
+      content.appendChild(seg);
+    });
+  }
+
+  function loadScript() {
+    const date = dateInput.value;
+    if (!date) {
+      setMessage("日付を選択してください。", true);
+      return;
+    }
+    setMessage("読み込み中…");
+    card.style.display = "none";
+    fetch("/reports/podcast_script_" + date + ".md")
+      .then(function (r) {
+        if (!r.ok) throw new Error("この日付の台本がありません。python podcast.py --date " + date + " を先に実行してください。");
+        return r.text();
+      })
+      .then(function (data) {
+        rawText = data;
+        currentDate = date;
+        metaDate.textContent = date;
+        const sections = parseScript(data);
+        if (sections.length === 0) {
+          content.innerHTML = "<div class=\"segment-content\" style=\"white-space: pre-wrap;\">" + escapeHtml(data) + "</div>";
+        } else {
+          renderScript(sections);
+        }
+        card.style.display = "block";
+        btnTts.href = "sync_reader.html?date=" + date;
+        setMessage(date + " を読み込みました。");
+      })
+      .catch(function (e) {
+        if (e.message) setMessage(e.message, true);
+        else setMessage("読み込みに失敗しました。", true);
+      });
+  }
+
+  btnLoad.addEventListener("click", loadScript);
+  btnSave.addEventListener("click", function () {
+    if (!rawText || !currentDate) return;
+    const blob = new Blob([rawText], { type: "text/markdown;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "podcast_script_" + currentDate + ".md";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  var d = new Date();
+  d.setDate(d.getDate() - 1);
+  dateInput.value = d.toISOString().slice(0, 10);
+  loadScript();
+})();
+  </script>
+</body>
+</html>
