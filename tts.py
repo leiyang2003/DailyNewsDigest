@@ -6,7 +6,18 @@ TTS 播客音频生成：读取 podcast_script_YYYY-MM-DD.md，按 4096 字符�
 """
 import json
 import re
+import time
 from pathlib import Path
+
+# #region agent log
+DEBUG_LOG_PATH = "/Users/leiyang/Desktop/Coding/.cursor/debug.log"
+def _dbg(msg: str, data: dict, hypothesis_id: str = "") -> None:
+    try:
+        with open(DEBUG_LOG_PATH, "a", encoding="utf-8") as f:
+            f.write(json.dumps({"timestamp": int(time.time() * 1000), "location": "tts.py:main", "message": msg, "data": data, "sessionId": "debug-session", "hypothesisId": hypothesis_id}) + "\n")
+    except Exception:
+        pass
+# #endregion
 
 import requests
 
@@ -222,6 +233,9 @@ def main() -> None:
         help="按句分块 TTS 并输出 sync JSON，供同步朗读页按句高亮",
     )
     args = parser.parse_args()
+    # #region agent log
+    _dbg("args after parse", {"sync": args.sync, "date": args.date, "no_save": args.no_save}, "A")
+    # #endregion
 
     if args.date:
         report_date = args.date
@@ -239,10 +253,16 @@ def main() -> None:
         raw = f.read()
 
     normalized = normalize_script(raw)
+    # #region agent log
+    _dbg("after normalize", {"len_raw": len(raw), "len_normalized": len(normalized), "double_newlines": normalized.count("\n\n"), "report_date": report_date}, "B,C,D")
+    # #endregion
     if args.sync:
         chunks = split_into_sentences(normalized)
     else:
         chunks = split_into_chunks(normalized)
+    # #region agent log
+    _dbg("after split", {"branch": "sync" if args.sync else "chunks", "num_chunks": len(chunks), "first_chunk_len": len(chunks[0]) if chunks else 0}, "A,E")
+    # #endregion
     if not chunks:
         raise ValueError("脚本经预处理后无有效正文，无法生成音频。")
 

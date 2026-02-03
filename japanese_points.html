@@ -6,14 +6,7 @@
   <title>日本語学習 - Daily News Digest</title>
   <link rel="stylesheet" href="/static/base.css">
   <style>
-    body { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: #f0f0f0; color: var(--color-text); }
-    .header { display: flex; align-items: center; justify-content: space-between; padding: var(--gap-lg) var(--page-padding-home); max-width: 960px; margin: 0 auto; background: #fff; border-bottom: 1px solid var(--color-border-light); }
-    .brand { font-size: 2rem; font-weight: 700; color: #1e3a5f; text-decoration: none; }
-    .nav-top { display: flex; gap: var(--gap-xl); flex-wrap: wrap; }
-    .nav-top a { color: var(--color-text); text-decoration: none; font-size: var(--font-size-small); padding-bottom: 2px; border-bottom: 2px solid transparent; }
-    .nav-top a:hover { color: var(--color-link); }
-    .nav-top a.active { color: var(--color-link); border-bottom-color: var(--color-link); }
-    .page-jp .nav-top a.active { color: #7c3aed; border-bottom-color: #7c3aed; }
+    body.page-jp { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: var(--app-bg-page); color: var(--app-text); }
     .main { max-width: 960px; margin: 0 auto; padding: var(--gap-xl) var(--page-padding-home); }
     .title-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--gap-md); margin-bottom: var(--gap-md); }
     .page-title { font-size: 1.5rem; font-weight: 700; margin: 0; }
@@ -22,22 +15,18 @@
     .view-tabs button:first-child { margin-left: 0; border-radius: var(--radius-md) 0 0 var(--radius-md); }
     .view-tabs button:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
     .view-tabs button:hover { background: var(--color-bg); }
-    .view-tabs button.active { background: var(--color-link); color: #fff; border-color: var(--color-link); }
-    .cat-tabs { display: flex; gap: var(--gap-lg); margin-bottom: var(--gap-lg); }
-    .cat-tabs a { color: var(--color-hint); text-decoration: none; font-size: var(--font-size-small); padding-bottom: 2px; border-bottom: 2px solid transparent; }
-    .cat-tabs a:hover { color: var(--color-text); }
-    .cat-tabs a.active { color: #7c3aed; border-bottom-color: #7c3aed; }
+    .view-tabs button.active { background: var(--app-accent); color: #fff; border-color: var(--app-accent); }
     .toolbar { display: flex; align-items: center; gap: var(--gap-md); flex-wrap: wrap; margin-bottom: var(--gap-md); }
     .toolbar-single { margin-bottom: var(--gap-md); }
-    .toolbar-single button { padding: var(--gap-sm) var(--gap-lg); border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; background: var(--color-link); color: #fff; border: none; font-family: inherit; }
+    .toolbar-single button { padding: var(--gap-sm) var(--gap-lg); border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; background: var(--app-accent); color: #fff; border: none; font-family: inherit; }
     .toolbar-single button:hover { opacity: 0.9; }
     #mainMessage { margin-bottom: var(--gap-md); font-size: var(--font-size-small); color: var(--color-hint); }
     .list-wrap { overflow-x: auto; }
-    .table-section { font-size: var(--font-size-h2); font-weight: 600; margin: var(--gap-xl) 0 var(--gap-sm); color: var(--color-text); }
+    .table-section { font-size: var(--font-size-h2); font-weight: 600; margin: var(--gap-xl) 0 var(--gap-sm); color: var(--app-text); }
     .table-section:first-child { margin-top: 0; }
-    .vocab-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-small); background: #fff; }
+    .vocab-table { width: 100%; border-collapse: collapse; font-size: var(--font-size-small); background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
     .vocab-table th, .vocab-table td { border-bottom: 1px solid var(--color-border-faint); padding: var(--gap-md) var(--gap-lg); text-align: left; vertical-align: top; }
-    .vocab-table th { background: var(--color-bg); color: var(--color-text-muted); font-weight: 600; }
+    .vocab-table th { background: var(--color-bg); color: var(--app-text-muted); font-weight: 600; }
     .vocab-table tbody tr:hover { background: rgba(0,0,0,0.02); }
     .level-badge { display: inline-block; padding: 0.25rem var(--gap-sm); border-radius: 4px; font-size: var(--font-size-caption); font-weight: 600; }
     .level-n1 { background: #fecaca; color: #b91c1c; }
@@ -45,11 +34,11 @@
     .vocab-cell-word { font-weight: 600; font-size: var(--font-size-body); }
     .vocab-cell-reading { font-size: var(--font-size-small); color: var(--color-text-muted); margin-top: 0.25rem; }
     .card-view-wrap { max-width: 480px; margin: 0 auto var(--gap-xl); }
-    .flashcard { background: #fff; border: 1px solid var(--color-border-light); border-radius: var(--radius-md); min-height: 280px; cursor: pointer; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.3s; }
+    .flashcard { background: #fff; border: 1px solid var(--app-card-border); border-radius: 14px; min-height: 280px; cursor: pointer; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 0.3s; }
     .flashcard:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     .flashcard .face { padding: var(--gap-xl); min-height: 260px; display: flex; flex-direction: column; justify-content: center; text-align: center; }
     .flashcard .face.front { align-items: center; }
-    .flashcard .face.back { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-align: left; border-radius: var(--radius-md); }
+    .flashcard .face.back { background: linear-gradient(135deg, var(--app-accent) 0%, #1D4ED8 100%); color: #fff; text-align: left; border-radius: var(--radius-md); }
     .flashcard .level { align-self: flex-start; margin-bottom: var(--gap-md); }
     .flashcard .main-text { font-size: 1.5rem; font-weight: 700; margin-bottom: var(--gap-sm); }
     .flashcard .sub-text { font-size: var(--font-size-body); color: var(--color-text-muted); }
@@ -64,7 +53,7 @@
     .actions-bottom { margin-top: var(--gap-xl); padding-top: var(--gap-lg); border-top: 1px solid var(--color-border-light); display: flex; gap: var(--gap-md); flex-wrap: wrap; }
     .actions-bottom .btn { padding: var(--gap-sm) var(--gap-lg); border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block; border: 1px solid var(--color-border); background: #fff; color: var(--color-text); }
     .actions-bottom .btn:hover { background: var(--color-bg); }
-    .actions-bottom .btn.primary { background: var(--color-link); color: #fff; border-color: var(--color-link); }
+    .actions-bottom .btn.primary { background: var(--app-accent); color: #fff; border-color: var(--app-accent); }
     .footer { text-align: center; padding: var(--gap-xl); font-size: var(--font-size-caption); color: var(--color-hint); }
     .view { display: none; }
     .view.active { display: block; }
@@ -75,7 +64,7 @@
     .viewReview { padding: var(--gap-xl) 0; }
     #viewReview .pagination { flex-direction: column; align-items: center; }
     .btn-icon { width: 40px; height: 40px; border-radius: var(--radius-md); border: 1px solid var(--color-border); background: #fff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; color: var(--color-text-muted); font-family: inherit; padding: 0; }
-    .btn-icon:hover { background: var(--color-bg); color: var(--color-link); }
+    .btn-icon:hover { background: var(--color-bg); color: var(--app-accent); }
     .btn-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .card-nav .btn-icon { flex-shrink: 0; }
     @media (max-width: 768px) {
@@ -101,10 +90,6 @@
         <button type="button" id="btnList" class="active">一覧表</button>
         <button type="button" id="btnCard">新要点学习</button>
       </div>
-    </div>
-    <div class="cat-tabs">
-      <a href="#" id="catVocab" class="active">語彙 (N1-N2)</a>
-      <a href="#" id="catGrammar">文法 (N1-N2)</a>
     </div>
     <div class="toolbar-single">
       <button type="button" id="btnLoadLatest">最新を読み込む</button>
@@ -352,23 +337,6 @@
     document.getElementById("viewCard").classList.add("active");
     renderBrowseCard();
   });
-  document.getElementById("catVocab").addEventListener("click", function (e) {
-    e.preventDefault();
-    catMode = "words";
-    document.getElementById("catVocab").classList.add("active");
-    document.getElementById("catGrammar").classList.remove("active");
-    renderList();
-    if (viewMode === "card") renderBrowseCard();
-  });
-  document.getElementById("catGrammar").addEventListener("click", function (e) {
-    e.preventDefault();
-    catMode = "grammar";
-    document.getElementById("catVocab").classList.remove("active");
-    document.getElementById("catGrammar").classList.add("active");
-    renderList();
-    if (viewMode === "card") renderBrowseCard();
-  });
-
   async function loadLatest() {
     const messageEl = document.getElementById("mainMessage");
     messageEl.textContent = "読み込み中…";

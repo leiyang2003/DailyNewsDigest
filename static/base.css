@@ -38,6 +38,57 @@
   --radius-sm: 2px;
   --page-padding: 1rem;
   --page-padding-home: 1.5rem;
+
+  /* 统一应用风格（原子新闻 / 各子页） */
+  --app-accent: #2563EB;
+  --app-bg-page: #F8F9FA;
+  --app-card-border: #E9ECEF;
+  --app-text: #212529;
+  --app-text-muted: #6C757D;
+}
+
+/* 统一顶栏与导航 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem var(--page-padding-home);
+  max-width: 960px;
+  margin: 0 auto;
+  background: #fff;
+  border-bottom: 1px solid var(--app-card-border);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.brand {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1E40AF;
+  text-decoration: none;
+}
+.brand:hover {
+  color: #1D4ED8;
+}
+.nav-top {
+  display: flex;
+  gap: var(--gap-xl);
+  flex-wrap: wrap;
+}
+.nav-top a {
+  color: var(--app-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 4px 6px 6px;
+  margin: -4px -6px -6px;
+  border-bottom: 2px solid transparent;
+  font-weight: 400;
+}
+.nav-top a:hover {
+  color: var(--app-accent);
+}
+.nav-top a.active {
+  color: var(--app-accent);
+  font-weight: 700;
+  border-bottom-color: var(--app-accent);
 }
 
 /* 返回首页链接 */
@@ -59,6 +110,28 @@
   gap: var(--gap-md);
   flex-wrap: wrap;
   margin-bottom: var(--gap-lg);
+}
+.toolbar label {
+  font-size: 0.9rem;
+  color: var(--app-text-muted);
+}
+.toolbar input[type="date"],
+.toolbar button {
+  font-size: 0.9rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--app-card-border);
+  background: #fff;
+  color: var(--app-text);
+  font-family: inherit;
+}
+.toolbar button {
+  cursor: pointer;
+  background: #F8F9FA;
+}
+.toolbar button:hover {
+  background: #E9ECEF;
+  border-color: #DEE2E6;
 }
 
 /* 提示与错误文案 */

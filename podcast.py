@@ -98,13 +98,13 @@ def generate_outro() -> str:
 
 
 def build_script(report_date: str, data: dict) -> str:
-    """根据摘要 JSON 生成完整播客稿（四部分）。无新闻的分类不出现。"""
+    """根据摘要 JSON 生成完整播客稿（四部分）。无新闻的分类不出现。带 ## 标题便于前端识别 OPENING 等段落。"""
     items = data.get("items") or []
     by_cat = {c: [x for x in items if (x.get("category") or "").strip() == c] for c in CATEGORIES}
 
     intro = generate_intro(report_date)
     category_summaries = []
-    parts = [intro, "\n\n"]
+    parts = ["## 1. 开场\n\n", intro, "\n\n"]
 
     for cat in CATEGORIES:
         cat_items = by_cat.get(cat) or []
@@ -112,14 +112,17 @@ def build_script(report_date: str, data: dict) -> str:
             continue
         summary_ja = generate_category_summary_ja(cat, cat_items)
         category_summaries.append((cat, summary_ja))
+        parts.append(f"## 2. {cat}\n\n")
         parts.append(summary_ja)
         parts.append("\n\n")
 
     daily = generate_daily_summary(category_summaries)
+    parts.append("## 3. 本日总结\n\n")
     parts.append(daily)
     parts.append("\n\n")
 
     outro = generate_outro()
+    parts.append("## 4. 结束语\n\n")
     parts.append(outro)
     parts.append("\n")
 
@@ -127,11 +130,11 @@ def build_script(report_date: str, data: dict) -> str:
 
 
 def refine_script(script: str) -> str:
-    """将整篇播客稿交给大模型润色：语气更接近自然播客中年轻女性主持人说话。"""
+    """将整篇播客稿交给大模型润色：语气更接近自然播客中年轻女性主持人说话。保留 ## 标题行不变。"""
     return _chat(
         "你是一位年轻的女性日语播客主持人（美香）。请用自然、口语化、像真实主持人在录音室里说话的语气，优化以下播客稿。"
-        "要求：保持原意和整体结构（开场、各分类、本日总结、结束语），只润色文字，让句子更顺口、更有亲和力、更像年轻女性主持人的口吻。"
-        "不要添加或删除段落，不要添加标题或编号。只输出优化后的完整稿子（纯正文，便于后期生成音频）。",
+        "要求：保持原意和整体结构（开场、各分类、本日总结、结束语），只润色正文文字，让句子更顺口、更有亲和力、更像年轻女性主持人的口吻。"
+        "重要：不要修改或删除以 ## 开头的标题行（如 ## 1. 开场、## 2. 金融 等），原样保留；不要添加新的标题或编号。只输出优化后的完整稿子（含原有 ## 标题，便于前端解析）。",
         script,
         timeout=REFINE_TIMEOUT,
     )

@@ -5,34 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ポッドキャスト台本 - Daily News Digest</title>
   <link rel="stylesheet" href="/static/base.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: #f0f0f0; color: var(--color-text); }
-    .header { display: flex; align-items: center; justify-content: space-between; padding: var(--gap-lg) var(--page-padding-home); max-width: 960px; margin: 0 auto; background: #fff; border-bottom: 1px solid var(--color-border-light); }
-    .brand { font-size: 2rem; font-weight: 700; color: #1e3a5f; text-decoration: none; }
-    .nav-top { display: flex; gap: var(--gap-xl); flex-wrap: wrap; }
-    .nav-top a { color: var(--color-text); text-decoration: none; font-size: var(--font-size-small); padding-bottom: 2px; border-bottom: 2px solid transparent; }
-    .nav-top a:hover { color: var(--color-link); }
-    .nav-top a.active { color: var(--color-link); border-bottom-color: var(--color-link); }
-    .main-wrap { max-width: 720px; margin: 0 auto; padding: var(--gap-xl) var(--page-padding-home); }
-    .card { background: #fff; border-radius: var(--radius-md); padding: var(--gap-xl); box-shadow: 0 1px 3px rgba(0,0,0,0.06); margin-bottom: var(--gap-lg); }
-    .page-title { font-size: 1.5rem; font-weight: 700; color: var(--color-text); margin: 0 0 var(--gap-sm); }
-    .meta { font-size: var(--font-size-small); color: var(--color-hint); margin-bottom: var(--gap-xl); }
-    .toolbar { display: flex; align-items: center; gap: var(--gap-md); flex-wrap: wrap; margin-bottom: var(--gap-lg); }
-    #message { margin-bottom: var(--gap-md); font-size: var(--font-size-small); color: var(--color-hint); }
-    .script-body { font-size: var(--font-size-body); line-height: 1.7; }
-    .script-body .segment { margin-bottom: var(--gap-xl); }
-    .script-body .segment-head { font-weight: 700; margin-bottom: var(--gap-sm); display: flex; align-items: center; gap: var(--gap-sm); }
-    .script-body .segment-head.opening { color: var(--color-link); border-left: 4px solid var(--color-link); padding-left: var(--gap-md); }
-    .script-body .segment-head.closing { color: var(--color-error); border-left: 4px solid var(--color-error); padding-left: var(--gap-md); }
-    .script-body .segment-head.pill { background: var(--color-text); color: #fff; padding: var(--gap-sm) var(--gap-md); border-radius: 999px; border: none; display: inline-block; }
-    .script-body .segment-head.recap { font-weight: 600; margin-bottom: var(--gap-sm); }
-    .script-body .segment-content { color: var(--color-text-body); white-space: pre-wrap; }
-    .script-body .segment.recap-box .segment-content { background: var(--color-bg); border-radius: var(--radius-md); padding: var(--gap-lg); border: 1px solid var(--color-border-light); }
-    .actions { display: flex; gap: var(--gap-md); flex-wrap: wrap; margin-top: var(--gap-xl); padding-top: var(--gap-lg); border-top: 1px solid var(--color-border-light); }
-    .actions .btn-primary { background: var(--color-link); color: #fff; border: none; padding: var(--gap-sm) var(--gap-lg); border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; font-family: inherit; }
-    .actions .btn-primary:hover { opacity: 0.9; }
-    .actions .btn-secondary { background: #fff; color: var(--color-text-muted); border: 1px solid var(--color-border); padding: var(--gap-sm) var(--gap-lg); border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; font-family: inherit; }
-    .actions .btn-secondary:hover { background: var(--color-bg); }
+    :root {
+      --podcast-accent: #2563EB;
+      --podcast-closing: #E74C3C;
+      --podcast-primary-btn: #2563EB;
+      --podcast-bg-page: #F8F9FA;
+      --podcast-bg-recap: #F1F3F5;
+      --podcast-tag-bg: #1E40AF;
+      --podcast-card-border: #E9ECEF;
+    }
+    body { font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif; margin: 0; padding: 0; background: var(--podcast-bg-page); color: var(--app-text); }
+    .main-wrap { max-width: 680px; margin: 0 auto; padding: 2rem var(--page-padding-home); }
+    #message { margin-bottom: var(--gap-md); font-size: 0.875rem; color: #6C757D; }
+    .card { background: #fff; border-radius: 14px; padding: 2.5rem 2.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: var(--gap-lg); border: 1px solid var(--podcast-card-border); }
+    .card .title-block { text-align: center; margin-bottom: 2rem; padding-bottom: 0; }
+    .page-title { font-size: 1.9rem; font-weight: 700; color: #212529; margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+    .meta { font-size: 0.9rem; color: #6C757D; margin-bottom: 0; font-weight: 400; }
+    .script-body { font-size: 0.95rem; line-height: 1.85; }
+    .script-body .segment { margin-bottom: 2rem; }
+    .script-body .segment:last-of-type { margin-bottom: 0; }
+    .script-body .segment-head { font-weight: 700; margin-bottom: 0.75rem; }
+    /* OPENING: 左侧蓝色竖条 + 标题与正文对齐 */
+    .script-body .segment.opening-block { background: #fff; border-radius: 10px; padding: 1.25rem 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border-left: 5px solid var(--podcast-accent); margin-bottom: 2rem; }
+    .script-body .segment.opening-block .segment-head.opening { color: var(--podcast-accent); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.95rem; margin-bottom: 0.75rem; border: none; padding: 0; }
+    .script-body .segment.opening-block .segment-content { padding-left: 0; color: #495057; white-space: pre-wrap; border: none; font-size: 0.95rem; line-height: 1.85; }
+    /* セグメント: 深蓝矩形标签 + 正文 */
+    .script-body .segment-head.pill { background: var(--podcast-tag-bg); color: #fff; padding: 6px 14px; border-radius: 4px; display: inline-block; border: none; font-size: 0.85rem; font-weight: 600; }
+    .script-body .segment-head.recap { font-weight: 600; color: #212529; font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .script-body .segment-content { color: #212529; white-space: pre-wrap; }
+    .script-body .segment.recap-box .segment-content { background: var(--podcast-bg-recap); border-radius: 8px; padding: 1.25rem 1.5rem; border: none; }
+    /* CLOSING: 红粉色 + 左侧细竖线 */
+    .script-body .segment-head.closing { color: var(--podcast-closing); border-left: 4px solid var(--podcast-closing); padding-left: 0.75rem; margin-left: 0; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.95rem; }
+    .actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--podcast-card-border); justify-content: center; }
+    .actions .btn-primary { background: var(--podcast-primary-btn); color: #fff; border: none; padding: 10px 22px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; font-family: inherit; font-weight: 600; text-decoration: none; display: inline-block; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35); }
+    .actions .btn-primary:hover { opacity: 0.92; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); }
+    .actions .btn-secondary { background: #fff; color: #212529; border: 1px solid #ADB5BD; padding: 10px 22px; border-radius: 8px; font-size: 0.9rem; cursor: pointer; font-family: inherit; font-weight: 500; }
+    .actions .btn-secondary:hover { background: #F8F9FA; border-color: #6C757D; }
   </style>
 </head>
 <body>
@@ -53,8 +65,10 @@
     </div>
     <div id="message" class="hint"></div>
     <div id="card" class="card" style="display: none;">
-      <h1 class="page-title">ポッドキャスト台本</h1>
-      <p class="meta" id="meta">日付: <span id="metaDate"></span> | ホスト:美香</p>
+      <div class="title-block">
+        <h1 class="page-title">ポッドキャスト台本</h1>
+        <p class="meta" id="meta">日付: <span id="metaDate"></span> | ホスト: 美香</p>
+      </div>
       <div id="content" class="script-body"></div>
       <div class="actions">
         <a href="#" id="btnTts" class="btn-primary" style="text-decoration: none; color: inherit;">音声を生成 (TTS)</a>
@@ -126,7 +140,7 @@
     sections.forEach(function (sec) {
       const cfg = SEGMENT_LABELS[sec.title] || { style: "pill", label: sec.title };
       const seg = document.createElement("div");
-      seg.className = "segment" + (cfg.box ? " recap-box" : "");
+      seg.className = "segment" + (cfg.box ? " recap-box" : "") + (cfg.style === "opening" ? " opening-block" : "");
       const head = document.createElement("div");
       head.className = "segment-head " + cfg.style;
       head.textContent = cfg.label;

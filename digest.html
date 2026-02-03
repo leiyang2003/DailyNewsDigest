@@ -6,37 +6,30 @@
   <title>ニュース概要 - Daily News Digest</title>
   <link rel="stylesheet" href="/static/base.css">
   <style>
-    body { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: #f0f0f0; color: var(--color-text); }
-    .header { display: flex; align-items: center; justify-content: space-between; padding: var(--gap-lg) var(--page-padding-home); max-width: 960px; margin: 0 auto; background: #fff; }
-    .brand { font-size: 2rem; font-weight: 700; color: #1e3a5f; }
-    .nav-top { display: flex; gap: var(--gap-xl); flex-wrap: wrap; }
-    .nav-top a { color: var(--color-text); text-decoration: none; font-size: var(--font-size-small); padding-bottom: 2px; border-bottom: 2px solid transparent; }
-    .nav-top a:hover { color: var(--color-link); }
-    .nav-top a.active { color: var(--color-link); border-bottom-color: var(--color-link); }
+    body { font-family: var(--font-sans-ja); margin: 0; padding: 0; background: var(--app-bg-page); color: var(--app-text); }
     .main { max-width: 960px; margin: 0 auto; padding: var(--gap-xl) var(--page-padding-home); }
-    .page-title { font-size: 1.5rem; font-weight: 700; color: var(--color-text); margin: 0 0 var(--gap-lg); }
-    .toolbar { display: flex; align-items: center; gap: var(--gap-md); flex-wrap: wrap; margin-bottom: var(--gap-lg); }
+    .page-title { font-size: 1.5rem; font-weight: 700; color: var(--app-text); margin: 0 0 var(--gap-lg); }
     .filters { display: flex; gap: var(--gap-sm); flex-wrap: wrap; margin-bottom: var(--gap-xl); }
-    .filters button { padding: var(--gap-sm) var(--gap-md); border: none; border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; background: var(--color-bg); color: var(--color-text); font-family: inherit; }
+    .filters button { padding: var(--gap-sm) var(--gap-md); border: none; border-radius: var(--radius-md); font-size: var(--font-size-small); cursor: pointer; background: var(--color-bg); color: var(--app-text); font-family: inherit; }
     .filters button:hover { background: var(--color-border-faint); }
-    .filters button.active { background: var(--color-link); color: #fff; }
-    #message { margin-bottom: var(--gap-md); font-size: var(--font-size-small); color: var(--color-hint); }
+    .filters button.active { background: var(--app-accent); color: #fff; }
+    #message { margin-bottom: var(--gap-md); font-size: var(--font-size-small); color: var(--app-text-muted); }
     .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--gap-xl); }
-    .article-card { background: #fff; border: 1px solid var(--color-border-light); border-radius: var(--radius-md); padding: var(--gap-lg); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .article-card { background: #fff; border: 1px solid var(--app-card-border); border-radius: 14px; padding: var(--gap-lg); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
     .article-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--gap-sm); flex-wrap: wrap; gap: var(--gap-sm); }
-    .article-tag { display: inline-block; padding: 0.2rem var(--gap-sm); border-radius: var(--radius-sm); background: var(--color-bg); color: var(--color-text-muted); font-size: var(--font-size-caption); }
-    .article-date { font-size: var(--font-size-caption); color: var(--color-hint); }
-    .article-title { font-size: var(--font-size-h2); font-weight: 600; color: var(--color-text); margin: 0 0 var(--gap-sm); line-height: 1.4; }
-    .article-summary { font-size: var(--font-size-small); color: var(--color-text-muted); line-height: 1.5; margin: 0 0 var(--gap-md); word-break: break-word; overflow-wrap: break-word; }
-    .article-summary a { color: var(--color-link); text-decoration: none; }
+    .article-tag { display: inline-block; padding: 0.2rem var(--gap-sm); border-radius: var(--radius-sm); background: var(--color-bg); color: var(--app-text-muted); font-size: var(--font-size-caption); }
+    .article-date { font-size: var(--font-size-caption); color: var(--app-text-muted); }
+    .article-title { font-size: var(--font-size-h2); font-weight: 600; color: var(--app-text); margin: 0 0 var(--gap-sm); line-height: 1.4; }
+    .article-summary { font-size: var(--font-size-small); color: var(--app-text-muted); line-height: 1.5; margin: 0 0 var(--gap-md); word-break: break-word; overflow-wrap: break-word; }
+    .article-summary a { color: var(--app-accent); text-decoration: none; }
     .article-summary a:hover { text-decoration: underline; }
-    .article-link { font-size: var(--font-size-small); color: var(--color-link); text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem; }
+    .article-link { font-size: var(--font-size-small); color: var(--app-accent); text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem; }
     .article-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
   <header class="header">
-    <span class="brand">原子新闻</span>
+    <a href="index.html" class="brand">原子新闻</a>
     <nav class="nav-top">
       <a href="index.html">ホーム</a>
       <a href="digest.html" class="active">ニュース概要</a>

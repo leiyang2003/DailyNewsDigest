@@ -30,7 +30,7 @@ cp .env.example .env
 
 ## 网页应用（统一入口）
 
-运行 Flask 后，在浏览器打开 **http://127.0.0.1:5000/** 进入首页，从首页可进入以下模块：
+运行 Flask 后，在浏览器打开 **http://127.0.0.1:5001/** 进入首页，从首页可进入以下模块：
 
 - **新闻摘要**：按日期查看当日摘要（需先运行 `digest.py`）
 - **播客稿**：按日期查看当日日语播客稿（需先运行 `podcast.py`）
@@ -42,7 +42,7 @@ cd DailyNewsDigest
 python app.py
 ```
 
-浏览器访问：http://127.0.0.1:5000/
+浏览器访问：http://127.0.0.1:5001/
 
 ## 使用（命令行生成数据）
 
@@ -110,7 +110,7 @@ python tts.py --no-save    # 只做预处理与分块并打印，不调用 TTS�
 python tts.py --date 2026-02-02 --sync
 ```
 
-会额外生成 `reports/podcast_YYYY-MM-DD_sync.json`。启动网页应用（`python app.py`）后，从首页点击「播客音频/同步朗读」或访问 `http://127.0.0.1:5000/sync_reader.html?date=2026-02-02`（将日期改为你生成的日期）。页面会加载该日期的 mp3 与 sync JSON，播放时按句高亮当前句；点击某句可跳转到该句播放。
+会额外生成 `reports/podcast_YYYY-MM-DD_sync.json`。启动网页应用（`python app.py`）后，从首页点击「播客音频/同步朗读」或访问 `http://127.0.0.1:5001/sync_reader.html?date=2026-02-02`（将日期改为你生成的日期）。页面会加载该日期的 mp3 与 sync JSON，播放时按句高亮当前句；点击某句可跳转到该句播放。
 
 ## 日语要点抽取（N1-N2 单词与文法）
 
@@ -129,7 +129,7 @@ python japanese_points.py --date 2026-02-02
 
 **2. 启动网页应用**
 
-从首页（http://127.0.0.1:5000/）点击「日语要点抽取」，或直接访问 `http://127.0.0.1:5000/japanese_points.html`。
+从首页（http://127.0.0.1:5001/）点击「日语要点抽取」，或直接访问 `http://127.0.0.1:5001/japanese_points.html`。
 
 **3. 页面功能**
 
