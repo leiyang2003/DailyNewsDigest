@@ -3,7 +3,10 @@
 并将每步的开始/成功/失败写入当日日志 logs/{report_date}.log。
 供 cron 等在每天固定时间（如北京时间 1:00）调用。
 需在项目根目录执行：python run_daily.py 或 python -m run_daily
+可选 --themes "主题1,主题2,主题3" 传给 digest 使用自定义主题。
+可选 --enable 控制执行哪些步骤；可选 --log-file 指定日志文件路径。
 """
+import argparse
 import subprocess
 import sys
 from datetime import datetime, timedelta
@@ -12,20 +15,10 @@ from zoneinfo import ZoneInfo
 
 from config import DIGEST_TIMEZONE
 
-DEBUG_LOG_PATH = Path(__file__).resolve().parent.parent / ".cursor" / "debug.log"
-
-def _debug_log(location: str, message: str, data: dict, hypothesis_id: str) -> None:
-    import json
-    line = json.dumps({"sessionId": "debug-session", "runId": "run1", "hypothesisId": hypothesis_id, "location": location, "message": message, "data": data, "timestamp": datetime.now().timestamp() * 1000}) + "\n"
-    try:
-        with open(DEBUG_LOG_PATH, "a", encoding="utf-8") as f:
-            f.write(line)
-    except Exception:
-        pass
-
 ROOT = Path(__file__).resolve().parent
 LOGS_DIR = ROOT / "logs"
 MAX_STDERR_LINES = 20
+ALL_STEPS = ("digest", "podcast", "tts_sync", "japanese_points")
 
 
 def report_date_yesterday() -> str:
@@ -55,9 +48,6 @@ def run_step(
     cwd: Path,
 ) -> None:
     """执行一步，写 start，成功写 success，失败写 fail 并退出进程。"""
-    # #region agent log
-    _debug_log("run_daily.py:run_step", "step_start", {"step": step_name, "args": args}, "A")
-    # #endregion
     log_line(log_file, step_name, "start")
     result = subprocess.run(
         [sys.executable, "-m", step_name] + args,
@@ -67,32 +57,57 @@ def run_step(
         encoding="utf-8",
         errors="replace",
     )
-    # #region agent log
-    _debug_log("run_daily.py:run_step", "step_exit", {"step": step_name, "returncode": result.returncode}, "A" if result.returncode != 0 else "B")
-    # #endregion
     if result.returncode != 0:
         err = (result.stderr or result.stdout or "").strip()
         last_lines = "\n".join(err.splitlines()[-MAX_STDERR_LINES:]) if err else "non-zero exit"
-        # #region agent log
-        _debug_log("run_daily.py:run_step", "pipeline_exit_fail", {"step": step_name, "err_preview": last_lines[:200]}, "A")
-        # #endregion
         log_line(log_file, step_name, "fail", last_lines[:500])
         sys.exit(1)
     log_line(log_file, step_name, "success")
 
 
 def main() -> None:
-    report_date = report_date_yesterday()
-    # #region agent log
-    _debug_log("run_daily.py:main", "main_start", {"report_date": report_date}, "E")
-    # #endregion
-    LOGS_DIR.mkdir(parents=True, exist_ok=True)
-    log_file = LOGS_DIR / f"{report_date}.log"
+    parser = argparse.ArgumentParser(description="每日流水线：digest → podcast → tts --sync → japanese_points")
+    parser.add_argument("--themes", default=None, help='自定义摘要主题，逗号分隔，如 "动漫,游戏,科技"')
+    parser.add_argument("--enable", default=",".join(ALL_STEPS), help="启用的步骤，逗号分隔：digest,podcast,tts_sync,japanese_points")
+    parser.add_argument("--log-file", default=None, help="日志文件路径（默认 logs/YYYY-MM-DD.log）")
+    parser.add_argument("--tts-sync-chunking", default="atomic", choices=("atomic", "sentence"), help="同步朗读分块策略：atomic（原子）或 sentence（按句）")
+    args = parser.parse_args()
 
-    run_step("digest", [], log_file, ROOT)
-    run_step("podcast", ["--date", report_date], log_file, ROOT)
-    run_step("tts", ["--date", report_date, "--sync"], log_file, ROOT)
-    run_step("japanese_points", ["--date", report_date], log_file, ROOT)
+    report_date = report_date_yesterday()
+    enable = {s.strip() for s in (args.enable or "").split(",") if s.strip()}
+    for s in enable:
+        if s not in ALL_STEPS:
+            raise SystemExit(f"未知步骤: {s}，合法值: {','.join(ALL_STEPS)}")
+
+    if args.log_file:
+        log_file = Path(args.log_file)
+        log_file.parent.mkdir(parents=True, exist_ok=True)
+    else:
+        LOGS_DIR.mkdir(parents=True, exist_ok=True)
+        log_file = LOGS_DIR / f"{report_date}.log"
+
+    digest_args = []
+    if args.themes:
+        digest_args = ["--themes", args.themes.strip()]
+    if "digest" in enable:
+        run_step("digest", digest_args, log_file, ROOT)
+    else:
+        log_line(log_file, "digest", "skipped")
+
+    if "podcast" in enable:
+        run_step("podcast", ["--date", report_date], log_file, ROOT)
+    else:
+        log_line(log_file, "podcast", "skipped")
+
+    if "tts_sync" in enable:
+        run_step("tts", ["--date", report_date, "--sync", "--sync-mode", args.tts_sync_chunking], log_file, ROOT)
+    else:
+        log_line(log_file, "tts_sync", "skipped")
+
+    if "japanese_points" in enable:
+        run_step("japanese_points", ["--date", report_date], log_file, ROOT)
+    else:
+        log_line(log_file, "japanese_points", "skipped")
 
     log_line(log_file, "pipeline", "completed")
 

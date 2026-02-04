@@ -91,6 +91,43 @@
   border-bottom-color: var(--app-accent);
 }
 
+/* 登录 / 用户状态（#auth-header 由 auth.js 注入） */
+#auth-header {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-md);
+  font-size: var(--font-size-small);
+  color: var(--app-text-muted);
+}
+.auth-btn-login {
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--app-card-border);
+  background: #fff;
+  color: var(--app-text);
+  text-decoration: none;
+  font-family: inherit;
+  font-size: var(--font-size-small);
+}
+.auth-btn-login:hover {
+  background: var(--color-bg);
+  border-color: var(--color-border);
+  color: var(--app-accent);
+}
+.auth-user {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.auth-logout {
+  color: var(--app-accent);
+  text-decoration: none;
+}
+.auth-logout:hover {
+  text-decoration: underline;
+}
+
 /* 返回首页链接 */
 .back-link {
   display: inline-block;

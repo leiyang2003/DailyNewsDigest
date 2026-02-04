@@ -11,8 +11,8 @@ import requests
 
 from config import OPENAI_API_KEY, OUTPUT_DIR, PROXIES
 
-# 与 digest 中分类一致
-CATEGORIES = ("金融", "AI", "中美关系", "日本政治")
+# 默认分类（旧版 digest 固定四类时使用）。当摘要 JSON 含有自定义分类时，会自动从 items.category 推导。
+DEFAULT_CATEGORIES = ("金融", "AI", "中美关系", "日本政治")
 OPENAI_CHAT_URL = "https://api.openai.com/v1/chat/completions"
 MODEL = "gpt-4o"
 TIMEOUT = 120
@@ -66,14 +66,15 @@ def load_digest_json(report_date: str) -> dict:
         return json.load(f)
 
 
-def generate_intro(report_date: str) -> str:
+def generate_intro(report_date: str, categories: list[str]) -> str:
     """1. 开场：简单介绍原子新闻、主播美香、播客目的。"""
+    cats_text = "、".join(categories) if categories else "金融、AI、中美关系、日本政治"
     return _chat(
         "你是一位日语播客撰稿人，用自然、简洁的日语写稿。",
         f"""「原子新闻」播客的开场白（约 80–120 字日语）需要包含：
 1. 节目名「原子新闻」的简短介绍（一句话即可）
 2. 主播是美香（美香です）
-3. 本播客的目的：用简短时间了解昨日重要新闻（金融、AI、中美关系、日本政治）
+3. 本播客的目的：用简短时间了解昨日重要新闻（{cats_text}）
 
 今日播报的新闻日期为 {report_date}。只输出开场白正文，不要加标题或说明。""",
     )
@@ -115,13 +116,23 @@ def generate_outro() -> str:
 def build_script(report_date: str, data: dict) -> str:
     """根据摘要 JSON 生成完整播客稿（四部分）。无新闻的分类不出现。带 ## 标题便于前端识别 OPENING 等段落。"""
     items = data.get("items") or []
-    by_cat = {c: [x for x in items if (x.get("category") or "").strip() == c] for c in CATEGORIES}
+    # 从 digest JSON 推导分类：按出现顺序去重；若无则退回旧版四类
+    seen = []
+    seen_set = set()
+    for it in items:
+        c = (it.get("category") or "").strip()
+        if not c or c in seen_set:
+            continue
+        seen.append(c)
+        seen_set.add(c)
+    categories = seen or list(DEFAULT_CATEGORIES)
+    by_cat = {c: [x for x in items if (x.get("category") or "").strip() == c] for c in categories}
 
-    intro = generate_intro(report_date)
+    intro = generate_intro(report_date, categories)
     category_summaries = []
     parts = ["## 1. 开场\n\n", intro, "\n\n"]
 
-    for cat in CATEGORIES:
+    for cat in categories:
         cat_items = by_cat.get(cat) or []
         if not cat_items:
             continue

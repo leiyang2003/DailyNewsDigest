@@ -1,7 +1,7 @@
 """
 TTS 播客音频生成：读取 podcast_script_YYYY-MM-DD.md，按 4096 字符分块调用 OpenAI TTS，
 将多段 mp3 用 pydub 拼接为 reports/podcast_YYYY-MM-DD.mp3。
-加 --sync 时按句分块并输出 podcast_YYYY-MM-DD_sync.json，供同步朗读页按句高亮。
+加 --sync 时用 LLM 按「原子单位」分块并输出 podcast_YYYY-MM-DD_sync.json，供同步朗读页按块高亮。
 依赖：pip install pydub，且系统需安装 ffmpeg（pydub 处理 mp3 用）。
 """
 import json
@@ -31,8 +31,49 @@ from config import (
 )
 
 OPENAI_SPEECH_URL = "https://api.openai.com/v1/audio/speech"
+OPENAI_CHAT_URL = "https://api.openai.com/v1/chat/completions"
 TTS_TIMEOUT = 120
+CHAT_TIMEOUT = 90
+CHAT_MODEL = "gpt-4o"
 MAX_CHARS = 4096
+
+# --sync 时用 LLM 做「原子分解」：约 2～7 语/自然息継ぎ单位，便于同步朗读与脑处理
+ATOM_CHUNK_SYSTEM = (
+    "あなたは日本語の文章を、ニュース読み・シャドーイング向けの「原子単位（チャンク）」に分解するアシスタントです。"
+    "各チャンクは約2～7語、または自然な息継ぎ・イントネーションの切れ目程度の長さにし、"
+    "1行に1チャンクだけ書き、先頭に番号をつけてください。"
+    "任意で、チャンクの後ろに全角括弧（ ）で意味のヒントや切れ目の理由を付けてよいです。"
+)
+ATOM_CHUNK_USER_TEMPLATE = (
+    "以下の日本語の文章を、「1秒くらいで意味を処理できるくらいの細かい原子単位（チャンク）」に分解してください。\n\n"
+    "・1チャンク＝だいたい2～7語程度、または自然な息継ぎ・イントネーションの切れ目くらいの長さ\n"
+    "・ニュース読みやシャドーイングを意識した、脳が一瞬で理解・発音できるサイズ\n"
+    "・各行に1チャンクだけ書いて、番号を振ってください\n"
+    "・チャンクの後ろに（ ）で簡単な意味のヒントや切れ目の理由を入れるとより良い\n\n"
+    "文章：\n{text}"
+)
+
+
+def _chat(system: str, user: str, timeout: int = CHAT_TIMEOUT) -> str:
+    """OpenAI Chat Completions を呼び出し、助手の本文を返す。"""
+    if not OPENAI_API_KEY:
+        raise ValueError("未设置 OPENAI_API_KEY，请在 .env 中配置")
+    resp = requests.post(
+        OPENAI_CHAT_URL,
+        json={
+            "model": CHAT_MODEL,
+            "messages": [
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+        },
+        headers={"Authorization": f"Bearer {OPENAI_API_KEY}", "Content-Type": "application/json"},
+        timeout=timeout,
+        proxies=PROXIES,
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    return ((data.get("choices") or [{}])[0].get("message", {}).get("content") or "").strip()
 
 
 def normalize_script(text: str) -> str:
@@ -71,6 +112,36 @@ def split_into_sentences(text: str, max_chars: int = MAX_CHARS) -> list[str]:
         if s:
             out.append(s)
     return out
+
+
+def _strip_chunk_line(line: str) -> str:
+    """Remove leading number (e.g. '1. ' or '2) ') and trailing （...） hint."""
+    s = line.strip()
+    s = re.sub(r"^\s*\d+[．.))\s]+", "", s).strip()
+    if "（" in s and s.rstrip().endswith("）"):
+        s = re.sub(r"[（(][^）)]*[）)]\s*$", "", s).strip()
+    return s
+
+
+def split_into_atomic_chunks(text: str, max_chars: int = MAX_CHARS) -> list[str]:
+    """
+    Use LLM to split text into atomic chunks (~2–7 words / natural breath units).
+    Used for --sync. Parses numbered lines from model; strips trailing （...） hints for TTS.
+    """
+    if not text.strip():
+        return []
+    user_msg = ATOM_CHUNK_USER_TEMPLATE.format(text=text)
+    raw = _chat(ATOM_CHUNK_SYSTEM, user_msg)
+    chunks = []
+    for line in raw.splitlines():
+        chunk = _strip_chunk_line(line)
+        if not chunk:
+            continue
+        if len(chunk) > max_chars:
+            chunks.extend(split_into_sentences(chunk, max_chars))
+        else:
+            chunks.append(chunk)
+    return chunks
 
 
 def split_into_chunks(text: str, max_chars: int = MAX_CHARS) -> list[str]:
@@ -230,11 +301,17 @@ def main() -> None:
     parser.add_argument(
         "--sync",
         action="store_true",
-        help="按句分块 TTS 并输出 sync JSON，供同步朗读页按句高亮",
+        help="生成同步朗读资源（音频 + sync JSON）。分块策略由 --sync-mode 控制（atomic/sentence）。",
+    )
+    parser.add_argument(
+        "--sync-mode",
+        default="atomic",
+        choices=("atomic", "sentence"),
+        help="同步朗读分块策略：atomic（LLM 原子分解）或 sentence（按句号/换行切分）",
     )
     args = parser.parse_args()
     # #region agent log
-    _dbg("args after parse", {"sync": args.sync, "date": args.date, "no_save": args.no_save}, "A")
+    _dbg("args after parse", {"sync": args.sync, "sync_mode": args.sync_mode, "date": args.date, "no_save": args.no_save}, "A")
     # #endregion
 
     if args.date:
@@ -257,7 +334,10 @@ def main() -> None:
     _dbg("after normalize", {"len_raw": len(raw), "len_normalized": len(normalized), "double_newlines": normalized.count("\n\n"), "report_date": report_date}, "B,C,D")
     # #endregion
     if args.sync:
-        chunks = split_into_sentences(normalized)
+        if args.sync_mode == "sentence":
+            chunks = split_into_sentences(normalized)
+        else:
+            chunks = split_into_atomic_chunks(normalized)
     else:
         chunks = split_into_chunks(normalized)
     # #region agent log

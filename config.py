@@ -8,7 +8,8 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).resolve().parent / ".env")
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-OUTPUT_DIR = Path(__file__).resolve().parent / "reports"
+_DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parent / "reports"
+OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR", str(_DEFAULT_OUTPUT_DIR)))
 
 # 请求超时（秒）。agentic web_search 可能需 10–30 分钟，可设大一些或通过 DIGEST_TIMEOUT 覆盖
 DIGEST_TIMEOUT = int(os.getenv("DIGEST_TIMEOUT", "3600"))  # 默认 1 小时
@@ -27,3 +28,9 @@ if HTTP_PROXY or HTTPS_PROXY:
 TTS_MODEL = os.getenv("TTS_MODEL", "tts-1-hd")
 TTS_VOICE = os.getenv("TTS_VOICE", "nova")
 TTS_SPEED = float(os.getenv("TTS_SPEED", "1.0"))
+
+# Google OAuth（温故知新等需登录功能）
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+GOOGLE_REDIRECT_URI = os.getenv("GOOGLE_REDIRECT_URI", "http://localhost:5003/auth/callback")
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-change-in-production")

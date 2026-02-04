@@ -73,24 +73,34 @@ def _report_date_to_file_prefix(report_date: str) -> str:
     return report_date.replace("-", "_")
 
 
-def build_prompt(yesterday: str, tz_label: str) -> str:
-    return f"""**{tz_label} {yesterday}**（昨日）のニュースを収集し要約してください。以下の四つのテーマをカバーします。
-
-1. **金融**：金融市場、銀行、証券、保険、金融政策、規制、M&A、決算など
+def build_prompt(yesterday: str, tz_label: str, themes: list[str] | None = None) -> str:
+    if themes:
+        n = len(themes)
+        theme_list = "\n".join(f"{i}. **{t}**：このテーマに関する昨日のニュース" for i, t in enumerate(themes, 1))
+        categories_ja = "、".join(themes)
+        example_cat = themes[0]
+    else:
+        n = 4
+        theme_list = """1. **金融**：金融市場、銀行、証券、保険、金融政策、規制、M&A、決算など
 2. **AI**：人工知能、大規模言語モデル、機械学習、AI企業、規制・政策、応用と製品など
 3. **中美关系**（米中関係）：米中貿易、外交、技術競争、政策と二国間の動き
-4. **日本政治**：日本の国内政治、選挙、内閣、外交、重要政策
+4. **日本政治**：日本の国内政治、選挙、内閣、外交、重要政策"""
+        categories_ja = "金融、AI、中美关系、日本政治"
+        example_cat = "金融"
+    return f"""**{tz_label} {yesterday}**（昨日）のニュースを収集し要約してください。以下の{n}個のテーマをカバーします。
+
+{theme_list}
 
 説明：「昨日」とは **{tz_label} {yesterday}** のことです。ニュースソースは別のタイムゾーン（米東部、UTCなど）の日付で出ている場合がありますが、この日付を基準に選んでください（{tz_label} のその日 0:00〜24:00 の報道、またはそれに相当する他タイムゾーンの報道で可）。
 
 要件：
 - 上記「昨日」に該当する信頼できるニュースソース（主流メディア、経済メディア、通信社）の記事を検索で見つけること
 - **ニュースソースは米国・日本のメディアを優先**：米国は Reuters、AP、Bloomberg、The New York Times、Wall Street Journal、CNN など；日本は NHK、日経新聞（Nikkei）、朝日新聞、読売新聞、共同社など；他地域の主流メディア・通信社も可
-- **items は合計 8 件以上**：四つのテーマで合計少なくとも 8 件、各テーマできれば 2 件以上；各件に **ニュース見出し**、**原文URL**、**2〜4文の日本語要約**（要点をまとめる）を含めること
+- **items は合計 8 件以上**：上記テーマで合計少なくとも 8 件、各テーマできれば 2 件以上；各件に **ニュース見出し**、**原文URL**、**2〜4文の日本語要約**（要点をまとめる）を含めること
 - 要約は原文に基づき、捏造しないこと；あるテーマで昨日のニュースが少ない場合は、他テーマから多めに選んで少なくとも 8 件を満たすこと
-- 各ニュースの category は次のいずれかのみ：金融、AI、中美关系、日本政治
+- 各ニュースの category は次のいずれかのみ：{categories_ja}
 - **回答の最後に**、プログラムで解析できるよう**純粋な JSON オブジェクト**のみを出力してください（他説明は不要）。形式は以下：
-  {{"report_date":"YYYY-MM-DD","items":[{{"title":"見出し","url":"https://...","summary":"要約（日本語）","category":"金融"}}, ...]}}
+  {{"report_date":"YYYY-MM-DD","items":[{{"title":"見出し","url":"https://...","summary":"要約（日本語）","category":"{example_cat}"}}, ...]}}
   report_date は昨日の日付 {yesterday.replace("年","-").replace("月","-").replace("日","")}、items は上記すべてのニュースの配列。各要素は title、url、summary、category を含むこと。
 """
 
@@ -203,8 +213,10 @@ def _merge_and_dedupe_urls(citations: list[str], from_content: list[str]) -> lis
 DIGEST_CATEGORIES = ("金融", "AI", "中美关系", "日本政治")
 
 
-def _parse_items_from_content(content: str) -> list[dict]:
-    """从报告正文解析出每条新闻的 title、url、summary、category，便于写入 JSON。"""
+def _parse_items_from_content(content: str, allowed_categories: tuple[str, ...] | None = None) -> list[dict]:
+    """从报告正文解析出每条新闻的 title、url、summary、category，便于写入 JSON。
+    allowed_categories: 合法分类列表，用于归一化节标题；若为 None 则用默认 DIGEST_CATEGORIES。"""
+    categories = allowed_categories if allowed_categories is not None else DIGEST_CATEGORIES
     items = []
     # 按 ## 分节，保留节标题作为分类
     sections = re.split(r"\n##\s+", content)
@@ -218,7 +230,7 @@ def _parse_items_from_content(content: str) -> list[dict]:
         if i > 0:
             category = lines[0].strip().strip("#").strip()
             # 兼容旧格式「金融 AI」等，归一化为已知分类
-            for cat in DIGEST_CATEGORIES:
+            for cat in categories:
                 if cat in category or category in cat:
                     category = cat
                     break
@@ -262,18 +274,24 @@ def _parse_items_from_content(content: str) -> list[dict]:
     return items
 
 
-def run_digest_http(verbose: bool = True, report_date_override: str | None = None) -> tuple[str, list[str], str]:
+def run_digest_http(
+    verbose: bool = True,
+    report_date_override: str | None = None,
+    themes: list[str] | None = None,
+) -> tuple[str, list[str], str]:
     """
     通过 HTTP REST 调用 OpenAI Responses API（带 web_search），
     返回 (报告正文 Markdown, 引用链接列表, 报告日期 YYYY-MM-DD)。
     若传入 report_date_override (YYYY-MM-DD)，则使用该日期作为「昨日」。
+    若传入 themes，则用这些主题替代默认四类（金融、AI、中美关系、日本政治）。
     """
     if not OPENAI_API_KEY:
         raise ValueError("未设置 OPENAI_API_KEY，请在 .env 中配置或导出环境变量")
 
     yesterday_str, tz_label, report_date = get_yesterday_label(report_date_override)
-    instructions = "あなたはプロのニュース編集者です。Web検索で権威ある情報源を見つけ、原文を読んだ上で正確・簡潔な要約（日本語）を作成し、常にクリック可能な原文リンクを付けてください。米国・日本の主流メディア（Reuters、AP、Bloomberg、NYT、WSJ、NHK、日経、朝日、読売など）を優先して使用してください。回答の items は四つのテーマ合計で8件以上必須です。"
-    user_content = build_prompt(yesterday_str, tz_label)
+    theme_note = "指定したテーマ" if themes else "四つのテーマ"
+    instructions = f"あなたはプロのニュース編集者です。Web検索で権威ある情報源を見つけ、原文を読んだ上で正確・簡潔な要約（日本語）を作成し、常にクリック可能な原文リンクを付けてください。米国・日本の主流メディア（Reuters、AP、Bloomberg、NYT、WSJ、NHK、日経、朝日、読売など）を優先して使用してください。回答の items は{theme_note}合計で8件以上必須です。"
+    user_content = build_prompt(yesterday_str, tz_label, themes=themes)
 
     # OpenAI Responses API：instructions 为系统提示，input 为用户输入
     payload = {
@@ -382,9 +400,13 @@ def run_digest_http(verbose: bool = True, report_date_override: str | None = Non
     return content or "(无正文)", all_urls, report_date
 
 
-def run_digest(verbose: bool = True, report_date_override: str | None = None) -> tuple[str, list[str], str]:
+def run_digest(
+    verbose: bool = True,
+    report_date_override: str | None = None,
+    themes: list[str] | None = None,
+) -> tuple[str, list[str], str]:
     """对外统一入口：当前仅使用 HTTP 实现。返回 (正文, 引用列表, 报告日期 YYYY-MM-DD)。"""
-    return run_digest_http(verbose=verbose, report_date_override=report_date_override)
+    return run_digest_http(verbose=verbose, report_date_override=report_date_override, themes=themes)
 
 
 def _md_from_payload(payload: dict) -> str:
@@ -392,7 +414,9 @@ def _md_from_payload(payload: dict) -> str:
     report_date = payload.get("report_date") or ""
     items = payload.get("items") or []
     urls = payload.get("urls") or [it.get("url") for it in items if it.get("url")]
-    lines = [f"以下为新闻日期 **{report_date}** 的摘要，涵盖金融、AI、中美关系、日本政治。", "", "---", ""]
+    cats = list(dict.fromkeys(it.get("category") or "" for it in items if (it.get("category") or "").strip()))
+    intro = f"以下为新闻日期 **{report_date}** 的摘要，涵盖各主题。" if cats else f"以下为新闻日期 **{report_date}** 的摘要，涵盖金融、AI、中美关系、日本政治。"
+    lines = [intro, "", "---", ""]
     current_cat = ""
     for it in items:
         cat = (it.get("category") or "其他").strip()
@@ -446,8 +470,13 @@ def save_report_json_primary(payload: dict, report_date: str) -> Path:
     return path_json
 
 
-def save_report(content: str, citations: list[str], report_date: str | None = None) -> Path:
-    """将报告与引用链接写入 Markdown 文件，并单独保存 URL 列表便于后期访问。report_date 为新闻日期 YYYY-MM-DD（默认昨日）。当模型未输出有效 JSON 时使用。"""
+def save_report(
+    content: str,
+    citations: list[str],
+    report_date: str | None = None,
+    allowed_categories: tuple[str, ...] | list[str] | None = None,
+) -> Path:
+    """将报告与引用链接写入 Markdown 文件，并单独保存 URL 列表便于后期访问。report_date 为新闻日期 YYYY-MM-DD（默认昨日）。当模型未输出有效 JSON 时使用。allowed_categories 为自定义主题时传入，用于解析节标题。"""
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     if report_date is None:
         tz = ZoneInfo(DIGEST_TIMEZONE)
@@ -468,7 +497,8 @@ def save_report(content: str, citations: list[str], report_date: str | None = No
         for url in citations:
             f.write(url + "\n")
 
-    items = _parse_items_from_content(content)
+    cats = tuple(allowed_categories) if allowed_categories else None
+    items = _parse_items_from_content(content, allowed_categories=cats)
     payload = {
         "report_date": report_date,
         "items": items,
@@ -520,12 +550,17 @@ def reparse_md_to_json(report_date: str) -> Path:
 def main():
     import argparse
 
-    parser = argparse.ArgumentParser(description="每日新闻摘要（昨日）：金融、AI、中美关系、日本政治")
+    parser = argparse.ArgumentParser(description="每日新闻摘要（昨日）：可选自定义主题或默认金融、AI、中美关系、日本政治")
     parser.add_argument("--date", default=None, help="新闻日期 YYYY-MM-DD，不填则用昨天")
+    parser.add_argument("--themes", default=None, help='自定义主题，逗号分隔，如 "动漫,游戏,科技"；不填则用默认四类')
     parser.add_argument("--reparse", action="store_true", help="从已有 .md 重新解析并只更新 .json（不调 API）")
     parser.add_argument("--no-save", action="store_true", help="只打印到终端，不保存文件")
     parser.add_argument("--quiet", action="store_true", help="减少终端输出")
     args = parser.parse_args()
+
+    themes = None
+    if args.themes:
+        themes = [t.strip() for t in args.themes.split(",") if t.strip()][:4]
 
     if args.reparse:
         report_date = args.date
@@ -538,7 +573,9 @@ def main():
             print(f"已从 daily_digest_{prefix}.md 重新解析并更新: {path}")
         return
 
-    content, citations, report_date = run_digest(verbose=not args.quiet, report_date_override=args.date)
+    content, citations, report_date = run_digest(
+        verbose=not args.quiet, report_date_override=args.date, themes=themes
+    )
     print("\n" + "=" * 60 + "\n")
     print(content)
 
@@ -555,7 +592,7 @@ def main():
                 print(f"Markdown 已生成: {path.parent / f'daily_digest_{prefix}.md'}")
                 print(f"链接列表已保存: {path.parent / f'daily_digest_{prefix}_urls.txt'}")
         else:
-            path = save_report(content, citations, report_date)
+            path = save_report(content, citations, report_date, allowed_categories=themes)
             if not args.quiet:
                 prefix = _report_date_to_file_prefix(report_date)
                 print(f"\n报告已保存（未解析到 JSON，使用 Markdown 解析）: {path}")

@@ -82,7 +82,9 @@
       <a href="sync_reader.html">同期朗読</a>
       <a href="japanese_points.html" class="active">日本語学習</a>
     </nav>
+    <span id="auth-header"></span>
   </header>
+  <script src="/static/auth.js"></script>
   <main class="main">
     <div class="title-row">
       <h1 class="page-title">日本語学習</h1>
@@ -161,6 +163,14 @@
     </div>
   </div>
 
+  <div id="modalReviewLogin" class="modal">
+    <div class="modal-content">
+      <p>温故知新はログイン後に利用できます。</p>
+      <a href="/login?next=/japanese_points.html" class="auth-btn-login">Login with Google</a>
+      <button type="button" id="btnCloseReviewLogin" style="margin-top: 0.75rem;">閉じる</button>
+    </div>
+  </div>
+
   <div id="viewReview" class="view viewReview">
     <div class="card-view-wrap">
       <div class="flashcard" id="reviewCard">
@@ -192,6 +202,7 @@
   <script>
 (function () {
   const API = "/api/review";
+  const fetchOpts = { credentials: "same-origin" };
   let pointsData = null;
   let currentDate = "";
   let viewMode = "list";
@@ -199,6 +210,13 @@
   let cardSubMode = "browse";
   let browseIndex = 0;
   let newIndex = 0, newMode = "words", reviewItems = [], reviewIndex = 0, reviewMode = "words";
+
+  function showReviewLoginModal() {
+    document.getElementById("modalReviewLogin").classList.add("show");
+  }
+  function hideReviewLoginModal() {
+    document.getElementById("modalReviewLogin").classList.remove("show");
+  }
 
   function escapeHtml(s) {
     const div = document.createElement("div");
@@ -494,19 +512,30 @@
   async function loadReviewAndShow() {
     const url = reviewMode === "words" ? API + "/words" : API + "/grammar";
     try {
-      const r = await fetch(url);
+      const r = await fetch(url, fetchOpts);
+      if (r.status === 401) {
+        showReviewLoginModal();
+        reviewItems = [];
+        reviewIndex = 0;
+        renderReviewCard();
+        return;
+      }
       reviewItems = await r.json();
       if (!Array.isArray(reviewItems)) reviewItems = [];
     } catch (e) {
       reviewItems = [];
     }
     try {
-      const pr = await fetch(API + "/progress");
-      const prog = await pr.json();
-      if (prog.mode === reviewMode && typeof prog.index === "number" && prog.index >= 0 && prog.index < reviewItems.length)
-        reviewIndex = prog.index;
-      else
+      const pr = await fetch(API + "/progress", fetchOpts);
+      if (pr.status === 401) {
         reviewIndex = 0;
+      } else {
+        const prog = await pr.json();
+        if (prog.mode === reviewMode && typeof prog.index === "number" && prog.index >= 0 && prog.index < reviewItems.length)
+          reviewIndex = prog.index;
+        else
+          reviewIndex = 0;
+      }
     } catch (_) {
       reviewIndex = 0;
     }
@@ -523,13 +552,28 @@
   });
   document.getElementById("btnReview").addEventListener("click", function (e) {
     e.preventDefault();
-    document.getElementById("modalChoice").classList.add("show");
     window._modalTarget = "review";
+    fetch("/api/me", fetchOpts).then(function (r) { return r.json(); }).then(function (data) {
+      if (data && data.logged_in) {
+        document.getElementById("modalChoice").classList.add("show");
+      } else {
+        showReviewLoginModal();
+      }
+    }).catch(function () { showReviewLoginModal(); });
   });
   document.getElementById("btnReview2").addEventListener("click", function (e) {
     e.preventDefault();
-    document.getElementById("modalChoice").classList.add("show");
     window._modalTarget = "review";
+    fetch("/api/me", fetchOpts).then(function (r) { return r.json(); }).then(function (data) {
+      if (data && data.logged_in) {
+        document.getElementById("modalChoice").classList.add("show");
+      } else {
+        showReviewLoginModal();
+      }
+    }).catch(function () { showReviewLoginModal(); });
+  });
+  document.getElementById("btnCloseReviewLogin").addEventListener("click", function () {
+    hideReviewLoginModal();
   });
   document.querySelectorAll("#modalChoice button[data-mode]").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -552,14 +596,22 @@
     const url = newMode === "words" ? API + "/words" : API + "/grammar";
     let list = [];
     try {
-      const r = await fetch(url);
+      const r = await fetch(url, fetchOpts);
+      if (r.status === 401) {
+        showReviewLoginModal();
+        return;
+      }
       list = await r.json();
       if (!Array.isArray(list)) list = [];
     } catch (_) {}
     list.push(item);
-    await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(list) });
+    const postRes = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(list), credentials: "same-origin" });
+    if (postRes.status === 401) {
+      showReviewLoginModal();
+      return;
+    }
     newIndex++;
-    fetch(API + "/progress", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: newMode === "words" ? "words" : "grammar", index: newIndex }) }).catch(function () {});
+    fetch(API + "/progress", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: newMode === "words" ? "words" : "grammar", index: newIndex }), credentials: "same-origin" }).catch(function () {});
     renderNewLearnCardInViewCard();
   });
   document.getElementById("btnCardEndNew").addEventListener("click", function () {
@@ -582,14 +634,18 @@
     if (reviewIndex >= reviewItems.length) return;
     reviewItems.splice(reviewIndex, 1);
     const url = reviewMode === "words" ? API + "/words" : API + "/grammar";
-    await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(reviewItems) });
+    const res = await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(reviewItems), credentials: "same-origin" });
+    if (res.status === 401) {
+      showReviewLoginModal();
+      return;
+    }
     if (reviewIndex >= reviewItems.length) reviewIndex = Math.max(0, reviewItems.length - 1);
-    fetch(API + "/progress", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: reviewMode === "words" ? "words" : "grammar", index: reviewIndex }) }).catch(function () {});
+    fetch(API + "/progress", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: reviewMode === "words" ? "words" : "grammar", index: reviewIndex }), credentials: "same-origin" }).catch(function () {});
     renderReviewCard();
   });
   document.getElementById("btnReviewUnfamiliar").addEventListener("click", function () {
     reviewIndex++;
-    fetch(API + "/progress", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: reviewMode === "words" ? "words" : "grammar", index: reviewIndex }) }).catch(function () {});
+    fetch(API + "/progress", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: reviewMode === "words" ? "words" : "grammar", index: reviewIndex }), credentials: "same-origin" }).catch(function () {});
     renderReviewCard();
   });
   document.getElementById("btnEndReview").addEventListener("click", function () {

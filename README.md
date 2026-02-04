@@ -44,6 +44,20 @@ python app.py
 
 浏览器访问：http://127.0.0.1:5003/
 
+### Google 登录与温故知新
+
+「温故知新」卡片与「不熟悉」添加的复习列表**按用户存储**，需使用 Google 登录。
+
+1. 在 [Google Cloud Console](https://console.cloud.google.com/) 创建项目（或使用现有项目），在「API 和服务」→「凭据」中创建 **OAuth 2.0 客户端 ID**（应用类型：Web 应用）。
+2. 在「已授权的重定向 URI」中添加你实际使用的回调地址。应用会按**当前访问的主机**生成回调（如用 `http://127.0.0.1:5003` 打开则回调为 `http://127.0.0.1:5003/auth/callback`），这样登录后回调与 cookie 同主机，避免 **mismatching_state**。请将用到的地址都加入控制台：`http://127.0.0.1:5003/auth/callback`、`http://localhost:5003/auth/callback` 等。
+3. 将客户端 ID 与客户端密钥写入 `.env`：
+   - `GOOGLE_CLIENT_ID=你的客户端ID`
+   - `GOOGLE_CLIENT_SECRET=你的客户端密钥`
+   - `SECRET_KEY=随机长字符串`（用于 Flask 会话签名，生产环境务必修改）
+4. 重启 `python app.py` 后，页头会显示「Login with Google」；登录后温故知新数据保存在 `reports/review_words_{user_id}.json` 等文件中。
+
+未登录用户仍可浏览新闻摘要、播客、同步朗读与日语要点一覧；仅「温故知新」与「不熟悉」添加需登录。
+
 ## 使用（命令行生成数据）
 
 **手动运行一次（并保存到 `reports/`）：**
