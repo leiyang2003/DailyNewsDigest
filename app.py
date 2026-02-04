@@ -8,8 +8,10 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Optional
 from zoneinfo import ZoneInfo
 
 import requests
@@ -37,7 +39,6 @@ USER_SETTINGS = REPORTS / "user_settings.json"
 
 def _default_user_settings() -> dict:
     return {
-        "update_cycle": "day",
         "modules": {
             "digest": True,
             "podcast": True,
@@ -126,6 +127,8 @@ def japanese_points():
 @app.route("/settings")
 @app.route("/settings.html")
 def settings():
+    if not _current_user_id():
+        return redirect("/login?next=/settings")
     return send_from_directory(ROOT, "settings.html")
 
 
@@ -151,9 +154,27 @@ def serve_static(path: str):
     return send_from_directory(STATIC, path)
 
 
+def _is_user_overridable_report_path(path: str) -> bool:
+    """Path 为单层且属于可被用户目录覆盖的白名单。"""
+    if ".." in path or "users" in path or "/" in path:
+        return False
+    return (
+        (path.startswith("daily_digest_") and path.endswith(".json"))
+        or (path.startswith("podcast_script_") and path.endswith(".md"))
+        or (path.startswith("podcast_") and path.endswith(".mp3"))
+        or (path.startswith("podcast_") and path.endswith("_sync.json"))
+        or (path.startswith("japanese_points_") and path.endswith(".json"))
+    )
+
+
 @app.route("/reports/<path:path>")
 def serve_reports(path: str):
-    """提供 reports 目录下的 JSON 等静态文件。"""
+    """提供 reports 目录下的 JSON 等静态文件。已登录且用户目录有同名校验通过的文件时优先从用户目录提供。"""
+    user_id = _current_user_id()
+    if user_id and _is_user_overridable_report_path(path):
+        user_path = USERS_DIR / user_id / path
+        if user_path.exists():
+            return send_from_directory(USERS_DIR / user_id, path)
     return send_from_directory(REPORTS, path)
 
 
@@ -185,9 +206,6 @@ def api_settings():
     data = request.get_json(force=True, silent=True) or {}
     if not isinstance(data, dict):
         return jsonify({"error": "body must be JSON object"}), 400
-    cycle = data.get("update_cycle", "day")
-    if cycle not in ("minute", "ten_minutes", "day"):
-        cycle = "day"
     incoming_modules = data.get("modules")
     incoming_tts_chunking = data.get("tts_sync_chunking")
     # If modules omitted, keep existing (or default) modules
@@ -216,7 +234,7 @@ def api_settings():
             return jsonify({"error": "invalid_tts_sync_chunking", "message": "tts_sync_chunking must be 'atomic' or 'sentence'"}), 400
         tts_chunking = incoming_tts_chunking
 
-    out = {"update_cycle": cycle, "modules": modules, "tts_sync_chunking": tts_chunking}
+    out = {"modules": modules, "tts_sync_chunking": tts_chunking}
     _write_json(path, out)
     return jsonify(out)
 
@@ -349,10 +367,16 @@ def api_user_interests():
 
 @app.route("/api/japanese_points/latest")
 def api_japanese_points_latest():
-    """返回「昨天」的 japanese_points_YYYY-MM-DD.json 的完整内容（单词与文法）。"""
+    """返回「昨天」的 japanese_points_YYYY-MM-DD.json 的完整内容（单词与文法）。已登录时优先读用户目录。"""
     print("用户点击「最新を読み込む」")
     date_str = _yesterday_yyyymmdd()
-    path = REPORTS / f"japanese_points_{date_str}.json"
+    user_id = _current_user_id()
+    if user_id:
+        path = USERS_DIR / user_id / f"japanese_points_{date_str}.json"
+        if not path.exists():
+            path = REPORTS / f"japanese_points_{date_str}.json"
+    else:
+        path = REPORTS / f"japanese_points_{date_str}.json"
     if not path.exists():
         print(f"[japanese_points] 最新を読み込む: {date_str} のファイルがありません。")
         return jsonify({"error": f"no japanese_points report for {date_str} (yesterday)"}), 404
@@ -421,15 +445,11 @@ def api_review_progress():
     return jsonify(out)
 
 
-@app.route("/api/run_daily", methods=["POST"])
-def api_run_daily():
-    """登录用户触发每日流水线。按用户 settings 选择步骤，产物与日志写入该用户目录。后台启动子进程，立即返回。"""
-    user_id = _current_user_id()
-    if not user_id:
-        return jsonify({"error": "login_required"}), 401
+def _build_run_daily_cmd(user_id: str, output_dir: Optional[Path] = None) -> tuple[list[str], dict]:
+    """为指定用户构建 run_daily 的 cmd 和 env。output_dir 默认 USERS_DIR / user_id。"""
+    user_out_dir = output_dir or (USERS_DIR / user_id)
     report_date = _yesterday_yyyymmdd()
 
-    # Load per-user settings (modules + tts chunking)
     settings_path = REPORTS / f"user_settings_{user_id}.json"
     settings = _read_json(settings_path, _default_user_settings())
     modules = _default_user_settings()["modules"]
@@ -438,9 +458,7 @@ def api_run_daily():
     tts_chunking = _default_user_settings()["tts_sync_chunking"]
     if isinstance(settings, dict) and settings.get("tts_sync_chunking") in ("atomic", "sentence"):
         tts_chunking = settings.get("tts_sync_chunking")
-    ok, msg = _validate_modules(modules)
-    if not ok:
-        return jsonify({"error": "invalid_modules", "message": msg}), 400
+
     enable = []
     if modules.get("digest"):
         enable.append("digest")
@@ -460,18 +478,47 @@ def api_run_daily():
             themes = [t for t in themes if isinstance(t, str) and t.strip()][:4]
         except Exception:
             pass
+
     cmd = [sys.executable, "-m", "run_daily"]
     if themes:
         cmd.extend(["--themes", ",".join(themes)])
     cmd.extend(["--enable", ",".join(enable)])
     cmd.extend(["--tts-sync-chunking", tts_chunking])
-
-    user_out_dir = USERS_DIR / user_id
     log_file = user_out_dir / "logs" / f"{report_date}.log"
     cmd.extend(["--log-file", str(log_file)])
 
     env = dict(os.environ)
     env["OUTPUT_DIR"] = str(user_out_dir)
+    return cmd, env
+
+
+@app.route("/api/run_daily", methods=["POST"])
+def api_run_daily():
+    """登录用户触发每日流水线。按用户 settings 选择步骤，产物与日志写入该用户目录。后台启动子进程，立即返回。"""
+    user_id = _current_user_id()
+    if not user_id:
+        return jsonify({"error": "login_required"}), 401
+
+    settings_path = REPORTS / f"user_settings_{user_id}.json"
+    settings = _read_json(settings_path, _default_user_settings())
+    modules = _default_user_settings()["modules"]
+    if isinstance(settings, dict) and isinstance(settings.get("modules"), dict):
+        modules = {**modules, **settings["modules"]}
+    ok, msg = _validate_modules(modules)
+    if not ok:
+        return jsonify({"error": "invalid_modules", "message": msg}), 400
+
+    cmd, env = _build_run_daily_cmd(user_id)
+    report_date = _yesterday_yyyymmdd()
+    interests_path = REPORTS / f"user_interests_{user_id}.json"
+    themes = []
+    if interests_path.exists():
+        try:
+            data = _read_json(interests_path, {})
+            themes = data.get("themes") or []
+            themes = [t for t in themes if isinstance(t, str) and t.strip()][:4]
+        except Exception:
+            pass
     try:
         subprocess.Popen(
             cmd,
@@ -484,6 +531,46 @@ def api_run_daily():
     except Exception as e:
         return jsonify({"error": "run_failed", "message": str(e)}), 500
     return jsonify({"ok": True, "message": "流水线已启动", "themes": themes, "report_date": report_date})
+
+
+@app.route("/api/cron/run_daily", methods=["GET"])
+def api_cron_run_daily():
+    """供 Vercel Cron 在每天固定时间调用（如北京时间 1:00）。需设置 CRON_SECRET 与 CRON_USER_ID。"""
+    auth = request.headers.get("Authorization")
+    secret = os.environ.get("CRON_SECRET")
+    if not secret or auth != f"Bearer {secret}":
+        return jsonify({"error": "unauthorized"}), 401
+    user_id = os.environ.get("CRON_USER_ID", "").strip()
+    if not user_id:
+        return jsonify({"error": "CRON_USER_ID not set"}), 500
+
+    # Vercel serverless 仅 /tmp 可写，流水线输出写到 /tmp
+    output_dir = Path(tempfile.gettempdir()) / "daily-news-digest" / "users" / user_id
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "logs").mkdir(parents=True, exist_ok=True)
+
+    cmd, env = _build_run_daily_cmd(user_id, output_dir=output_dir)
+    timeout = int(os.environ.get("CRON_RUN_TIMEOUT", "300"))  # 默认 5 分钟，Vercel Pro 可设更大
+    try:
+        result = subprocess.run(
+            cmd,
+            cwd=str(ROOT),
+            env=env,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired:
+        return jsonify({"ok": False, "error": "timeout", "message": f"流水线超过 {timeout}s 未完成"}), 504
+    except Exception as e:
+        return jsonify({"ok": False, "error": "run_failed", "message": str(e)}), 500
+
+    if result.returncode != 0:
+        err = (result.stderr or result.stdout or "").strip()[-500:]
+        return jsonify({"ok": False, "error": "pipeline_failed", "returncode": result.returncode, "stderr": err}), 500
+    return jsonify({"ok": True, "message": "流水线已完成", "report_date": _yesterday_yyyymmdd()})
 
 
 @app.route("/api/run_daily/log")

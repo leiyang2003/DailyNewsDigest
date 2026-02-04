@@ -32,9 +32,15 @@
         } else {
           renderLoggedOut();
         }
+        var navSettings = document.getElementById("nav-settings");
+        if (navSettings) {
+          navSettings.style.display = (data && data.logged_in) ? "" : "none";
+        }
       });
     })
     .catch(function () {
       renderLoggedOut();
+      var navSettings = document.getElementById("nav-settings");
+      if (navSettings) navSettings.style.display = "none";
     });
 })();

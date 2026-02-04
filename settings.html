@@ -42,33 +42,13 @@
       <a href="podcast.html">ポッドキャスト台本</a>
       <a href="sync_reader.html">同期朗読</a>
       <a href="japanese_points.html">日本語学習</a>
-      <a href="settings.html" class="active">設定</a>
+      <a href="settings.html" class="active" id="nav-settings" style="display: none;">設定</a>
     </nav>
     <span id="auth-header"></span>
   </header>
   <script src="/static/auth.js"></script>
   <main class="main">
     <h1 class="page-title">ユーザー設定</h1>
-    <section class="settings-section">
-      <h2>更新周期</h2>
-      <p class="hint" style="margin-bottom: var(--gap-md);">データの更新間隔を選択してください。</p>
-      <div class="settings-options">
-        <label>
-          <input type="radio" name="update_cycle" value="minute">
-          毎分
-        </label>
-        <label>
-          <input type="radio" name="update_cycle" value="ten_minutes">
-          毎10分
-        </label>
-        <label>
-          <input type="radio" name="update_cycle" value="day" checked>
-          毎日
-        </label>
-      </div>
-      <button type="button" class="btn-save" id="btnSave">保存</button>
-      <div id="saveMessage" class="hint"></div>
-    </section>
     <section class="settings-section" id="modules-section" style="display: none;">
       <h2>機能のON/OFF</h2>
       <p class="hint" style="margin-bottom: var(--gap-md);">実行したい機能を選択してください。矛盾する組み合わせは保存できません。</p>
@@ -98,6 +78,8 @@
         <label><input type="checkbox" id="modJP"> Japanese points</label>
       </div>
       <div class="hint" id="modulesHint"></div>
+      <button type="button" class="btn-save" id="btnSave">保存</button>
+      <div id="saveMessage" class="hint"></div>
     </section>
     <section class="settings-section" id="interests-section" style="display: none;">
       <h2>ニュースのテーマ（感兴趣的方向）</h2>
@@ -188,9 +170,6 @@
         return;
       }
       const data = await r.json();
-      const cycle = (data.update_cycle === "minute" || data.update_cycle === "ten_minutes" || data.update_cycle === "day") ? data.update_cycle : "day";
-      const radio = document.querySelector('input[name="update_cycle"][value="' + cycle + '"]');
-      if (radio) radio.checked = true;
       const mods = data.modules || {};
       modDigest.checked = mods.digest !== false;
       modPodcast.checked = mods.podcast !== false;
@@ -204,7 +183,6 @@
   }
 
   document.getElementById("btnSave").addEventListener("click", async function () {
-    const cycle = document.querySelector('input[name="update_cycle"]:checked').value;
     const mods = getModules();
     const invalid = validateModules(mods);
     if (invalid) {
@@ -217,7 +195,7 @@
       const r = await fetch("/api/settings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ update_cycle: cycle, modules: mods, tts_sync_chunking: getTtsChunking() }),
+        body: JSON.stringify({ modules: mods, tts_sync_chunking: getTtsChunking() }),
         credentials: "same-origin"
       });
       if (!r.ok) {
