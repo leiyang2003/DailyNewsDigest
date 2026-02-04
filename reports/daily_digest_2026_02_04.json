@@ -1,0 +1,60 @@
+{
+  "report_date": "2026-02-04",
+  "items": [
+    {
+      "title": "Wall Street拡大、AI関連銘柄と小型株がけん引",
+      "url": "https://sg.finance.yahoo.com/news/stock-market-news-feb-3-142800688.html",
+      "summary": "2月3日のウォール街は、AI関連の半導体株や小型株への買いが広がり、ダウ平均は1.1%、ナスダックは0.6%、S&P500は0.5%上昇。インフレ懸念の緩和もリスク志向を支え、VIXは6.3%低下した。",
+      "category": "金融"
+    },
+    {
+      "title": "NVIDIAのOpenAI向け大型出資が不透明に",
+      "url": "https://sg.finance.yahoo.com/news/company-news-feb-3-2026-142900169.html",
+      "summary": "NVIDIA社がOpenAIへの約1,000億ドル規模の投資計画について、不確実性が高まり規模縮小の可能性があるとの報道があり、同社株は2.9%下落した。",
+      "category": "金融"
+    },
+    {
+      "title": "みずほフィナンシャル、第3四半期EPS予想上回る",
+      "url": "https://sg.finance.yahoo.com/news/company-news-feb-3-2026-142900169.html",
+      "summary": "みずほフィナンシャルグループの2026年第3四半期の1株利益が16セントで市場予想を上回り、同社株は2.4%上昇した。",
+      "category": "金融"
+    },
+    {
+      "title": "米議会、遠隔AIチップ利用制限法案を通過",
+      "url": "[関連情報源]",
+      "summary": "米下院が「Remote Access Security Act」を可決。物理的輸出に加え、クラウド経由などによるAIチップの遠隔アクセス利用も輸出規制対象とする法案で、中国企業の米国AI技術へのアクセスを制限する。",
+      "category": "AI"
+    },
+    {
+      "title": "中国、影響力を巡る競争意図を否定",
+      "url": "[関連情報源]",
+      "summary": "中国外務省のスポークスパーソンが「影響力を巡って他国と競争する意図はない」と述べ、独自の平和的外交姿勢を強調した。",
+      "category": "中美关系"
+    },
+    {
+      "title": "中国2025年の対米輸出、19.5％減少も総貿易は堅調",
+      "url": "[関連情報源]",
+      "summary": "2025年、中国から米国への輸出は前年から19.5％減少したが、輸出全体は5.5％増加し、アフリカやASEAN向けの輸出が急増。中国の貿易は堅調に推移している。",
+      "category": "中美关系"
+    },
+    {
+      "title": "日本、衆院選2月8日実施へ—高市首相が解散",
+      "url": "https://apnews.com/article/74e9b32eb12a6f9823242255b92150b2",
+      "summary": "高市早苗首相は下院を解散し、2月8日に衆院選を実施することを発表。経済再生や国防強化、移民政策などを訴える選挙戦を展開する。",
+      "category": "日本政治"
+    },
+    {
+      "title": "高市首相、人気を背景に衆院解散—中国との緊張も",
+      "url": "https://www.theguardian.com/world/2026/jan/19/japan-snap-election-sanae-takaichi-ldp",
+      "summary": "高市首相が支持率の高さに乗じて衆院を解散。中国への軍事関与示唆を含む発言で外交的緊張が高まる中、選挙を自身のリーダー適性を問う機会と位置づけ、経済対策も打ち出す。",
+      "category": "日本政治"
+    }
+  ],
+  "urls": [
+    "https://sg.finance.yahoo.com/news/stock-market-news-feb-3-142800688.html",
+    "https://sg.finance.yahoo.com/news/company-news-feb-3-2026-142900169.html",
+    "[関連情報源]",
+    "https://apnews.com/article/74e9b32eb12a6f9823242255b92150b2",
+    "https://www.theguardian.com/world/2026/jan/19/japan-snap-election-sanae-takaichi-ldp"
+  ]
+}

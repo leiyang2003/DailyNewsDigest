@@ -1,0 +1,137 @@
+[
+  {
+    "example1": "彼は若いながらも経験豊富です。",
+    "example1_translation": "他虽然年轻，但经验丰富。",
+    "example2": "，",
+    "example2_translation": "虽然忙，但也会抽时间休息。",
+    "grammar": "ながら（も）",
+    "level": "N2",
+    "meaning_zh": "虽然……但是……"
+  },
+  {
+    "example1": "この薬はよく効く反面、副作用もある。",
+    "example1_translation": "这种药效果好，但也有副作用。",
+    "example2": "この車は性能が良い反面、値段が高い。",
+    "example2_translation": "这辆车性能好但价格高。",
+    "grammar": "反面",
+    "level": "N2",
+    "meaning_zh": "一方面……另一方面……"
+  },
+  {
+    "example1": "私の知る限り、彼は来ない。",
+    "example1_translation": "据我所知，他不会来。",
+    "example2": "できる限りの努力をしよう。",
+    "example2_translation": "尽最大的努力吧。",
+    "grammar": "限り",
+    "level": "N2",
+    "meaning_zh": "只要……(就)"
+  },
+  {
+    "example1": "天気にかかわらず、行きます。",
+    "example1_translation": "无论天气如何，我都去。",
+    "example2": "年齢にかかわらず参加できます。",
+    "example2_translation": "无论年龄都可以参加。",
+    "grammar": "にかかわらず",
+    "level": "N2",
+    "meaning_zh": "无论……"
+  },
+  {
+    "example1": "旅行の際に、写真をたくさん撮りました。",
+    "example1_translation": "旅行的时候，拍了很多照片。",
+    "example2": "使用の際には注意が必要です。",
+    "example2_translation": "使用时需要注意。",
+    "grammar": "際に",
+    "level": "N1",
+    "meaning_zh": "在……时候"
+  },
+  {
+    "example1": "雨のせいで、試合が中止になった。",
+    "example1_translation": "因为下雨，比赛被取消了。",
+    "example2": "疲れたせいで寝坊しました。",
+    "example2_translation": "因为累，睡过头了。",
+    "grammar": "せいで",
+    "level": "N2",
+    "meaning_zh": "因为……（消极原因）"
+  },
+  {
+    "example1": "開会に際して、一言ご挨拶申し上げます。",
+    "example1_translation": "在开会之际，我要说几句话。",
+    "example2": "新しい計画を立てるに際して、詳細な調査が必要です。",
+    "example2_translation": "在制定新计划时，需要进行详细调查。",
+    "grammar": "に際して",
+    "level": "N1",
+    "meaning_zh": "在……之际"
+  },
+  {
+    "example1": "彼は若いとはいえ、優秀な社員です。",
+    "example1_translation": "虽然他年轻，但却是优秀的员工。",
+    "example2": "忙しいとはいえ、休息も必要です。",
+    "example2_translation": "虽然忙碌，休息也是必要的。",
+    "grammar": "とはいえ",
+    "level": "N1",
+    "meaning_zh": "虽然……但是……"
+  },
+  {
+    "example1": "嘘をついたばかりに、彼に嫌われた。",
+    "example1_translation": "正因为说了谎，他讨厌我了。",
+    "example2": "スケジュールを間違えたばかりに、大変な目にあった。",
+    "example2_translation": "正因为弄错了日程，经历了一番麻烦。",
+    "grammar": "ばかりに",
+    "level": "N1",
+    "meaning_zh": "正因为……（导致不好的结果）"
+  },
+  {
+    "example1": "見た目はともかく、味は美味しい。",
+    "example1_translation": "外观暂且不论，味道很好。",
+    "example2": "値段はともかく、デザインが気に入った。",
+    "example2_translation": "价格暂且不论，我喜欢这个设计。",
+    "grammar": "はともかく",
+    "level": "N2",
+    "meaning_zh": "暂且不论"
+  },
+  {
+    "example1": "どんな理由であれ、遅刻は許されない。",
+    "example1_translation": "无论什么理由，迟到都不被允许。",
+    "example2": "雨であれ、風であれ、行かなければならない。",
+    "example2_translation": "无论是雨还是风，都必须去。",
+    "grammar": "であれ",
+    "level": "N1",
+    "meaning_zh": "无论……也"
+  },
+  {
+    "example1": "彼が成功したのは努力の結果にほかならない。",
+    "example1_translation": "他的成功无外乎是努力的结果。",
+    "example2": "このプロジェクトが成功したのも、チーム全員の貢献のおかげにほかならない。",
+    "example2_translation": "这个项目的成功正是由于团队所有成员的贡献。",
+    "grammar": "にほかならない",
+    "level": "N1",
+    "meaning_zh": "正是、无外乎"
+  },
+  {
+    "example1": "この部屋はごみだらけです。",
+    "example1_translation": "这个房间满是垃圾。",
+    "example2": "彼の作文は間違いだらけです。",
+    "example2_translation": "他的作文满是错误。",
+    "grammar": "だらけ",
+    "level": "N2",
+    "meaning_zh": "满是、净是"
+  },
+  {
+    "example1": "彼の部屋の汚さといったらない。",
+    "example1_translation": "他的房间之脏极了。",
+    "example2": "そのパーティーの楽しさといったらなかった。",
+    "example2_translation": "那个派对极其有趣。",
+    "grammar": "といったらない",
+    "level": "N1",
+    "meaning_zh": "极其……"
+  },
+  {
+    "example1": "彼は休むことなく働き続けた。",
+    "example1_translation": "他不休息地继续工作。",
+    "example2": "彼女は一度も振り返ることなく去った。",
+    "example2_translation": "她头也不回地离开了。",
+    "grammar": "ことなく",
+    "level": "N1",
+    "meaning_zh": "不……地"
+  }
+]

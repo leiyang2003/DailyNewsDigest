@@ -1,0 +1,347 @@
+{
+  "report_date": "2026-02-04",
+  "words": [
+    {
+      "word": "盛り上がる",
+      "hiragana": "もりあがる",
+      "meaning_zh": "兴奋，高涨",
+      "example": "ウォール街はかなり盛り上がっていますね。",
+      "example_translation": "华尔街非常活跃。",
+      "level": "N2"
+    },
+    {
+      "word": "株価",
+      "hiragana": "かぶか",
+      "meaning_zh": "股票价格",
+      "example": "同社の株価は2.4%アップしました。",
+      "example_translation": "该公司的股价上涨了2.4%。",
+      "level": "N2"
+    },
+    {
+      "word": "規制",
+      "hiragana": "きせい",
+      "meaning_zh": "规制，管制",
+      "example": "クラウドを通してAIチップを遠隔で利用するのも規制対象にします。",
+      "example_translation": "通过云端远程使用AI芯片也在管制范围内。",
+      "level": "N2"
+    },
+    {
+      "word": "安全保障",
+      "hiragana": "あんぜんほしょう",
+      "meaning_zh": "安全保障",
+      "example": "アメリカは技術面での安全保障を強化して。",
+      "example_translation": "美国在技术上加强安全保障。",
+      "level": "N1"
+    },
+    {
+      "word": "外交",
+      "hiragana": "がいこう",
+      "meaning_zh": "外交",
+      "example": "中国は自分たちの平和的な外交スタンスを強調して。",
+      "example_translation": "中国强调他们的和平外交方针。",
+      "level": "N2"
+    },
+    {
+      "word": "注目を集める",
+      "hiragana": "ちゅうもくをあつめる",
+      "meaning_zh": "引起关注",
+      "example": "高市首相の発言が一部では軍事的な関与を示唆するものとして注目を集めているんですよ。",
+      "example_translation": "高市首相的发言在某些方面被认为暗示军事介入，并引起了关注。",
+      "level": "N2"
+    },
+    {
+      "word": "解散",
+      "hiragana": "かいさん",
+      "meaning_zh": "解散",
+      "example": "高市早苗首相がついに衆議院を解散することを決断し。",
+      "example_translation": "高市早苗首相终于决定解散众议院。",
+      "level": "N2"
+    },
+    {
+      "word": "主要",
+      "hiragana": "しゅよう",
+      "meaning_zh": "主要",
+      "example": "本日は、金融、AI、中米関係、そして日本の政治についての主要ニュースを取り上げます。",
+      "example_translation": "今天，我们将关注金融、AI、中美关系以及日本政治的主要新闻。",
+      "level": "N2"
+    },
+    {
+      "word": "不安定",
+      "hiragana": "ふあんてい",
+      "meaning_zh": "不稳定",
+      "example": "NVIDIAの大規模投資には不安定さが見えてます。",
+      "example_translation": "NVIDIA的大规模投资显示出不稳定性。",
+      "level": "N2"
+    },
+    {
+      "word": "記録する",
+      "hiragana": "きろくする",
+      "meaning_zh": "记录",
+      "example": "それぞれ1.1%、0.6%、0.5%の上昇を記録しています。",
+      "example_translation": "分别记录了1.1%、0.6%、0.5%的上涨。",
+      "level": "N2"
+    },
+    {
+      "word": "輸出",
+      "hiragana": "ゆしゅつ",
+      "meaning_zh": "出口",
+      "example": "中国からアメリカへの輸出は前年から19.5％も減少した。",
+      "example_translation": "从中国向美国的出口比前一年减少了19.5%。",
+      "level": "N2"
+    },
+    {
+      "word": "計画",
+      "hiragana": "けいかく",
+      "meaning_zh": "计划",
+      "example": "NVIDIAがOpenAIに計画している約1,000億ドルの大きな投資。",
+      "example_translation": "NVIDIA计划对OpenAI进行约1000亿美元的大投资。",
+      "level": "N2"
+    },
+    {
+      "word": "先行き",
+      "hiragana": "さきゆき",
+      "meaning_zh": "前景，未来",
+      "example": "この動きが他の国々にも似た規制の波を呼び起こすのか、今後が気になりますよね。",
+      "example_translation": "这种动向是否会在其他国家引发类似的规制浪潮，未来将引人关注。",
+      "level": "N1"
+    },
+    {
+      "word": "競争",
+      "hiragana": "きょうそう",
+      "meaning_zh": "竞争",
+      "example": "影響力を巡って他国と競争する意図はないと明言したんです。",
+      "example_translation": "明确表示没有意图与他国在影响力方面竞争。",
+      "level": "N2"
+    },
+    {
+      "word": "戦略",
+      "hiragana": "せんりゃく",
+      "meaning_zh": "战略",
+      "example": "中米関係の変化や中国の貿易戦略を考える上で。",
+      "example_translation": "在考虑中美关系的变化和中国贸易战略时。",
+      "level": "N1"
+    },
+    {
+      "word": "熱を帯びる",
+      "hiragana": "ねつをおびる",
+      "meaning_zh": "热火朝天",
+      "example": "小型株への投資が熱を帯びています。",
+      "example_translation": "对小型股的投资热火朝天。",
+      "level": "N1"
+    },
+    {
+      "word": "関与",
+      "hiragana": "かんよ",
+      "meaning_zh": "参与，干预",
+      "example": "高市首相の発言が一部では軍事的な関与を示唆するものとして注目を集めているんですよ。",
+      "example_translation": "高市首相的发言在某些方面被认为暗示军事介入，并引起了关注。",
+      "level": "N1"
+    },
+    {
+      "word": "抑制",
+      "hiragana": "よくせい",
+      "meaning_zh": "抑制",
+      "example": "インフレへの不安も落ち着いてきて。",
+      "example_translation": "对通胀的担忧也平息了。",
+      "level": "N2"
+    },
+    {
+      "word": "豪快",
+      "hiragana": "ごうかい",
+      "meaning_zh": "豪放，豪迈",
+      "example": "その投資家の豪快な判断が話題になっています。",
+      "example_translation": "那位投资者豪迈的判断成为话题。",
+      "level": "N1"
+    },
+    {
+      "word": "落ち着く",
+      "hiragana": "おちつく",
+      "meaning_zh": "平静下来，沉稳",
+      "example": "インフレへの不安も落ち着いてきて。",
+      "example_translation": "对通货膨胀的担忧也逐渐平息。",
+      "level": "N2"
+    }
+  ],
+  "grammar": [
+    {
+      "grammar": "〜次第",
+      "meaning_zh": "一旦……就……",
+      "example1": "全ての準備が整い次第、出発します。",
+      "example1_translation": "一旦所有准备工作结束，我们就出发。",
+      "example2": "会議が終わり次第、お知らせします。",
+      "example2_translation": "会议结束后我将通知您。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜ながらも",
+      "meaning_zh": "虽然……但是……",
+      "example1": "彼は忙しいながらも、勉強する時間を作っている。",
+      "example1_translation": "虽然他很忙，但还是挤出时间学习。",
+      "example2": "小さいながらもプライドを持っている。",
+      "example2_translation": "虽然个子小，但很有自尊。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜を抜きにして",
+      "meaning_zh": "若没有……就不能……",
+      "example1": "努力を抜きにして成功はありえません。",
+      "example1_translation": "没有努力就没有成功。",
+      "example2": "彼を抜きにしてはこのプロジェクトは進まない。",
+      "example2_translation": "没有他，这个项目无法进行。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜に限って",
+      "meaning_zh": "唯独……；偏偏……",
+      "example1": "雨の日に限って傘を持っていない。",
+      "example1_translation": "偏偏在下雨天没有带伞。",
+      "example2": "忙しい時に限って、友達が訪ねてくる。",
+      "example2_translation": "偏偏在忙的时候，朋友会来访。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜たとえ〜ても",
+      "meaning_zh": "即使……也……",
+      "example1": "たとえ雨が降っても、行きます。",
+      "example1_translation": "即使下雨我也去。",
+      "example2": "たとえ高くても買います。",
+      "example2_translation": "即使贵我也买。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜どころか",
+      "meaning_zh": "别说……；不仅不……反而……",
+      "example1": "忙しいどころか暇です。",
+      "example1_translation": "别说忙了，反而很闲。",
+      "example2": "治るどころか、悪化している。",
+      "example2_translation": "不仅没有好转，反而恶化。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜だけあって",
+      "meaning_zh": "不愧是……；正因为……",
+      "example1": "彼はスポーツ選手だけあって、体力がすごい。",
+      "example1_translation": "不愧是运动员，体力惊人。",
+      "example2": "彼女は人気があるだけあって、ステージも素晴らしい。",
+      "example2_translation": "不愧是有名的人，舞台表现也很棒。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜以上",
+      "meaning_zh": "既然……就……",
+      "example1": "約束した以上、守るべきだ。",
+      "example1_translation": "既然承诺了，就应该遵守。",
+      "example2": "責任者である以上、結果を出さなければならない。",
+      "example2_translation": "既然是负责人，就必须拿出成果。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜限り",
+      "meaning_zh": "只要……就……",
+      "example1": "この鍵がある限り、安心だ。",
+      "example1_translation": "只要有这把钥匙，我就安心。",
+      "example2": "生きている限り、新しいことを学び続けたい。",
+      "example2_translation": "只要活着，就想一直学习新东西。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜ものではない",
+      "meaning_zh": "不应该……",
+      "example1": "約束を破るものではない。",
+      "example1_translation": "不应该违反约定。",
+      "example2": "人の悪口を言うものではない。",
+      "example2_translation": "不应该说别人的坏话。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜一方だ",
+      "meaning_zh": "越来越……",
+      "example1": "物価は上がる一方だ。",
+      "example1_translation": "物价越来越高。",
+      "example2": "環境が悪化する一方です。",
+      "example2_translation": "环境在不断恶化。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜ことなく",
+      "meaning_zh": "没有……；不……",
+      "example1": "彼は一度も怒ることなく話を終えた。",
+      "example1_translation": "他一气呵成地讲完了，全程没有生气。",
+      "example2": "休むことなく働き続けた。",
+      "example2_translation": "持续地工作，没有休息。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜に違いない",
+      "meaning_zh": "一定是……",
+      "example1": "彼が知らないはずがない。彼がやったに違いない。",
+      "example1_translation": "他不可能不知道，一定是他做的。",
+      "example2": "この作品は彼の最高傑作に違いない。",
+      "example2_translation": "这一定是他的最高杰作。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜ざるを得ない",
+      "meaning_zh": "不得不……",
+      "example1": "行きたくないけど、行かざるを得ない。",
+      "example1_translation": "虽然不想去，但不得不去。",
+      "example2": "その条件では、諦めざるを得ない。",
+      "example2_translation": "在那种条件下，只能放弃。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜というものではない",
+      "meaning_zh": "并不是……；未必……",
+      "example1": "お金があれば幸せというものではない。",
+      "example1_translation": "并不是有钱就会幸福。",
+      "example2": "努力すれば成功するというものではない。",
+      "example2_translation": "未必努力就一定成功。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜にしたがって",
+      "meaning_zh": "随着……",
+      "example1": "年を取るにしたがって、時間が早く感じる。",
+      "example1_translation": "随着年龄增长，时间感觉更快。",
+      "example2": "技術が進歩するにしたがって、生活が便利になる。",
+      "example2_translation": "随着技术进步，生活变得更方便。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜に基づいて",
+      "meaning_zh": "基于……",
+      "example1": "経験に基づいて判断する。",
+      "example1_translation": "基于经验作出判断。",
+      "example2": "事実に基づいて議論する。",
+      "example2_translation": "基于事实来讨论。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜を問わず",
+      "meaning_zh": "不论……",
+      "example1": "年齢を問わず応募できます。",
+      "example1_translation": "不论年龄都可以申请。",
+      "example2": "季節を問わず、一年中楽しめます。",
+      "example2_translation": "不论季节，一年四季都可以享受。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜や否や",
+      "meaning_zh": "一……就……",
+      "example1": "チャイムが鳴るや否や、学生たちは教室に入った。",
+      "example1_translation": "铃声一响，学生们就进了教室。",
+      "example2": "家に帰るや否や、シャワーを浴びた。",
+      "example2_translation": "一回到家就洗了澡。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜かのように",
+      "meaning_zh": "就像……一样",
+      "example1": "彼は私をまるで知らないかのように振る舞った。",
+      "example1_translation": "他表现得好像不认识我一样。",
+      "example2": "猫は人間の言葉を理解しているかのように見える。",
+      "example2_translation": "猫看起来好像能理解人类的语言一样。",
+      "level": "N2"
+    }
+  ]
+}

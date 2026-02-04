@@ -1,0 +1,347 @@
+{
+  "report_date": "2026-02-03",
+  "words": [
+    {
+      "word": "合併",
+      "hiragana": "がっぺい",
+      "meaning_zh": "合并",
+      "example": "スペースXとxAIの合併ニュースがビッグです。",
+      "example_translation": "SpaceX 和 xAI 的合并新闻是个大新闻。",
+      "level": "N2"
+    },
+    {
+      "word": "活気づける",
+      "hiragana": "かっきづける",
+      "meaning_zh": "激励，振奋",
+      "example": "こうした動きが市場をさらに活気づけています。",
+      "example_translation": "这样的动向进一步活跃了市场。",
+      "level": "N1"
+    },
+    {
+      "word": "注目",
+      "hiragana": "ちゅうもく",
+      "meaning_zh": "注目，关注",
+      "example": "米中関係が注目ですね。",
+      "example_translation": "中美关系受到了关注。",
+      "level": "N2"
+    },
+    {
+      "word": "参画",
+      "hiragana": "さんかく",
+      "meaning_zh": "参与，参与计划",
+      "example": "AIのガバナンスについて多くの企業が参画しています。",
+      "example_translation": "许多公司参与了关于AI治理的计划。",
+      "level": "N1"
+    },
+    {
+      "word": "好業績",
+      "hiragana": "こうぎょうせき",
+      "meaning_zh": "优良的业绩",
+      "example": "Palantirの株価が好業績で急騰しました。",
+      "example_translation": "Palantir 的股价因优良业绩而猛涨。",
+      "level": "N1"
+    },
+    {
+      "word": "期待",
+      "hiragana": "きたい",
+      "meaning_zh": "期待",
+      "example": "市場の期待を高めました。",
+      "example_translation": "提高了市场的期待。",
+      "level": "N2"
+    },
+    {
+      "word": "推進",
+      "hiragana": "すいしん",
+      "meaning_zh": "推进",
+      "example": "自由貿易協定の推進を計画しています。",
+      "example_translation": "计划推进自由贸易协定。",
+      "level": "N1"
+    },
+    {
+      "word": "開催",
+      "hiragana": "かいさい",
+      "meaning_zh": "举办",
+      "example": "AI Summit 2026が開催されるのが話題です。",
+      "example_translation": "AI 峰会 2026 的举办成为话题。",
+      "level": "N2"
+    },
+    {
+      "word": "促す",
+      "hiragana": "うながす",
+      "meaning_zh": "促使，催促",
+      "example": "ロシアの提案に応じるよう促しています。",
+      "example_translation": "敦促响应俄罗斯的提议。",
+      "level": "N1"
+    },
+    {
+      "word": "影響",
+      "hiragana": "えいきょう",
+      "meaning_zh": "影响",
+      "example": "国際的にどんな影響を与えるか。",
+      "example_translation": "国际上会带来什么样的影响。",
+      "level": "N2"
+    },
+    {
+      "word": "評価額",
+      "hiragana": "ひょうかがく",
+      "meaning_zh": "估值",
+      "example": "評価額が1.25兆ドルに達する見通しです。",
+      "example_translation": "估值预计将达到1.25万亿美元。",
+      "level": "N1"
+    },
+    {
+      "word": "解決策",
+      "hiragana": "かいけつさく",
+      "meaning_zh": "解决方案",
+      "example": "深い議論から解決策が得られそうです。",
+      "example_translation": "通过深入讨论似乎可以找到解决方案。",
+      "level": "N2"
+    },
+    {
+      "word": "急騰",
+      "hiragana": "きゅうとう",
+      "meaning_zh": "暴涨",
+      "example": "株価が急騰しました。",
+      "example_translation": "股价暴涨。",
+      "level": "N1"
+    },
+    {
+      "word": "議論",
+      "hiragana": "ぎろん",
+      "meaning_zh": "议论，讨论",
+      "example": "議論される予定です。",
+      "example_translation": "预计将进行讨论。",
+      "level": "N2"
+    },
+    {
+      "word": "焦点",
+      "hiragana": "しょうてん",
+      "meaning_zh": "焦点",
+      "example": "選挙活動が焦点となっています。",
+      "example_translation": "选举活动成为焦点。",
+      "level": "N1"
+    },
+    {
+      "word": "取り組み",
+      "hiragana": "とりくみ",
+      "meaning_zh": "解决计划，努力",
+      "example": "国際的な取り組みがAI技術の未来に影響を与えます。",
+      "example_translation": "国际努力会影响 AI 技术的未来。",
+      "level": "N2"
+    },
+    {
+      "word": "戦略",
+      "hiragana": "せんりゃく",
+      "meaning_zh": "策略",
+      "example": "各国の外交戦略が絡み合っている状況です。",
+      "example_translation": "各国的外交策略相互交织的状况。",
+      "level": "N1"
+    },
+    {
+      "word": "自民党",
+      "hiragana": "じみんとう",
+      "meaning_zh": "自民党",
+      "example": "自民党の支援のもと選挙活動をしています。",
+      "example_translation": "在自民党的支持下进行选举活动。",
+      "level": "N2"
+    },
+    {
+      "word": "期待",
+      "hiragana": "きたい",
+      "meaning_zh": "期待，希望",
+      "example": "今後の展開が期待されます。",
+      "example_translation": "人们期待未来的发展。",
+      "level": "N1"
+    },
+    {
+      "word": "活況",
+      "hiragana": "かっきょう",
+      "meaning_zh": "活跃，繁荣",
+      "example": "市場が活況を呈している。",
+      "example_translation": "市场呈现繁荣景象。",
+      "level": "N1"
+    }
+  ],
+  "grammar": [
+    {
+      "grammar": "一方で",
+      "meaning_zh": "另一方面",
+      "example1": "一方、ヨーロッパではドイツが米国を重視しています。",
+      "example1_translation": "另一方面，欧洲的德国则重视美国。",
+      "example2": "彼は勉強が好きな一方で、スポーツも好きです。",
+      "example2_translation": "他一方面喜欢学习，另一方面也喜欢运动。",
+      "level": "N2"
+    },
+    {
+      "grammar": "において",
+      "meaning_zh": "在...方面",
+      "example1": "金融において新しいスタートアップが注目されています。",
+      "example1_translation": "在金融方面，新创业公司受到了关注。",
+      "example2": "彼においてそれは重要なことです。",
+      "example2_translation": "对于他来说，那是重要的事情。",
+      "level": "N2"
+    },
+    {
+      "grammar": "～たところ",
+      "meaning_zh": "刚一...就...",
+      "example1": "調べたところ、さらに新しい事実がわかりました。",
+      "example1_translation": "刚一调查，就知道了新的事实。",
+      "example2": "連絡してみたところ、彼は旅行中だった。",
+      "example2_translation": "刚一联系，他就在旅行中。",
+      "level": "N2"
+    },
+    {
+      "grammar": "～際に",
+      "meaning_zh": "在...的时候",
+      "example1": "サミットに参加する際に、新しい技術が紹介されました。",
+      "example1_translation": "在参加峰会时，介绍了新技术。",
+      "example2": "帰国の際にお土産を買いました。",
+      "example2_translation": "回国的时候买了土特产。",
+      "level": "N2"
+    },
+    {
+      "grammar": "だけに",
+      "meaning_zh": "正因为...",
+      "example1": "彼は経験者だけに、仕事が早い。",
+      "example1_translation": "正因为他是有经验者，所以工作快。",
+      "example2": "覚えることが多いだけに、確認が欠かせません。",
+      "example2_translation": "正因为要记的东西多，所以确认必不可少。",
+      "level": "N2"
+    },
+    {
+      "grammar": "～に関して",
+      "meaning_zh": "关于...",
+      "example1": "AI技術に関して、深い議論が期待されます。",
+      "example1_translation": "关于AI技术，人们期待深入的讨论。",
+      "example2": "その事件に関して、警察が調べている。",
+      "example2_translation": "关于那个事件，警方正在调查。",
+      "level": "N2"
+    },
+    {
+      "grammar": "～ばかりか",
+      "meaning_zh": "不仅...而且...",
+      "example1": "彼女は勉強ばかりかスポーツも得意です。",
+      "example1_translation": "她不仅学习好，而且擅长体育。",
+      "example2": "雨ばかりか風もひどくなってきた。",
+      "example2_translation": "不仅下雨，而且风也变得很大。",
+      "level": "N1"
+    },
+    {
+      "grammar": "～に伴って",
+      "meaning_zh": "伴随着...",
+      "example1": "経済成長に伴って、社会が変化しています。",
+      "example1_translation": "伴随着经济增长，社会正在变化。",
+      "example2": "年をとるのに伴って、体力が衰える。",
+      "example2_translation": "随着年龄增长，体力衰退。",
+      "level": "N1"
+    },
+    {
+      "grammar": "～をめぐって",
+      "meaning_zh": "围绕...",
+      "example1": "その政策をめぐって、議論がなされています。",
+      "example1_translation": "围绕那个政策，正在进行讨论。",
+      "example2": "土地の問題をめぐって、人々が争っている。",
+      "example2_translation": "围绕土地的问题，人们正在争论。",
+      "level": "N1"
+    },
+    {
+      "grammar": "～につれて",
+      "meaning_zh": "随着...",
+      "example1": "時間が経つにつれて、状況が良くなります。",
+      "example1_translation": "随着时间的推移，情况变好了。",
+      "example2": "経験を積むにつれて、成長していく。",
+      "example2_translation": "随着经验的积累，会成长。",
+      "level": "N2"
+    },
+    {
+      "grammar": "～に違いない",
+      "meaning_zh": "一定...",
+      "example1": "これは重要な発表に違いありません。",
+      "example1_translation": "这一定是重要的发表。",
+      "example2": "彼は忙しいに違いない。",
+      "example2_translation": "他一定很忙。",
+      "level": "N2"
+    },
+    {
+      "grammar": "～とは限らない",
+      "meaning_zh": "不一定...",
+      "example1": "経験が長いとは限らない。",
+      "example1_translation": "经验长不一定很好。",
+      "example2": "高いものが必ずしも良いとは限らない。",
+      "example2_translation": "贵的东西不一定好。",
+      "level": "N1"
+    },
+    {
+      "grammar": "あまりに",
+      "meaning_zh": "过于...",
+      "example1": "あまりに疲れて動けません。",
+      "example1_translation": "过于疲倦动不了。",
+      "example2": "あまりに驚きました。",
+      "example2_translation": "太惊讶了。",
+      "level": "N2"
+    },
+    {
+      "grammar": "ずにはいられない",
+      "meaning_zh": "忍不住要...",
+      "example1": "彼の話は面白くて笑わずにはいられない。",
+      "example1_translation": "他的话很有趣，忍不住要笑。",
+      "example2": "この映画を見ると泣かずにはいられません。",
+      "example2_translation": "看这部电影忍不住要哭。",
+      "level": "N2"
+    },
+    {
+      "grammar": "～にしたがって",
+      "meaning_zh": "遵照，按照",
+      "example1": "計画にしたがって、行動してください。",
+      "example1_translation": "请按照计划行事。",
+      "example2": "年齢を重ねるにしたがって、知識が増える。",
+      "example2_translation": "随着年龄的增加，知识会增长。",
+      "level": "N2"
+    },
+    {
+      "grammar": "ようがない",
+      "meaning_zh": "无法...",
+      "example1": "その状態では解決のしようがない。",
+      "example1_translation": "在那种情况下无法解决。",
+      "example2": "説明しようがない。",
+      "example2_translation": "无法说明。",
+      "level": "N2"
+    },
+    {
+      "grammar": "～がち",
+      "meaning_zh": "容易...，常常...",
+      "example1": "忘れがちですが注意してください。",
+      "example1_translation": "容易忘记，请注意。",
+      "example2": "病気がちの人です。",
+      "example2_translation": "常常生病的人。",
+      "level": "N2"
+    },
+    {
+      "grammar": "まい",
+      "meaning_zh": "不打算...",
+      "example1": "二度と同じミスをするまい。",
+      "example1_translation": "不打算再犯同样的错误。",
+      "example2": "彼女は戻るまいと思っていた。",
+      "example2_translation": "她不打算回来。",
+      "level": "N1"
+    },
+    {
+      "grammar": "～すら",
+      "meaning_zh": "甚至，连...",
+      "example1": "彼は感謝の言葉すら言わなかった。",
+      "example1_translation": "他甚至连感谢的话都没说。",
+      "example2": "水すら飲めない状態でした。",
+      "example2_translation": "甚至连水都喝不了的状态。",
+      "level": "N1"
+    },
+    {
+      "grammar": "～にすぎない",
+      "meaning_zh": "只不过...",
+      "example1": "それは噂にすぎません。",
+      "example1_translation": "那只不过是谣言。",
+      "example2": "彼は学生にすぎない。",
+      "example2_translation": "他只不过是个学生。",
+      "level": "N2"
+    }
+  ]
+}

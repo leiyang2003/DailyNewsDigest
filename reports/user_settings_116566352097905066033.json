@@ -1,0 +1,9 @@
+{
+  "modules": {
+    "digest": true,
+    "podcast": true,
+    "sync_reader": true,
+    "japanese_points": true
+  },
+  "tts_sync_chunking": "sentence"
+}

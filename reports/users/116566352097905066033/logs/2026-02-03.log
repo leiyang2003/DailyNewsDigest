@@ -1,0 +1,15 @@
+2026-02-04T16:21:46.369263+08:00 digest start
+2026-02-04T16:28:59.390905+08:00 digest start
+2026-02-04T16:29:16.027844+08:00 digest success
+2026-02-04T16:29:16.028316+08:00 podcast start
+2026-02-04T16:30:02.132342+08:00 podcast success
+2026-02-04T16:30:02.132730+08:00 tts start
+2026-02-04T16:36:50.359973+08:00 digest success
+2026-02-04T16:36:50.360667+08:00 podcast start
+2026-02-04T16:37:33.206160+08:00 podcast success
+2026-02-04T16:37:33.206522+08:00 tts start
+2026-02-04T16:38:53.716993+08:00 tts success
+2026-02-04T16:38:53.717352+08:00 japanese_points start
+2026-02-04T16:39:32.186277+08:00 japanese_points success
+2026-02-04T16:39:32.186522+08:00 pipeline completed
+2026-02-04T16:47:04.724514+08:00 tts fail Traceback (most recent call last):   File "/Users/leiyang/.pyenv/versions/3.10.0/lib/python3.10/runpy.py", line 196, in _run_module_as_main     return _run_code(code, main_globals, None,   File "/Users/leiyang/.pyenv/versions/3.10.0/lib/python3.10/runpy.py", line 86, in _run_code     exec(code, run_globals)   File "/Users/leiyang/Desktop/Coding/DailyNewsDigest/tts.py", line 388, in <module>     main()   File "/Users/leiyang/Desktop/Coding/DailyNewsDigest/tts.py", line 371, in main     dur = get_
