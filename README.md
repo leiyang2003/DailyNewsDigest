@@ -153,9 +153,24 @@ python japanese_points.py --date 2026-02-02
 
 ## 每天自动运行（可选）
 
-在 macOS/Linux 上用 cron 每天固定时间跑一次。**推荐**使用 `run_daily.py` 执行完整流水线（摘要 → 播客稿 → 音频与同步 JSON → 日语要点），完成情况会写入 `logs/YYYY-MM-DD.log`。
+程序本身不会「每隔多久跑一次」；要定时跑只能靠 **cron**（本机/服务器）或 **Vercel Cron**（部署在 Vercel 时）去调 `run_daily.py` 或 `/api/run_daily` / `/api/cron/run_daily`。
 
-### 北京时间凌晨 1:00 跑完整流水线
+**推荐**使用 `run_daily.py` 执行完整流水线（摘要 → 播客稿 → 音频与同步 JSON → 日语要点），完成情况会写入 `logs/YYYY-MM-DD.log`。
+
+### 部署在 Vercel：每天北京时间 1:00 自动跑
+
+项目已配置 **Vercel Cron**：`vercel.json` 中 `schedule` 为 `0 17 * * *`（UTC 17:00 = 北京时间次日 1:00）。到点后 Vercel 会向 `/api/cron/run_daily` 发 GET，并带上 `Authorization: Bearer <CRON_SECRET>`。
+
+在 Vercel 项目 **Environment Variables** 中必须设置：
+
+- **CRON_SECRET**：随机长字符串（至少 16 位），用于校验请求来自 Vercel Cron。
+- **CRON_USER_ID**：要执行流水线的用户 ID（与 Google 登录后写入的 `reports/user_settings_<id>.json` 中的 id 一致；可在登录后看该目录下文件名得到）。
+
+可选：**CRON_RUN_TIMEOUT**：流水线超时秒数，默认 300。若摘要+播客+TTS 时间较长，可设大一些（Vercel Pro 函数最长 300s，需在 Vercel 控制台调整函数最大时长）。
+
+注意：Vercel 为 serverless，仅 `/tmp` 可写。Cron 触发的流水线会把输出写到 `/tmp`，**当次请求结束后这些文件不会持久保留**。若需要持久化报告/音频，可考虑 Vercel Blob 等存储，或在本机/服务器用 cron 跑 `run_daily.py`。
+
+### 本机/服务器：北京时间凌晨 1:00 跑完整流水线
 
 请把 `/path/to/DailyNewsDigest` 换成你本机项目路径，`/usr/bin/python3` 可改为你的 Python 解释器路径：
 

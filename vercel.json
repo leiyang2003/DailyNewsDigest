@@ -1,3 +1,9 @@
 {
-  "name": "daily-news-digest"
+  "name": "daily-news-digest",
+  "crons": [
+    {
+      "path": "/api/cron/run_daily",
+      "schedule": "0 17 * * *"
+    }
+  ]
 }

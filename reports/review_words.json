@@ -61,5 +61,29 @@
     "hiragana": "せんりゃく",
     "meaning_zh": "战略",
     "word": "戦略"
+  },
+  {
+    "example": "特にテクノロジー銘柄が米主要株価指数を押し下げました。",
+    "example_translation": "特别是科技类股将美国主要股价指数压低了。",
+    "hiragana": "おしさげる",
+    "level": "N2",
+    "meaning_zh": "压低",
+    "word": "押し下げる"
+  },
+  {
+    "example": "ナスダックも1.4%落ち込んでいます。",
+    "example_translation": "纳斯达克也下跌了1.4%。",
+    "hiragana": "おちこむ",
+    "level": "N2",
+    "meaning_zh": "下跌，下降",
+    "word": "落ち込む"
+  },
+  {
+    "example": "衆議院選挙が2月8日に予定されていますよね。",
+    "example_translation": "众议院选举定于2月8日进行。",
+    "hiragana": "しゅうぎいんせんきょ",
+    "level": "N2",
+    "meaning_zh": "众议院选举",
+    "word": "衆議院選挙"
   }
 ]
