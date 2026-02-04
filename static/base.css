@@ -180,9 +180,16 @@
     gap: var(--gap-md);
   }
   .nav-top {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     gap: var(--gap-md);
+    padding-bottom: 4px;
+    width: 100%;
   }
   .nav-top a {
+    white-space: nowrap;
+    flex-shrink: 0;
     min-height: 44px;
     display: inline-flex;
     align-items: center;

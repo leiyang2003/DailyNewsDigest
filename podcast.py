@@ -4,6 +4,7 @@ Podcast 脚本生成：基于当日摘要 JSON，生成「原子新闻」播客�
 无新闻的分类不出现。成稿后交由大模型润色，语气更接近年轻女性主持人自然口播。
 """
 import json
+import time
 from pathlib import Path
 
 import requests
@@ -16,29 +17,43 @@ OPENAI_CHAT_URL = "https://api.openai.com/v1/chat/completions"
 MODEL = "gpt-4o"
 TIMEOUT = 120
 REFINE_TIMEOUT = 180
+MAX_RETRIES = 2
+RETRY_BACKOFF = 30
 
 
 def _chat(system: str, user: str, timeout: int = TIMEOUT) -> str:
-    """调用 OpenAI Chat Completions，返回助手回复正文。"""
+    """调用 OpenAI Chat Completions，返回助手回复正文。超时或请求失败时重试。"""
     if not OPENAI_API_KEY:
         raise ValueError("未设置 OPENAI_API_KEY，请在 .env 中配置")
-    resp = requests.post(
-        OPENAI_CHAT_URL,
-        json={
-            "model": MODEL,
-            "messages": [
-                {"role": "system", "content": system},
-                {"role": "user", "content": user},
-            ],
-        },
-        headers={"Authorization": f"Bearer {OPENAI_API_KEY}", "Content-Type": "application/json"},
-        timeout=timeout,
-        proxies=PROXIES,
-    )
-    resp.raise_for_status()
-    data = resp.json()
-    text = (data.get("choices") or [{}])[0].get("message", {}).get("content") or ""
-    return text.strip()
+    last_error = None
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            resp = requests.post(
+                OPENAI_CHAT_URL,
+                json={
+                    "model": MODEL,
+                    "messages": [
+                        {"role": "system", "content": system},
+                        {"role": "user", "content": user},
+                    ],
+                },
+                headers={"Authorization": f"Bearer {OPENAI_API_KEY}", "Content-Type": "application/json"},
+                timeout=timeout,
+                proxies=PROXIES,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            text = (data.get("choices") or [{}])[0].get("message", {}).get("content") or ""
+            return text.strip()
+        except (requests.exceptions.Timeout, requests.exceptions.RequestException) as e:
+            last_error = e
+            if attempt < MAX_RETRIES:
+                time.sleep(RETRY_BACKOFF)
+            else:
+                raise
+    if last_error is not None:
+        raise last_error
+    return ""
 
 
 def load_digest_json(report_date: str) -> dict:

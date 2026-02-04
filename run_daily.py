@@ -12,6 +12,17 @@ from zoneinfo import ZoneInfo
 
 from config import DIGEST_TIMEZONE
 
+DEBUG_LOG_PATH = Path(__file__).resolve().parent.parent / ".cursor" / "debug.log"
+
+def _debug_log(location: str, message: str, data: dict, hypothesis_id: str) -> None:
+    import json
+    line = json.dumps({"sessionId": "debug-session", "runId": "run1", "hypothesisId": hypothesis_id, "location": location, "message": message, "data": data, "timestamp": datetime.now().timestamp() * 1000}) + "\n"
+    try:
+        with open(DEBUG_LOG_PATH, "a", encoding="utf-8") as f:
+            f.write(line)
+    except Exception:
+        pass
+
 ROOT = Path(__file__).resolve().parent
 LOGS_DIR = ROOT / "logs"
 MAX_STDERR_LINES = 20
@@ -44,6 +55,9 @@ def run_step(
     cwd: Path,
 ) -> None:
     """执行一步，写 start，成功写 success，失败写 fail 并退出进程。"""
+    # #region agent log
+    _debug_log("run_daily.py:run_step", "step_start", {"step": step_name, "args": args}, "A")
+    # #endregion
     log_line(log_file, step_name, "start")
     result = subprocess.run(
         [sys.executable, "-m", step_name] + args,
@@ -53,9 +67,15 @@ def run_step(
         encoding="utf-8",
         errors="replace",
     )
+    # #region agent log
+    _debug_log("run_daily.py:run_step", "step_exit", {"step": step_name, "returncode": result.returncode}, "A" if result.returncode != 0 else "B")
+    # #endregion
     if result.returncode != 0:
         err = (result.stderr or result.stdout or "").strip()
         last_lines = "\n".join(err.splitlines()[-MAX_STDERR_LINES:]) if err else "non-zero exit"
+        # #region agent log
+        _debug_log("run_daily.py:run_step", "pipeline_exit_fail", {"step": step_name, "err_preview": last_lines[:200]}, "A")
+        # #endregion
         log_line(log_file, step_name, "fail", last_lines[:500])
         sys.exit(1)
     log_line(log_file, step_name, "success")
@@ -63,6 +83,9 @@ def run_step(
 
 def main() -> None:
     report_date = report_date_yesterday()
+    # #region agent log
+    _debug_log("run_daily.py:main", "main_start", {"report_date": report_date}, "E")
+    # #endregion
     LOGS_DIR.mkdir(parents=True, exist_ok=True)
     log_file = LOGS_DIR / f"{report_date}.log"
 

@@ -1,6 +1,6 @@
 """
 统一网页应用：Flask 静态 + /reports/ + 温故知新 API。
-运行：python app.py，在浏览器打开 http://127.0.0.1:5001/ 或 http://localhost:5001/ 进入首页。
+运行：python app.py，在浏览器打开 http://127.0.0.1:5003/ 或 http://localhost:5003/ 进入首页。
 """
 import json
 from datetime import datetime, timedelta
@@ -176,4 +176,4 @@ def api_review_progress():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001, debug=True)
+    app.run(host="0.0.0.0", port=5003, debug=True)
