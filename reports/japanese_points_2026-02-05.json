@@ -1,0 +1,347 @@
+{
+  "report_date": "2026-02-05",
+  "words": [
+    {
+      "word": "衆議院",
+      "hiragana": "しゅうぎいん",
+      "meaning_zh": "众议院",
+      "example": "2026年の2月8日に衆議院の早期解散総選挙が予定されています。",
+      "example_translation": "2026年2月8日预定了众议院的提前解散大选。",
+      "level": "N1"
+    },
+    {
+      "word": "供与",
+      "hiragana": "きょうよ",
+      "meaning_zh": "供给，提供",
+      "example": "習氏は、台湾への武器供与について米国に慎重に対応してほしいって強調しました。",
+      "example_translation": "习主席强调希望美国对向台湾提供武器的问题慎重行事。",
+      "level": "N1"
+    },
+    {
+      "word": "解散",
+      "hiragana": "かいさん",
+      "meaning_zh": "解散",
+      "example": "衆議院の早期解散総選挙が予定されています。",
+      "example_translation": "计划进行众议院的提前解散大选。",
+      "level": "N1"
+    },
+    {
+      "word": "見通し",
+      "hiragana": "みとおし",
+      "meaning_zh": "展望，预期",
+      "example": "クアルコムは、厳しい見通しを発表しました。",
+      "example_translation": "高通公司宣布了严峻的前景。",
+      "level": "N2"
+    },
+    {
+      "word": "調達",
+      "hiragana": "ちょうたつ",
+      "meaning_zh": "筹措，采购",
+      "example": "中国に頼らない鉱物供給網を作ろうという動きが盛り上がっています。",
+      "example_translation": "创建不依赖中国的矿物供应链的活动正在兴起。",
+      "level": "N1"
+    },
+    {
+      "word": "早期",
+      "hiragana": "そうき",
+      "meaning_zh": "早期，提早",
+      "example": "衆議院の早期解散総選挙が予定されています。",
+      "example_translation": "计划进行众议院的提前解散大选。",
+      "level": "N2"
+    },
+    {
+      "word": "慎重",
+      "hiragana": "しんちょう",
+      "meaning_zh": "慎重",
+      "example": "台湾への武器供与について米国に慎重に対応してほしい。",
+      "example_translation": "希望美国在武器供给台湾方面慎重行事。",
+      "level": "N2"
+    },
+    {
+      "word": "基盤",
+      "hiragana": "きばん",
+      "meaning_zh": "基础，基盘",
+      "example": "維新との連立で政権基盤を強化したいと考えています。",
+      "example_translation": "计划通过与维新党的联合来强化政权基础。",
+      "level": "N1"
+    },
+    {
+      "word": "関係",
+      "hiragana": "かんけい",
+      "meaning_zh": "关系",
+      "example": "台湾問題は中米の関係で一番大事です。",
+      "example_translation": "台湾问题在中美关系中是最重要的。",
+      "level": "N2"
+    },
+    {
+      "word": "新START条約",
+      "hiragana": "しんスタートじょうやく",
+      "meaning_zh": "新START条约",
+      "example": "新START条約が失効しました。",
+      "example_translation": "新START条约已失效。",
+      "level": "N1"
+    },
+    {
+      "word": "動揺",
+      "hiragana": "どうよう",
+      "meaning_zh": "动摇，震动",
+      "example": "米国株市場がかなり揺れてますよね。",
+      "example_translation": "美国股市相当动荡。",
+      "level": "N1"
+    },
+    {
+      "word": "合意",
+      "hiragana": "ごうい",
+      "meaning_zh": "同意，协议",
+      "example": "エネルギーや宇宙分野でさらに協力していくことで合意しました。",
+      "example_translation": "达成了在能源和宇宙领域进一步合作的协议。",
+      "level": "N1"
+    },
+    {
+      "word": "注目",
+      "hiragana": "ちゅうもく",
+      "meaning_zh": "注目，关注",
+      "example": "米国株市場の変動に注目が集まっています。",
+      "example_translation": "美国股市的波动受到关注。",
+      "level": "N2"
+    },
+    {
+      "word": "発表",
+      "hiragana": "はっぴょう",
+      "meaning_zh": "发表，发布",
+      "example": "クアルコムは、厳しい見通しを発表しました。",
+      "example_translation": "高通公司宣布了严峻的前景。",
+      "level": "N2"
+    },
+    {
+      "word": "早苗",
+      "hiragana": "さなえ",
+      "meaning_zh": "高市早苗（人名）",
+      "example": "高市早苗首相は2025年に首相になった後、維新との連立で政権基盤を強化したいと考えています。",
+      "example_translation": "高市早苗首相在2025年成为首相后，计划通过与维新党的联合来强化政权基础。",
+      "level": "N1"
+    },
+    {
+      "word": "大統領",
+      "hiragana": "だいとうりょう",
+      "meaning_zh": "总统",
+      "example": "トランプ米大統領が中国の習近平主席と電話で会談しました。",
+      "example_translation": "特朗普总统与中国主席习近平进行了电话会谈。",
+      "level": "N2"
+    },
+    {
+      "word": "早期解散総選挙",
+      "hiragana": "そうきかいさんそうせんきょ",
+      "meaning_zh": "提前解散大选",
+      "example": "2026年の2月8日に衆議院の早期解散総選挙が予定されています。",
+      "example_translation": "2026年2月8日预定了众议院的提前解散大选。",
+      "level": "N1"
+    },
+    {
+      "word": "動き",
+      "hiragana": "うごき",
+      "meaning_zh": "动向，趋势",
+      "example": "これからの動きに注目していきましょう。",
+      "example_translation": "让我们关注接下来的动向。",
+      "level": "N2"
+    },
+    {
+      "word": "政策",
+      "hiragana": "せいさく",
+      "meaning_zh": "政策",
+      "example": "「一つの中国」政策へのロシアの支持も再確認されていました。",
+      "example_translation": "对“一中政策”的支持得到了俄罗斯的再次确认。",
+      "level": "N1"
+    },
+    {
+      "word": "一つの中国",
+      "hiragana": "ひとつのちゅうごく",
+      "meaning_zh": "一个中国",
+      "example": "「一つの中国」政策へのロシアの支持も再確認されていました。",
+      "example_translation": "对“一中政策”的支持得到了俄罗斯的再次确认。",
+      "level": "N1"
+    }
+  ],
+  "grammar": [
+    {
+      "grammar": "さて",
+      "meaning_zh": "那么（用于转换话题）",
+      "example1": "さて、2月4日にトランプ米大統領が中国の習近平主席と電話で会談しました。",
+      "example1_translation": "那么，2月4日特朗普总统与中国主席习近平进行了电话会谈。",
+      "example2": "さて、次は天気予報です。",
+      "example2_translation": "那么，接下来是天气预报。",
+      "level": "N2"
+    },
+    {
+      "grammar": "それによって",
+      "meaning_zh": "通过此，由此",
+      "example1": "それによって、全体的に弱気ムードです。",
+      "example1_translation": "由此，整体呈现消极情绪。",
+      "example2": "それによって、多くの問題が解決されました。",
+      "example2_translation": "通过此，许多问题得到了解决。",
+      "level": "N1"
+    },
+    {
+      "grammar": "ようこそ",
+      "meaning_zh": "欢迎",
+      "example1": "皆さん、「原子ニュース」へようこそ！",
+      "example1_translation": "大家好，欢迎来到“原子新闻”！",
+      "example2": "我が家へようこそ。",
+      "example2_translation": "欢迎来到我家。",
+      "level": "N2"
+    },
+    {
+      "grammar": "一方",
+      "meaning_zh": "另一方面，而",
+      "example1": "一方、アマゾンの決算もどうなるのか目が離せません。",
+      "example1_translation": "另一方面，亚马逊的财报也值得关注。",
+      "example2": "彼は文系、一方、彼女は理系です。",
+      "example2_translation": "他是文科生，而她是理科生。",
+      "level": "N2"
+    },
+    {
+      "grammar": "において",
+      "meaning_zh": "在...方面、在...中",
+      "example1": "中美関係において、台湾問題が一番大事です。",
+      "example1_translation": "在中美关系中，台湾问题是最重要的。",
+      "example2": "この分野において、彼が一番経験がある。",
+      "example2_translation": "在这个领域，他是经验最丰富的。",
+      "level": "N1"
+    },
+    {
+      "grammar": "に加えて",
+      "meaning_zh": "加上，除此之外",
+      "example1": "このニュースに加えて、経済のニュースが続きます。",
+      "example1_translation": "除了这个新闻之外，还有经济新闻。",
+      "example2": "給料に加えて、ボーナスももらいました。",
+      "example2_translation": "工资之外，还领取了奖金。",
+      "level": "N2"
+    },
+    {
+      "grammar": "だって",
+      "meaning_zh": "即使是，就连",
+      "example1": "政治家だって人間です。",
+      "example1_translation": "即使是政治家也是人。",
+      "example2": "子供だって理解できる。",
+      "example2_translation": "就连小孩子都能理解。",
+      "level": "N1"
+    },
+    {
+      "grammar": "それから",
+      "meaning_zh": "然后，另外",
+      "example1": "それから、新START条約が失効しました。",
+      "example1_translation": "然后，新START条约失效了。",
+      "example2": "宿題をして、それからテレビを見ます。",
+      "example2_translation": "做完作业，然后看电视。",
+      "level": "N2"
+    },
+    {
+      "grammar": "ますます",
+      "meaning_zh": "越来越，更加",
+      "example1": "それによって、ますます重要になってきます。",
+      "example1_translation": "由此，变得愈发重要。",
+      "example2": "彼の人気はますます高まっています。",
+      "example2_translation": "他的声望越来越高。",
+      "level": "N1"
+    },
+    {
+      "grammar": "どれだけ～か",
+      "meaning_zh": "多么...啊",
+      "example1": "どれだけ大切か、まだ分かっていません。",
+      "example1_translation": "还不知道有多么重要。",
+      "example2": "その風景がどれだけ美しいか、言葉では言い表せません。",
+      "example2_translation": "那个风景有多么美丽，无法用言语表达。",
+      "level": "N1"
+    },
+    {
+      "grammar": "限りで",
+      "meaning_zh": "到...为止",
+      "example1": "これで今日のニュースは限りです。",
+      "example1_translation": "今天的新闻就到此为止。",
+      "example2": "本日を限りで退職します。",
+      "example2_translation": "从今天开始就辞职了。",
+      "level": "N1"
+    },
+    {
+      "grammar": "ちゃんと",
+      "meaning_zh": "好好地，确实",
+      "example1": "これからどうなっていくのか、ちゃんと見ておかないとですね。",
+      "example1_translation": "接下来会发生什么，要好好观察啊。",
+      "example2": "ちゃんと勉強して試験に備えなさい。",
+      "example2_translation": "要好好学习，为考试做好准备。",
+      "level": "N2"
+    },
+    {
+      "grammar": "に関して",
+      "meaning_zh": "关于...",
+      "example1": "金融に関しての報告が毎日届きます。",
+      "example1_translation": "关于金融的报告每天都会送到。",
+      "example2": "環境問題に関して意見を交換する。",
+      "example2_translation": "交换关于环境问题的意见。",
+      "level": "N2"
+    },
+    {
+      "grammar": "たびに",
+      "meaning_zh": "每次...",
+      "example1": "この曲を聞くたびに、彼のことを思い出します。",
+      "example1_translation": "每次听这首曲子都会想起他。",
+      "example2": "雨が降るたびに、傘を持って出ます。",
+      "example2_translation": "每次下雨都会带伞出去。",
+      "level": "N2"
+    },
+    {
+      "grammar": "わけではない",
+      "meaning_zh": "并非，未必",
+      "example1": "必ずしも成功するわけではありません。",
+      "example1_translation": "并不是一定会成功。",
+      "example2": "それが嫌いなわけではないですが、あまり食べません。",
+      "example2_translation": "并不是讨厌那个，只是不怎么吃。",
+      "level": "N2"
+    },
+    {
+      "grammar": "のちほど",
+      "meaning_zh": "稍后",
+      "example1": "それについては、のちほど詳しく話します。",
+      "example1_translation": "关于那个，稍后再详细谈。",
+      "example2": "のちほどお伺いします。",
+      "example2_translation": "稍后拜访。",
+      "level": "N1"
+    },
+    {
+      "grammar": "に対して",
+      "meaning_zh": "对于...",
+      "example1": "彼の言葉に対して失望した。",
+      "example1_translation": "对他的话感到失望。",
+      "example2": "先生に対して尊敬しています。",
+      "example2_translation": "对老师表示尊敬。",
+      "level": "N2"
+    },
+    {
+      "grammar": "ないことはない",
+      "meaning_zh": "并非不...",
+      "example1": "彼の言うことは分からないことはないです。",
+      "example1_translation": "并非不理解他所说的。",
+      "example2": "食べられないことはないが、苦手です。",
+      "example2_translation": "并非不能吃，只是不太喜欢。",
+      "level": "N1"
+    },
+    {
+      "grammar": "とともに",
+      "meaning_zh": "和...一起",
+      "example1": "友人とともに旅行しました。",
+      "example1_translation": "和朋友一起旅行了。",
+      "example2": "成長とともに、考え方も変わった。",
+      "example2_translation": "随着成长，想法也改变了。",
+      "level": "N2"
+    },
+    {
+      "grammar": "たとたん",
+      "meaning_zh": "刚一...就...",
+      "example1": "家を出たとたん雨が降り始めた。",
+      "example1_translation": "刚出门就开始下雨。",
+      "example2": "パソコンの電源を切ったとたん、停電した。",
+      "example2_translation": "刚关掉电脑电源，就停电了。",
+      "level": "N2"
+    }
+  ]
+}
