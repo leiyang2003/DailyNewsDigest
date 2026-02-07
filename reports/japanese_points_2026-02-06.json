@@ -1,0 +1,347 @@
+{
+  "report_date": "2026-02-06",
+  "words": [
+    {
+      "word": "衆議院",
+      "hiragana": "しゅうぎいん",
+      "meaning_zh": "众议院",
+      "example": "衆議院選挙が近づいている。",
+      "example_translation": "众议院选举临近。",
+      "level": "N1"
+    },
+    {
+      "word": "比例代表",
+      "hiragana": "ひれいだいひょう",
+      "meaning_zh": "比例代表制",
+      "example": "日本の選挙制度には比例代表制が含まれる。",
+      "example_translation": "日本的选举制度包含比例代表制。",
+      "level": "N1"
+    },
+    {
+      "word": "世論調査",
+      "hiragana": "よろんちょうさ",
+      "meaning_zh": "舆论调查",
+      "example": "最新の世論調査では自民党がリードしている。",
+      "example_translation": "最新的舆论调查显示自民党领先。",
+      "level": "N2"
+    },
+    {
+      "word": "慎重",
+      "hiragana": "しんちょう",
+      "meaning_zh": "慎重",
+      "example": "投資家たちは依然として慎重だ。",
+      "example_translation": "投资者们依然慎重。",
+      "level": "N2"
+    },
+    {
+      "word": "圧力",
+      "hiragana": "あつりょく",
+      "meaning_zh": "压力",
+      "example": "政治的な不安が円の価値に圧力をかけている。",
+      "example_translation": "政治上的不安给日元的价值施加了压力。",
+      "level": "N1"
+    },
+    {
+      "word": "不確実性",
+      "hiragana": "ふかくじつせい",
+      "meaning_zh": "不确定性",
+      "example": "経済と政治に対する不確実性が影響を与える。",
+      "example_translation": "经济和政治的不确定性产生影响。",
+      "level": "N1"
+    },
+    {
+      "word": "提携",
+      "hiragana": "ていけい",
+      "meaning_zh": "合作",
+      "example": "OpenAIはSnowflakeと提携を発表した。",
+      "example_translation": "OpenAI宣布与Snowflake合作。",
+      "level": "N2"
+    },
+    {
+      "word": "商用化",
+      "hiragana": "しょうようか",
+      "meaning_zh": "商用化",
+      "example": "ChatGPTに広告を導入するテストが始まった。",
+      "example_translation": "开始测试在ChatGPT中引入广告，这表明商用化进程。",
+      "level": "N1"
+    },
+    {
+      "word": "倫理",
+      "hiragana": "りんり",
+      "meaning_zh": "伦理",
+      "example": "AIの倫理問題が引き続き議論を呼んでいる。",
+      "example_translation": "AI的伦理问题继续引发讨论。",
+      "level": "N2"
+    },
+    {
+      "word": "尊重",
+      "hiragana": "そんちょう",
+      "meaning_zh": "尊重",
+      "example": "お互いを尊重しながら問題を管理する。",
+      "example_translation": "在互相尊重的基础上管理问题。",
+      "level": "N2"
+    },
+    {
+      "word": "発展",
+      "hiragana": "はってん",
+      "meaning_zh": "发展",
+      "example": "両国関係の発展を進めたいと考えている。",
+      "example_translation": "希望推进两国关系的发展。",
+      "level": "N2"
+    },
+    {
+      "word": "協力",
+      "hiragana": "きょうりょく",
+      "meaning_zh": "合作",
+      "example": "引き続き協力する姿勢を見せている。",
+      "example_translation": "继续展现合作的态度。",
+      "level": "N2"
+    },
+    {
+      "word": "黒字",
+      "hiragana": "くろじ",
+      "meaning_zh": "盈余",
+      "example": "貿易黒字が増加する。",
+      "example_translation": "贸易顺差增加。",
+      "level": "N2"
+    },
+    {
+      "word": "秩序",
+      "hiragana": "ちつじょ",
+      "meaning_zh": "秩序",
+      "example": "秩序ある人民元高を訴えている。",
+      "example_translation": "呼吁有秩序的人民币升值。",
+      "level": "N1"
+    },
+    {
+      "word": "慎重",
+      "hiragana": "しんちょう",
+      "meaning_zh": "谨慎",
+      "example": "慎重な対応が求められる。",
+      "example_translation": "需要谨慎应对。",
+      "level": "N2"
+    },
+    {
+      "word": "現象",
+      "hiragana": "げんしょう",
+      "meaning_zh": "现象",
+      "example": "“サナ・マニア”なんて呼ばれる現象が起きている。",
+      "example_translation": "发生了被称为“莎娜狂热”的现象。",
+      "level": "N2"
+    },
+    {
+      "word": "支配",
+      "hiragana": "しはい",
+      "meaning_zh": "支配",
+      "example": "委員会を支配する安定多数を目指している。",
+      "example_translation": "旨在支配委员会的稳定多数。",
+      "level": "N1"
+    },
+    {
+      "word": "示唆",
+      "hiragana": "しさ",
+      "meaning_zh": "暗示",
+      "example": "ホワイトハウス訪問を示唆する発言があった。",
+      "example_translation": "有暗示访问白宫的发言。",
+      "level": "N2"
+    },
+    {
+      "word": "異例",
+      "hiragana": "いれい",
+      "meaning_zh": "例外",
+      "example": "トランプ氏が支持を表明するのは異例だ。",
+      "example_translation": "特朗普表示支持是例外。",
+      "level": "N1"
+    },
+    {
+      "word": "支持",
+      "hiragana": "しじ",
+      "meaning_zh": "支持",
+      "example": "高市首相への支持が高まっている。",
+      "example_translation": "对高市首相的支持正在增加。",
+      "level": "N2"
+    }
+  ],
+  "grammar": [
+    {
+      "grammar": "〜たところで",
+      "meaning_zh": "即使...也...（表示假设条件的逆接）",
+      "example1": "そんなことをしたところで、彼には何の影響もないだろう。",
+      "example1_translation": "即使那样做，对他也不会有任何影响吧。",
+      "example2": "いくら頼んだところで、彼が承諾するとは思えない。",
+      "example2_translation": "无论如何请求，我都不认为他会答应。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜にも関わらず",
+      "meaning_zh": "尽管...（表示逆接）",
+      "example1": "雨が降っているにも関わらず、試合は続行された。",
+      "example1_translation": "尽管下雨，比赛还是继续了。",
+      "example2": "その問題があるにも関わらず、計画は進行する。",
+      "example2_translation": "尽管有那个问题，计划还是进行。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜に先立ち",
+      "meaning_zh": "在...之前",
+      "example1": "卒業式に先立ち、式の予行練習が行われた。",
+      "example1_translation": "在毕业典礼之前，进行了预演。",
+      "example2": "オリンピック開催に先立ち、多くの準備が進められた。",
+      "example2_translation": "在奥运会开始之前，进行了许多准备。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜をもとに",
+      "meaning_zh": "以...为基础",
+      "example1": "調査をもとに、レポートを書いた。",
+      "example1_translation": "以调查为基础，写了报告。",
+      "example2": "この映画は実話をもとに作られた。",
+      "example2_translation": "这部电影是以真实故事为基础制作的。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜ぬきで",
+      "meaning_zh": "不包含...；省去...",
+      "example1": "冗談ぬきで話しましょう。",
+      "example1_translation": "不开玩笑地谈谈吧。",
+      "example2": "彼は批判ぬきで彼女を愛している。",
+      "example2_translation": "他爱她，不加批评。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜にかかわる",
+      "meaning_zh": "与...相关；关系到...",
+      "example1": "これは命にかかわる重大な問題だ。",
+      "example1_translation": "这是关系到生命的重大问题。",
+      "example2": "彼の将来にかかわることだから、慎重に考えよう。",
+      "example2_translation": "因为这是关系到他的未来的事，所以要慎重考虑。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜をめぐって",
+      "meaning_zh": "围绕...；关于...",
+      "example1": "環境問題をめぐって、国際会議が開かれる。",
+      "example1_translation": "围绕环境问题，召开了国际会议。",
+      "example2": "彼の発言をめぐって、議論が巻き起こった。",
+      "example2_translation": "围绕他的发言，引发了讨论。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜てはならない",
+      "meaning_zh": "不可以...；禁止...",
+      "example1": "秘密を漏らしてはならない。",
+      "example1_translation": "不可以泄露秘密。",
+      "example2": "ここで止まってはならない。",
+      "example2_translation": "不可以在这里停下。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜ならでは",
+      "meaning_zh": "只有...才有的",
+      "example1": "これは日本ならではの文化です。",
+      "example1_translation": "这是只有日本才有的文化。",
+      "example2": "この技術はこの会社ならではのものだ。",
+      "example2_translation": "这种技术是这家公司独有的。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜ずにはいられない",
+      "meaning_zh": "忍不住...；不由得...",
+      "example1": "その映画を見て、涙を流さずにはいられない。",
+      "example1_translation": "看了那部电影，忍不住流泪。",
+      "example2": "彼の話を聞いて、笑わずにはいられなかった。",
+      "example2_translation": "听了他的话，不由得笑了。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜に越したことはない",
+      "meaning_zh": "...的话更好",
+      "example1": "安いに越したことはない。",
+      "example1_translation": "便宜了更好。",
+      "example2": "準備は早く始めるに越したことはない。",
+      "example2_translation": "准备早些开始更好。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜につけ",
+      "meaning_zh": "每当...就...；无论...都...",
+      "example1": "写真を見るにつけ、故郷を思い出す。",
+      "example1_translation": "每当看到照片，就会想起故乡。",
+      "example2": "良きにつけ悪しきにつけ、彼はよく頑張った。",
+      "example2_translation": "无论好坏，他都努力了。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜かたわら",
+      "meaning_zh": "...的同时；一边...一边...",
+      "example1": "彼は会社勤めのかたわら、小説を書いている。",
+      "example1_translation": "他一边上班，一边写小说。",
+      "example2": "私は学生のかたわら、アルバイトをしている。",
+      "example2_translation": "我一边是学生，一边打工。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜にしては",
+      "meaning_zh": "就...来说算是；以...来讲",
+      "example1": "彼は初心者にしては、パフォーマンスが良い。",
+      "example1_translation": "就他是新手来说，表现已经很好。",
+      "example2": "この部屋は東京にしては、家賃が安い。",
+      "example2_translation": "这间房间以东京来说，房租算便宜的。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜の至り",
+      "meaning_zh": "极其...；无上的...",
+      "example1": "若気の至りで、あんなことをしてしまった。",
+      "example1_translation": "因为年少轻狂，才做了那种事。",
+      "example2": "あなたにお会いできて、光栄の至りです。",
+      "example2_translation": "能见到您，无上光荣。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜を控えて",
+      "meaning_zh": "即将...之前",
+      "example1": "試験を控えて、皆勉強に励んでいる。",
+      "example1_translation": "考试临近，大家都在努力学习。",
+      "example2": "出発を控えて、準備をしている。",
+      "example2_translation": "出发在即，正在准备。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜を限りに",
+      "meaning_zh": "以...为限；到...为止",
+      "example1": "今日を限りにタバコをやめることにした。",
+      "example1_translation": "决定到今天为止戒烟。",
+      "example2": "今年を限りにこの職を辞する。",
+      "example2_translation": "到今年为止辞去这个职位。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜をものともせず",
+      "meaning_zh": "不顾...；不畏...",
+      "example1": "彼は困難をものともせずに前進した。",
+      "example1_translation": "他不畏困难继续前进。",
+      "example2": "彼は病気をものともせずに仕事に打ち込んでいる。",
+      "example2_translation": "他不顾病痛投入工作。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜たる",
+      "meaning_zh": "作为...的；...之类的",
+      "example1": "国民たる者、法律を守らなければならない。",
+      "example1_translation": "作为国民，应遵守法律。",
+      "example2": "学生たるもの、勉強をするのは当然だ。",
+      "example2_translation": "作为学生，学习是当然的。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜とあって",
+      "meaning_zh": "由于...的情况／缘故",
+      "example1": "久しぶりの快晴とあって、行楽地はどこも賑わっている。",
+      "example1_translation": "因为久违的晴天，所有的游乐地都很热闹。",
+      "example2": "連休とあって、旅行に出かける人が多い。",
+      "example2_translation": "由于连休，出门旅行的人很多。",
+      "level": "N2"
+    }
+  ]
+}
