@@ -186,6 +186,71 @@ def _yesterday_yyyymmdd():
     return yesterday.strftime("%Y-%m-%d")
 
 
+def _find_latest_japanese_points_date(directory: Path) -> Optional[str]:
+    """在目录中查找 japanese_points_YYYY-MM-DD.json，返回最新的日期字符串，无则返回 None。"""
+    if not directory.is_dir():
+        return None
+    latest = None
+    pattern = re.compile(r"^japanese_points_(\d{4}-\d{2}-\d{2})\.json$")
+    for p in directory.iterdir():
+        if p.is_file():
+            m = pattern.match(p.name)
+            if m:
+                d = m.group(1)
+                if latest is None or d > latest:
+                    latest = d
+    return latest
+
+
+def _find_latest_digest_date(directory: Path) -> Optional[str]:
+    """在目录中查找 daily_digest_YYYY_MM_DD.json，返回最新的日期字符串 YYYY-MM-DD，无则返回 None。"""
+    if not directory.is_dir():
+        return None
+    latest = None
+    pattern = re.compile(r"^daily_digest_(\d{4})_(\d{2})_(\d{2})\.json$")
+    for p in directory.iterdir():
+        if p.is_file():
+            m = pattern.match(p.name)
+            if m:
+                d = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+                if latest is None or d > latest:
+                    latest = d
+    return latest
+
+
+def _find_latest_podcast_script_date(directory: Path) -> Optional[str]:
+    """在目录中查找 podcast_script_YYYY-MM-DD.md，返回最新的日期字符串，无则返回 None。"""
+    if not directory.is_dir():
+        return None
+    latest = None
+    pattern = re.compile(r"^podcast_script_(\d{4}-\d{2}-\d{2})\.md$")
+    for p in directory.iterdir():
+        if p.is_file():
+            m = pattern.match(p.name)
+            if m:
+                d = m.group(1)
+                if latest is None or d > latest:
+                    latest = d
+    return latest
+
+
+def _find_latest_sync_date(directory: Path) -> Optional[str]:
+    """在目录中查找 podcast_YYYY-MM-DD.mp3 且同日的 _sync.json 存在，返回最新日期，无则返回 None。"""
+    if not directory.is_dir():
+        return None
+    latest = None
+    pattern = re.compile(r"^podcast_(\d{4}-\d{2}-\d{2})\.mp3$")
+    for p in directory.iterdir():
+        if p.is_file():
+            m = pattern.match(p.name)
+            if m:
+                date_str = m.group(1)
+                sync_path = directory / f"podcast_{date_str}_sync.json"
+                if sync_path.exists() and (latest is None or date_str > latest):
+                    latest = date_str
+    return latest
+
+
 @app.route("/api/settings", methods=["GET", "POST"])
 def api_settings():
     """GET：返回当前登录用户设定。POST：保存设定（含模块开关）。需登录。"""
@@ -367,10 +432,20 @@ def api_user_interests():
 
 @app.route("/api/japanese_points/latest")
 def api_japanese_points_latest():
-    """返回「昨天」的 japanese_points_YYYY-MM-DD.json 的完整内容（单词与文法）。已登录时优先读用户目录。"""
-    print("用户点击「最新を読み込む」")
-    date_str = _yesterday_yyyymmdd()
+    """返回最新存在的 japanese_points_YYYY-MM-DD.json 的完整内容（单词与文法）。已登录时优先读用户目录。"""
     user_id = _current_user_id()
+    candidates = []
+    if user_id:
+        user_dir = USERS_DIR / user_id
+        d = _find_latest_japanese_points_date(user_dir)
+        if d:
+            candidates.append(d)
+    d_rep = _find_latest_japanese_points_date(REPORTS)
+    if d_rep:
+        candidates.append(d_rep)
+    if not candidates:
+        return jsonify({"error": "no japanese_points report found (run japanese_points.py to generate)"}), 404
+    date_str = max(candidates)
     if user_id:
         path = USERS_DIR / user_id / f"japanese_points_{date_str}.json"
         if not path.exists():
@@ -378,11 +453,9 @@ def api_japanese_points_latest():
     else:
         path = REPORTS / f"japanese_points_{date_str}.json"
     if not path.exists():
-        print(f"[japanese_points] 最新を読み込む: {date_str} のファイルがありません。")
-        return jsonify({"error": f"no japanese_points report for {date_str} (yesterday)"}), 404
+        return jsonify({"error": f"no japanese_points report for {date_str}"}), 404
     data = _read_json(path, None)
     if data is None:
-        print(f"[japanese_points] 最新を読み込む: {path.name} の読み込みに失敗しました。")
         return jsonify({"error": "failed to read report"}), 500
     if "report_date" not in data:
         data["report_date"] = date_str
@@ -390,6 +463,86 @@ def api_japanese_points_latest():
     grammar = data.get("grammar") or []
     print(f"[japanese_points] 最新を読み込む: japanese_points_{date_str}.json を表示中。語彙 {len(words)} 件、文法 {len(grammar)} 件。")
     return jsonify(data)
+
+
+@app.route("/api/digest/latest")
+def api_digest_latest():
+    """返回最新存在的 daily_digest JSON 的完整内容。已登录时优先读用户目录。"""
+    user_id = _current_user_id()
+    candidates = []
+    if user_id:
+        d = _find_latest_digest_date(USERS_DIR / user_id)
+        if d:
+            candidates.append(d)
+    d_rep = _find_latest_digest_date(REPORTS)
+    if d_rep:
+        candidates.append(d_rep)
+    if not candidates:
+        return jsonify({"error": "no digest report found (run digest.py to generate)"}), 404
+    date_str = max(candidates)
+    file_date = date_str.replace("-", "_")
+    if user_id:
+        path = USERS_DIR / user_id / f"daily_digest_{file_date}.json"
+        if not path.exists():
+            path = REPORTS / f"daily_digest_{file_date}.json"
+    else:
+        path = REPORTS / f"daily_digest_{file_date}.json"
+    if not path.exists():
+        return jsonify({"error": f"no digest report for {date_str}"}), 404
+    data = _read_json(path, None)
+    if data is None:
+        return jsonify({"error": "failed to read report"}), 500
+    if "report_date" not in data:
+        data["report_date"] = date_str
+    return jsonify(data)
+
+
+@app.route("/api/podcast/latest")
+def api_podcast_latest():
+    """返回最新存在的 podcast_script 的日期与内容。已登录时优先读用户目录。"""
+    user_id = _current_user_id()
+    candidates = []
+    if user_id:
+        d = _find_latest_podcast_script_date(USERS_DIR / user_id)
+        if d:
+            candidates.append(d)
+    d_rep = _find_latest_podcast_script_date(REPORTS)
+    if d_rep:
+        candidates.append(d_rep)
+    if not candidates:
+        return jsonify({"error": "no podcast script found (run podcast.py to generate)"}), 404
+    date_str = max(candidates)
+    if user_id:
+        path = USERS_DIR / user_id / f"podcast_script_{date_str}.md"
+        if not path.exists():
+            path = REPORTS / f"podcast_script_{date_str}.md"
+    else:
+        path = REPORTS / f"podcast_script_{date_str}.md"
+    if not path.exists():
+        return jsonify({"error": f"no podcast script for {date_str}"}), 404
+    try:
+        content = path.read_text(encoding="utf-8")
+    except Exception:
+        return jsonify({"error": "failed to read script"}), 500
+    return jsonify({"date": date_str, "content": content})
+
+
+@app.route("/api/sync_reader/latest")
+def api_sync_reader_latest():
+    """返回最新存在的同步朗读日期（需同时有 .mp3 与 _sync.json）。已登录时优先读用户目录。"""
+    user_id = _current_user_id()
+    candidates = []
+    if user_id:
+        d = _find_latest_sync_date(USERS_DIR / user_id)
+        if d:
+            candidates.append(d)
+    d_rep = _find_latest_sync_date(REPORTS)
+    if d_rep:
+        candidates.append(d_rep)
+    if not candidates:
+        return jsonify({"error": "no sync report found (run tts.py --sync to generate)"}), 404
+    date_str = max(candidates)
+    return jsonify({"date": date_str})
 
 
 @app.route("/api/review/words", methods=["GET", "POST"])

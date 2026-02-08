@@ -199,10 +199,43 @@
     URL.revokeObjectURL(a.href);
   });
 
-  var d = new Date();
-  d.setDate(d.getDate() - 1);
-  dateInput.value = d.toISOString().slice(0, 10);
-  loadScript();
+  function loadFromLatest() {
+    setMessage("読み込み中…");
+    card.style.display = "none";
+    fetch("/api/podcast/latest")
+      .then(function (r) {
+        if (r.ok) return r.json();
+        return r.text().then(function (text) {
+          var body = {};
+          try { body = JSON.parse(text); } catch (e) { }
+          throw new Error(body.error || "データがありません。日付を選んで読み込むか、python podcast.py を実行してください。");
+        });
+      })
+      .then(function (data) {
+        const date = data.date || "";
+        const text = data.content || "";
+        dateInput.value = date;
+        rawText = text;
+        currentDate = date;
+        metaDate.textContent = date;
+        const sections = parseScript(text);
+        if (sections.length === 0) {
+          content.innerHTML = "<div class=\"segment-content\" style=\"white-space: pre-wrap;\">" + escapeHtml(text) + "</div>";
+        } else {
+          renderScript(sections);
+        }
+        card.style.display = "block";
+        btnTts.href = "sync_reader.html?date=" + date;
+        setMessage(date + " を読み込みました。");
+      })
+      .catch(function (e) {
+        var d = new Date();
+        d.setDate(d.getDate() - 1);
+        dateInput.value = d.toISOString().slice(0, 10);
+        setMessage(e.message || "データがありません。日付を選んで読み込むか、python podcast.py を実行してください。", true);
+      });
+  }
+  loadFromLatest();
 })();
   </script>
 </body>

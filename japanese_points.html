@@ -93,7 +93,9 @@
         <button type="button" id="btnCard">新要点学习</button>
       </div>
     </div>
-    <div class="toolbar-single">
+    <div class="toolbar">
+      <label>日付 <input type="date" id="dateInput"></label>
+      <button type="button" id="btnLoad">読み込む</button>
       <button type="button" id="btnLoadLatest">最新を読み込む</button>
     </div>
     <div id="mainMessage" class="hint"></div>
@@ -355,6 +357,43 @@
     document.getElementById("viewCard").classList.add("active");
     renderBrowseCard();
   });
+  function applyLoadedData(data, date) {
+    pointsData = data;
+    currentDate = date;
+    const words = pointsData.words || [];
+    const grammar = pointsData.grammar || [];
+    browseIndex = 0;
+    renderList();
+    if (viewMode === "card") renderBrowseCard();
+    const messageEl = document.getElementById("mainMessage");
+    messageEl.textContent = date ? ("japanese_points_" + date + ".json を表示中。語彙 " + words.length + " 件、文法 " + grammar.length + " 件。") : ("語彙 " + words.length + " 件、文法 " + grammar.length + " 件を表示中。");
+    messageEl.className = "hint";
+    const dateInputEl = document.getElementById("dateInput");
+    if (dateInputEl) dateInputEl.value = date || "";
+  }
+
+  async function loadByDate() {
+    const date = document.getElementById("dateInput").value;
+    if (!date) {
+      document.getElementById("mainMessage").textContent = "日付を選択してください。";
+      document.getElementById("mainMessage").className = "error";
+      return;
+    }
+    const messageEl = document.getElementById("mainMessage");
+    messageEl.textContent = "読み込み中…";
+    messageEl.className = "hint";
+    try {
+      const r = await fetch("/reports/japanese_points_" + date + ".json");
+      if (!r.ok) throw new Error("この日付のデータがありません。python japanese_points.py --date " + date + " を先に実行してください。");
+      const data = await r.json();
+      if (data.report_date == null) data.report_date = date;
+      applyLoadedData(data, data.report_date || date);
+    } catch (e) {
+      messageEl.textContent = e.message || "読み込みに失敗しました。";
+      messageEl.className = "error";
+    }
+  }
+
   async function loadLatest() {
     const messageEl = document.getElementById("mainMessage");
     messageEl.textContent = "読み込み中…";
@@ -367,19 +406,15 @@
       }
       const data = await r.json();
       const date = data.report_date || "";
-      pointsData = data;
-      currentDate = date;
-      const words = pointsData.words || [];
-      const grammar = pointsData.grammar || [];
-      browseIndex = 0;
-      renderList();
-      if (viewMode === "card") renderBrowseCard();
-      messageEl.textContent = date ? ("最新: japanese_points_" + date + ".json を表示中。語彙 " + words.length + " 件、文法 " + grammar.length + " 件。") : ("語彙 " + words.length + " 件、文法 " + grammar.length + " 件を表示中。");
+      applyLoadedData(data, date);
     } catch (e) {
       document.getElementById("mainMessage").textContent = e.message || "読み込みに失敗しました。";
       document.getElementById("mainMessage").className = "error";
     }
   }
+
+  document.getElementById("btnLoad").addEventListener("click", loadByDate);
+  document.getElementById("btnLoadLatest").addEventListener("click", function () { loadLatest(); });
 
   document.getElementById("browseCard").addEventListener("click", function () {
     const front = document.getElementById("browseFront");
@@ -652,13 +687,10 @@
     showMain();
   });
 
-  document.getElementById("btnLoadLatest").addEventListener("click", function () {
-    loadLatest();
-  });
   pointsData = null;
   currentDate = "";
   renderList();
-  document.getElementById("mainMessage").textContent = "「最新を読み込む」をクリックしてデータを表示。";
+  loadLatest();
 })();
   </script>
 </body>

@@ -161,13 +161,47 @@
     });
   });
 
-  var d = new Date();
-  d.setDate(d.getDate() - 1);
-  var y = d.getFullYear();
-  var m = String(d.getMonth() + 1).padStart(2, "0");
-  var day = String(d.getDate()).padStart(2, "0");
-  dateInput.value = y + "-" + m + "-" + day;
-  loadData();
+  function loadFromLatest() {
+    setMessage("読み込み中…");
+    content.innerHTML = "";
+    filtersEl.style.display = "none";
+    fetch("/api/digest/latest")
+      .then(function (r) {
+        if (r.ok) return r.json();
+        return r.text().then(function (text) {
+          var body = {};
+          try { body = JSON.parse(text); } catch (e) { }
+          throw new Error(body.error || "データがありません。日付を選んで読み込むか、python digest.py を実行してください。");
+        });
+      })
+      .then(function (data) {
+        var date = data.report_date || "";
+        dateInput.value = date;
+        allItems = data.items || [];
+        reportDate = data.report_date || date;
+        currentFilter = "all";
+        filtersEl.style.display = "flex";
+        filtersEl.querySelectorAll("button").forEach(function (btn) {
+          btn.classList.toggle("active", btn.dataset.cat === "all");
+        });
+        setMessage(reportDate + " を読み込みました。" + allItems.length + " 件。");
+        applyFilter();
+      })
+      .catch(function (e) {
+        var d = new Date();
+        d.setDate(d.getDate() - 1);
+        var y = d.getFullYear();
+        var m = String(d.getMonth() + 1).padStart(2, "0");
+        var day = String(d.getDate()).padStart(2, "0");
+        dateInput.value = y + "-" + m + "-" + day;
+        var msg = e.message || "データがありません。日付を選んで読み込むか、python digest.py を実行してください。";
+        if (msg.indexOf("Unexpected token") !== -1 || msg.indexOf("is not valid JSON") !== -1) {
+          msg = "データがありません。日付を選んで読み込むか、python digest.py を実行してください。";
+        }
+        setMessage(msg, true);
+      });
+  }
+  loadFromLatest();
 })();
   </script>
 </body>
