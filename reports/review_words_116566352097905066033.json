@@ -118,5 +118,117 @@
     "level": "N2",
     "meaning_zh": "错失机会",
     "word": "機会を見逃す"
+  },
+  {
+    "example": "AI業界、今本当に激動期にありますよね。",
+    "example_translation": "AI行业如今处于真正的激变期。",
+    "hiragana": "げきどうき",
+    "level": "N1",
+    "meaning_zh": "激变时期",
+    "word": "激動期"
+  },
+  {
+    "example": "大手4社の時価総額が1週間で9500億ドルも減少してしまったんです。",
+    "example_translation": "四大公司的市值在一周内减少了9500亿美元。",
+    "hiragana": "じかそうがく",
+    "level": "N1",
+    "meaning_zh": "市值",
+    "word": "時価総額"
+  },
+  {
+    "example": "ElevenLabsがSequoiaなどから5億ドルの資金を調達して...",
+    "example_translation": "ElevenLabs从Sequoia等筹集了5亿美元的资金...",
+    "hiragana": "しきんちょうたつ",
+    "level": "N2",
+    "meaning_zh": "融资",
+    "word": "資金調達"
+  },
+  {
+    "example": "アメリカの雇用統計の発表が先延ばしになってることが関係してそうです。",
+    "example_translation": "似乎是由于美国就业统计的发布被推迟。",
+    "hiragana": "こようとうけい",
+    "level": "N1",
+    "meaning_zh": "就业统计",
+    "word": "雇用統計"
+  },
+  {
+    "example": "彼らは音声合成やリアルタイム翻訳、企業向けソリューションを展開しているので...",
+    "example_translation": "他们正在进行语音合成、实时翻译和企业解决方案的推广...",
+    "hiragana": "おんせいごうせい",
+    "level": "N2",
+    "meaning_zh": "语音合成",
+    "word": "音声合成"
+  },
+  {
+    "example": "新たな軍備管理条約を提案したんですけど...",
+    "example_translation": "提出了一项新的军备管理条约...",
+    "hiragana": "ぐんびかんり",
+    "level": "N1",
+    "meaning_zh": "军备管理",
+    "word": "軍備管理"
+  },
+  {
+    "example": "台湾への武器売却で中国との摩擦が増えています。",
+    "example_translation": "针对台湾的武器出售增加了与中国的摩擦。",
+    "hiragana": "まさつ",
+    "level": "N2",
+    "meaning_zh": "摩擦",
+    "word": "摩擦"
+  },
+  {
+    "example": "市場はちょっと慎重になってるみたいですね。",
+    "example_translation": "市场似乎变得有点谨慎了。",
+    "hiragana": "しんちょう",
+    "level": "N2",
+    "meaning_zh": "谨慎",
+    "word": "慎重"
+  },
+  {
+    "example": "投資効率どうなってるの？って声もありますよね。",
+    "example_translation": "也有人在问投资效率如何？",
+    "hiragana": "とうしこうりつ",
+    "level": "N1",
+    "meaning_zh": "投资效率",
+    "word": "投資効率"
+  },
+  {
+    "example": "テックセクターにかかる重圧も少なからず影響しているみたいです。",
+    "example_translation": "对科技行业的重压似乎也有不小的影响。",
+    "hiragana": "じゅうあつ",
+    "level": "N2",
+    "meaning_zh": "重压",
+    "word": "重圧"
+  },
+  {
+    "example": "中国は「根拠のない誇張」として反発しています。",
+    "example_translation": "中国对此作为“没有根据的夸张”表示反对。",
+    "hiragana": "こんきょ",
+    "level": "N2",
+    "meaning_zh": "根据",
+    "word": "根拠"
+  },
+  {
+    "example": "記録的な豪雪の中で実施されましたけど...",
+    "example_translation": "虽然是在创纪录的豪雪中举行的...",
+    "hiragana": "ごうせつ",
+    "level": "N1",
+    "meaning_zh": "豪雪",
+    "word": "豪雪"
+  },
+  {
+    "example": "彼らの動機を推測するのは難しいですが...",
+    "example_translation": "推测他们的动机很困难，但...",
+    "hiragana": "すいそく",
+    "level": "N1",
+    "meaning_zh": "推测",
+    "word": "推測"
+  },
+  {
+    "example": "次の試合の順位は抽選で決まるらしいです。",
+    "example_translation": "下场比赛的排名似乎要通过抽签决定。",
+    "hiragana": "ちゅうせん",
+    "level": "N2",
+    "meaning_zh": "抽签",
+    "word": "抽選"
   }
 ]

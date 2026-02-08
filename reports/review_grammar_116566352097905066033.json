@@ -133,5 +133,14 @@
     "grammar": "ことなく",
     "level": "N1",
     "meaning_zh": "不……地"
+  },
+  {
+    "example1": "AI技術の進化につれて、生活がますます便利になります。",
+    "example1_translation": "随着AI技术的进步，生活变得越来越便利。",
+    "example2": "時間が経つにつれて、彼の病状は良くなってきた。",
+    "example2_translation": "随着时间的推移，他的病情逐渐好转。",
+    "grammar": "〜につれて",
+    "level": "N2",
+    "meaning_zh": "随着..."
   }
 ]
