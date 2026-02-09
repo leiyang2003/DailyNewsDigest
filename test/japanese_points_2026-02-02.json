@@ -1,0 +1,307 @@
+{
+  "report_date": "2026-02-02",
+  "words": [
+    {
+      "word": "財務省",
+      "hiragana": "ざいむしょう",
+      "meaning_zh": "财政部",
+      "example": "アメリカの財務省が新しい報告書を発表しました。",
+      "example_translation": "美国财政部发布了新的报告。"
+    },
+    {
+      "word": "依存",
+      "hiragana": "いぞん",
+      "meaning_zh": "依赖，依靠",
+      "example": "日本はエネルギーにおいて他国に依存しています。",
+      "example_translation": "日本在能源方面依赖于其他国家。"
+    },
+    {
+      "word": "外交",
+      "hiragana": "がいこう",
+      "meaning_zh": "外交",
+      "example": "ドイツの外交政策が注目されています。",
+      "example_translation": "德国的外交政策受到关注。"
+    },
+    {
+      "word": "経常収支",
+      "hiragana": "けいじょうしゅうし",
+      "meaning_zh": "经常收支",
+      "example": "中国の経常収支黒字が拡大しています。",
+      "example_translation": "中国的经常收支盈余在扩大。"
+    },
+    {
+      "word": "緊張",
+      "hiragana": "きんちょう",
+      "meaning_zh": "紧张",
+      "example": "国際社会で緊張が高まっています。",
+      "example_translation": "国际社会中的紧张局势正在加剧。"
+    },
+    {
+      "word": "金融",
+      "hiragana": "きんゆう",
+      "meaning_zh": "金融",
+      "example": "最近の国際金融の動きが気になります。",
+      "example_translation": "最近国际金融的动向引人关注。"
+    },
+    {
+      "word": "依存",
+      "hiragana": "いそん",
+      "meaning_zh": "依附",
+      "example": "経済の安全保障面では依存を避けられません。",
+      "example_translation": "在经济安全保障方面无法避免依附。"
+    },
+    {
+      "word": "評価",
+      "hiragana": "ひょうか",
+      "meaning_zh": "评价，评估",
+      "example": "人民元の評価を引き上げる必要があります。",
+      "example_translation": "有必要提高人民币的评价。"
+    },
+    {
+      "word": "促す",
+      "hiragana": "うながす",
+      "meaning_zh": "催促，促使",
+      "example": "政府は企業に対してイノベーションを促しています。",
+      "example_translation": "政府正在推动企业创新。"
+    },
+    {
+      "word": "台頭",
+      "hiragana": "たいとう",
+      "meaning_zh": "崛起",
+      "example": "中国の製造業の台頭が著しいです。",
+      "example_translation": "中国制造业的崛起显著。"
+    },
+    {
+      "word": "協定",
+      "hiragana": "きょうてい",
+      "meaning_zh": "协定",
+      "example": "二国間の貿易協定が結ばれました。",
+      "example_translation": "两国之间签署了贸易协定。"
+    },
+    {
+      "word": "強調",
+      "hiragana": "きょうちょう",
+      "meaning_zh": "强调",
+      "example": "彼は安全保障の重要性を強調しました。",
+      "example_translation": "他强调了安全保障的重要性。"
+    },
+    {
+      "word": "訪問",
+      "hiragana": "ほうもん",
+      "meaning_zh": "访问",
+      "example": "首相のアメリカ訪問が予定されています。",
+      "example_translation": "首相计划访问美国。"
+    },
+    {
+      "word": "展開",
+      "hiragana": "てんかい",
+      "meaning_zh": "展开，发展",
+      "example": "外交部が新たな政策展開を示しました。",
+      "example_translation": "外交部展示了新的政策发展。"
+    },
+    {
+      "word": "基礎",
+      "hiragana": "きそ",
+      "meaning_zh": "基础",
+      "example": "新しいプロジェクトには科学的な基礎が必要です。",
+      "example_translation": "新的项目需要科学基础。"
+    },
+    {
+      "word": "戦略",
+      "hiragana": "せんりゃく",
+      "meaning_zh": "战略",
+      "example": "企業は新しいマーケティング戦略を導入しました。",
+      "example_translation": "公司引入了新的营销战略。"
+    },
+    {
+      "word": "資源",
+      "hiragana": "しげん",
+      "meaning_zh": "资源",
+      "example": "日本は天然資源の確保に努めています。",
+      "example_translation": "日本正在努力确保天然资源。"
+    },
+    {
+      "word": "展開",
+      "hiragana": "てんかい",
+      "meaning_zh": "展开",
+      "example": "外交部が新たな展開を示しました。",
+      "example_translation": "外交部展示了新的展开。"
+    },
+    {
+      "word": "衆議院",
+      "hiragana": "しゅうぎいん",
+      "meaning_zh": "众议院",
+      "example": "日本の衆議院が解散されました。",
+      "example_translation": "日本众议院解散了。"
+    },
+    {
+      "word": "復興",
+      "hiragana": "ふっこう",
+      "meaning_zh": "复兴",
+      "example": "被災地の経済復興が進められています。",
+      "example_translation": "灾区的经济复兴正在推进。"
+    }
+  ],
+  "grammar": [
+    {
+      "grammar": "にもかかわらず",
+      "meaning_zh": "尽管如此",
+      "example1": "雨にもかかわらず、大勢の人が集まった。",
+      "example1_translation": "尽管下雨，仍有很多人聚集。",
+      "example2": "彼は疲れているにもかかわらず、仕事を続けている。",
+      "example2_translation": "尽管他很累，但仍在继续工作。"
+    },
+    {
+      "grammar": "ない限り",
+      "meaning_zh": "除非",
+      "example1": "あなたが許可しない限り、ここに入ることはできません。",
+      "example1_translation": "除非你允许，否则不能进入这里。",
+      "example2": "彼が来ない限り、会議は始められない。",
+      "example2_translation": "除非他来了，否则会议不能开始。"
+    },
+    {
+      "grammar": "次第で",
+      "meaning_zh": "取决于",
+      "example1": "成功するかどうかは君の努力次第だ。",
+      "example1_translation": "成功与否取决于你的努力。",
+      "example2": "旅行に行けるかは天気次第です。",
+      "example2_translation": "能否旅行取决于天气。"
+    },
+    {
+      "grammar": "として",
+      "meaning_zh": "作为",
+      "example1": "彼は外交官として働いている。",
+      "example1_translation": "他作为外交官工作。",
+      "example2": "教授としての立場から言えば、...",
+      "example2_translation": "从教授的立场来说，..."
+    },
+    {
+      "grammar": "と同時に",
+      "meaning_zh": "同时",
+      "example1": "彼は学生であると同時に、アルバイトもしている。",
+      "example1_translation": "他既是学生，同时也在兼职。",
+      "example2": "映画を楽しむと同時に、学ぶことも大切だ。",
+      "example2_translation": "享受电影的同时，学习也是重要的。"
+    },
+    {
+      "grammar": "にすぎない",
+      "meaning_zh": "只不过是",
+      "example1": "彼の言ったことは冗談にすぎない。",
+      "example1_translation": "他所说的不过是玩笑。",
+      "example2": "私はただのサラリーマンにすぎない。",
+      "example2_translation": "我只不过是个上班族。"
+    },
+    {
+      "grammar": "たとたん",
+      "meaning_zh": "一...就...",
+      "example1": "ドアを開けたとたん、猫が飛び出した。",
+      "example1_translation": "门一开，猫就跳了出来。",
+      "example2": "彼は家に帰ったとたん、雨が降り始めた。",
+      "example2_translation": "他一回到家，就开始下雨了。"
+    },
+    {
+      "grammar": "のみならず",
+      "meaning_zh": "不仅",
+      "example1": "彼は勉強のみならずスポーツも得意だ。",
+      "example1_translation": "他不仅善于学习，而且擅长运动。",
+      "example2": "その映画は日本のみならず、海外でも人気がある。",
+      "example2_translation": "那部电影不仅在日本，而且在海外也很受欢迎。"
+    },
+    {
+      "grammar": "かというと",
+      "meaning_zh": "说到",
+      "example1": "彼がなぜ遅れたかというと、渋滞にあっていたからだ。",
+      "example1_translation": "说到他为什么迟到了，是因为遇上了堵车。",
+      "example2": "その計画に賛成かというと、そうでもない。",
+      "example2_translation": "说到赞成那个计划，并不是那样。"
+    },
+    {
+      "grammar": "てからでないと",
+      "meaning_zh": "如果不...就...",
+      "example1": "親の許可をもらってからでないと、留学できない。",
+      "example1_translation": "如果不取得父母的许可，就不能留学。",
+      "example2": "上司の指示を聞いてからでないと、何も始められない。",
+      "example2_translation": "如果不听取上司的指示，什么都不能开始。"
+    },
+    {
+      "grammar": "ことなく",
+      "meaning_zh": "不...而...",
+      "example1": "彼は試験に合格するために、休むことなく勉強した。",
+      "example1_translation": "为了通过考试，他不休息地努力学习。",
+      "example2": "彼女は泣くことなく、彼の話を聞いていた。",
+      "example2_translation": "她没哭，而是在听他的讲述。"
+    },
+    {
+      "grammar": "いっぽうで",
+      "meaning_zh": "另一方面",
+      "example1": "自由を重視するいっぽうで、責任も重要です。",
+      "example1_translation": "重视自由的另一方面，责任也很重要。",
+      "example2": "彼は経済を勉強するいっぽうで、音楽も楽しんでいる。",
+      "example2_translation": "他一方面学习经济，另一方面也享受音乐。"
+    },
+    {
+      "grammar": "上に",
+      "meaning_zh": "不仅...而且...",
+      "example1": "彼は頭がいい上に、運動も得意だ。",
+      "example1_translation": "他不仅聪明，而且擅长运动。",
+      "example2": "この料理は美味しい上に、値段も安い。",
+      "example2_translation": "这道菜不仅好吃，而且价格便宜。"
+    },
+    {
+      "grammar": "際に",
+      "meaning_zh": "在...的时候",
+      "example1": "日本に来た際には、ぜひお立ち寄りください。",
+      "example1_translation": "当你来日本的时候，请一定光临。",
+      "example2": "会議の際に、資料を忘れないでください。",
+      "example2_translation": "在会议的时候，请不要忘记资料。"
+    },
+    {
+      "grammar": "にあたって",
+      "meaning_zh": "在...之际",
+      "example1": "新年を迎えるにあたって、目標を立てました。",
+      "example1_translation": "在迎接新年的时候，设立了目标。",
+      "example2": "プロジェクト開始にあたって、準備を怠るな。",
+      "example2_translation": "项目开始之际，务必做好准备。"
+    },
+    {
+      "grammar": "向け",
+      "meaning_zh": "针对",
+      "example1": "このサービスは若者向けに開発された。",
+      "example1_translation": "该服务是面向年轻人开发的。",
+      "example2": "これはビジネスマン向けの雑誌です。",
+      "example2_translation": "这是针对商务人士的杂志。"
+    },
+    {
+      "grammar": "に対して",
+      "meaning_zh": "对于",
+      "example1": "政府の政策に対して、多くの批判がある。",
+      "example1_translation": "针对政府的政策，有很多批评。",
+      "example2": "先生の話し方に対して、学生たちは興味津々だった。",
+      "example2_translation": "对于老师的讲话方式，学生们都饶有兴趣。"
+    },
+    {
+      "grammar": "において",
+      "meaning_zh": "在...",
+      "example1": "彼は仕事において非常に優秀です。",
+      "example1_translation": "他在工作中非常优秀。",
+      "example2": "会議において重要な役割を果たした。",
+      "example2_translation": "在会议中发挥了重要的作用。"
+    },
+    {
+      "grammar": "によると",
+      "meaning_zh": "根据...",
+      "example1": "ニュースによると、明日は雨が降るそうだ。",
+      "example1_translation": "根据新闻，明天估计会下雨。",
+      "example2": "彼の話によると、彼女は来ないらしい。",
+      "example2_translation": "根据他的话，她好像不会来。"
+    },
+    {
+      "grammar": "として",
+      "meaning_zh": "作为",
+      "example1": "彼は外交官として働いている。",
+      "example1_translation": "他作为外交官工作。",
+      "example2": "私は友達として彼をサポートする。",
+      "example2_translation": "我作为朋友支持他。"
+    }
+  ]
+}

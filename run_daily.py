@@ -71,6 +71,7 @@ def main() -> None:
     parser.add_argument("--enable", default=",".join(ALL_STEPS), help="启用的步骤，逗号分隔：digest,podcast,tts_sync,japanese_points")
     parser.add_argument("--log-file", default=None, help="日志文件路径（默认 logs/YYYY-MM-DD.log）")
     parser.add_argument("--tts-sync-chunking", default="atomic", choices=("atomic", "sentence"), help="同步朗读分块策略：atomic（原子）或 sentence（按句）")
+    parser.add_argument("--no-push-test", action="store_true", help="跳过最后一步：不将 test/ 提交并 force push 到 GitHub")
     args = parser.parse_args()
 
     report_date = report_date_yesterday()
@@ -108,6 +109,56 @@ def main() -> None:
         run_step("japanese_points", ["--date", report_date], log_file, ROOT)
     else:
         log_line(log_file, "japanese_points", "skipped")
+
+    if args.no_push_test:
+        log_line(log_file, "push_test", "skipped", "disabled")
+    else:
+        log_line(log_file, "push_test", "start")
+        add_result = subprocess.run(
+            ["git", "add", "test/"],
+            cwd=str(ROOT),
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+        if add_result.returncode != 0:
+            err = (add_result.stderr or add_result.stdout or "").strip()[:500]
+            log_line(log_file, "push_test", "fail", err)
+            sys.exit(1)
+        diff_result = subprocess.run(
+            ["git", "diff", "--staged", "--quiet"],
+            cwd=str(ROOT),
+            capture_output=True,
+        )
+        if diff_result.returncode == 0:
+            log_line(log_file, "push_test", "skipped", "no changes")
+        else:
+            commit_result = subprocess.run(
+                ["git", "commit", "-m", f"Add test (run_daily {report_date})"],
+                cwd=str(ROOT),
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+            )
+            if commit_result.returncode != 0:
+                err = (commit_result.stderr or commit_result.stdout or "").strip()[:500]
+                log_line(log_file, "push_test", "fail", err)
+                sys.exit(1)
+            push_result = subprocess.run(
+                ["git", "push", "--force", "origin", "main"],
+                cwd=str(ROOT),
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+            )
+            if push_result.returncode != 0:
+                err = (push_result.stderr or push_result.stdout or "").strip()[:500]
+                log_line(log_file, "push_test", "fail", err)
+                sys.exit(1)
+            log_line(log_file, "push_test", "success")
 
     log_line(log_file, "pipeline", "completed")
 
