@@ -1,0 +1,347 @@
+{
+  "report_date": "2026-02-09",
+  "words": [
+    {
+      "word": "基盤",
+      "hiragana": "きばん",
+      "meaning_zh": "基础，底座",
+      "example": "政策を推進するためのしっかりとした基盤ができた。",
+      "example_translation": "为了推进政策，奠定了坚实的基础。",
+      "level": "N2"
+    },
+    {
+      "word": "衆議院",
+      "hiragana": "しゅうぎいん",
+      "meaning_zh": "众议院",
+      "example": "自民党が衆議院で316議席を獲得した。",
+      "example_translation": "自民党在众议院赢得了316个席位。",
+      "level": "N2"
+    },
+    {
+      "word": "政策金利",
+      "hiragana": "せいさくきんり",
+      "meaning_zh": "政策性利率",
+      "example": "エジプト中央銀行が政策金利を引き下げる予測が出ている。",
+      "example_translation": "预计埃及中央银行将下调政策性利率。",
+      "level": "N2"
+    },
+    {
+      "word": "緩和",
+      "hiragana": "かんわ",
+      "meaning_zh": "缓和，放宽",
+      "example": "武器輸出禁止の緩和にも注目が集まっています。",
+      "example_translation": "对武器出口禁令的放宽也备受关注。",
+      "level": "N1"
+    },
+    {
+      "word": "鎮静化",
+      "hiragana": "ちんせいか",
+      "meaning_zh": "镇静，稳定",
+      "example": "インフレの鎮静化が背景にあります。",
+      "example_translation": "背景是通货膨胀的稳定。",
+      "level": "N1"
+    },
+    {
+      "word": "投資",
+      "hiragana": "とうし",
+      "meaning_zh": "投资",
+      "example": "この調整により投資のしやすさが増すでしょう。",
+      "example_translation": "这种调整将使投资更加容易。",
+      "level": "N2"
+    },
+    {
+      "word": "非難",
+      "hiragana": "ひなん",
+      "meaning_zh": "指责，批评",
+      "example": "アメリカは中国を非難しています。",
+      "example_translation": "美国正在指责中国。",
+      "level": "N2"
+    },
+    {
+      "word": "観測",
+      "hiragana": "かんそく",
+      "meaning_zh": "观测，观察",
+      "example": "地震を観測されない技術を使ったかもしれない。",
+      "example_translation": "有可能使用了能避免地震观测的技术。",
+      "level": "N1"
+    },
+    {
+      "word": "拒否",
+      "hiragana": "きょひ",
+      "meaning_zh": "拒绝",
+      "example": "中国側は非難に対して拒否しました。",
+      "example_translation": "中国方面对指责进行了否认。",
+      "level": "N2"
+    },
+    {
+      "word": "合意",
+      "hiragana": "ごうい",
+      "meaning_zh": "协议，合意",
+      "example": "新たな合意の必要性を訴えています。",
+      "example_translation": "在呼吁新的协议的必要性。",
+      "level": "N1"
+    },
+    {
+      "word": "抽出",
+      "hiragana": "ちゅうしゅつ",
+      "meaning_zh": "抽出，提取",
+      "example": "議論から重要な点を抽出しました。",
+      "example_translation": "从讨论中提取了重要点。",
+      "level": "N1"
+    },
+    {
+      "word": "要請",
+      "hiragana": "ようせい",
+      "meaning_zh": "请求，要求",
+      "example": "習近平主席はトランプ大統領に要請しました。",
+      "example_translation": "习近平主席向特朗普总统提出要求。",
+      "level": "N2"
+    },
+    {
+      "word": "利率",
+      "hiragana": "りりつ",
+      "meaning_zh": "利率",
+      "example": "デポジット金利と貸出金利をそれぞれ引き下げます。",
+      "example_translation": "将分别降低存款利率和贷款利率。",
+      "level": "N2"
+    },
+    {
+      "word": "天然",
+      "hiragana": "てんねん",
+      "meaning_zh": "天然，自然",
+      "example": "天然資源の活用が進められている。",
+      "example_translation": "天然资源的利用正在推进。",
+      "level": "N1"
+    },
+    {
+      "word": "安定",
+      "hiragana": "あんてい",
+      "meaning_zh": "安定，稳定",
+      "example": "経済の安定を図るための措置です。",
+      "example_translation": "为了实现经济稳定的措施。",
+      "level": "N2"
+    },
+    {
+      "word": "外貨",
+      "hiragana": "がいか",
+      "meaning_zh": "外汇",
+      "example": "外貨ポジションの改善が見込まれます。",
+      "example_translation": "预计外汇头寸会改善。",
+      "level": "N1"
+    },
+    {
+      "word": "供与",
+      "hiragana": "きょうよ",
+      "meaning_zh": "提供，供给",
+      "example": "武器供与に関して議論しています。",
+      "example_translation": "正在讨论武器供给问题。",
+      "level": "N1"
+    },
+    {
+      "word": "武器",
+      "hiragana": "ぶき",
+      "meaning_zh": "武器",
+      "example": "台湾への武器供与について話し合った。",
+      "example_translation": "讨论了向台湾提供武器的问题。",
+      "level": "N2"
+    },
+    {
+      "word": "改善",
+      "hiragana": "かいぜん",
+      "meaning_zh": "改善，改进",
+      "example": "外貨の減少が改善されました。",
+      "example_translation": "外汇的减少得到了改善。",
+      "level": "N2"
+    },
+    {
+      "word": "方針",
+      "hiragana": "ほうしん",
+      "meaning_zh": "方针，政策",
+      "example": "政府の新しい方針が発表されました。",
+      "example_translation": "政府宣布了新的方针。",
+      "level": "N2"
+    }
+  ],
+  "grammar": [
+    {
+      "grammar": "〜における",
+      "meaning_zh": "在……中的",
+      "example1": "金融における安定化が重要です。",
+      "example1_translation": "金融中的稳定化很重要。",
+      "example2": "教育における改革が求められています。",
+      "example2_translation": "在教育中的改革是被期望的。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜てもかまわない",
+      "meaning_zh": "……也没有关系",
+      "example1": "遅れてもかまわない。",
+      "example1_translation": "迟到也没关系。",
+      "example2": "少し待ってもかまいません。",
+      "example2_translation": "稍微等一下也可以。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜からして",
+      "meaning_zh": "从……来看",
+      "example1": "彼の態度からして反対だと思います。",
+      "example1_translation": "从他的态度来看，我认为是反对的。",
+      "example2": "この結果からして、成功は間違いない。",
+      "example2_translation": "从这个结果来看，成功是毫无疑问的。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜次第で",
+      "meaning_zh": "取决于",
+      "example1": "天気次第で決まります。",
+      "example1_translation": "取决于天气进行决定。",
+      "example2": "結果次第では対策を考えます。",
+      "example2_translation": "视结果而定考虑对策。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜まみれ",
+      "meaning_zh": "满是，沾满",
+      "example1": "泥まみれの靴。",
+      "example1_translation": "沾满泥的鞋。",
+      "example2": "ほこりまみれの部屋。",
+      "example2_translation": "满是灰尘的房间。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜にすぎない",
+      "meaning_zh": "不过是……",
+      "example1": "噂にすぎません。",
+      "example1_translation": "不过是谣言而已。",
+      "example2": "彼は友達にすぎない。",
+      "example2_translation": "他不过是朋友而已。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜得る",
+      "meaning_zh": "可能，可以",
+      "example1": "それはあり得る。",
+      "example1_translation": "那是可能的。",
+      "example2": "彼ならやり得るでしょう。",
+      "example2_translation": "如果是他，应该能做到吧。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜つつある",
+      "meaning_zh": "正在……",
+      "example1": "状況は改善しつつある。",
+      "example1_translation": "状况正在改善中。",
+      "example2": "しだいに暖かくなりつつある。",
+      "example2_translation": "正在逐渐变暖。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜反面",
+      "meaning_zh": "另一方面",
+      "example1": "彼は優しい反面、厳しいところもある。",
+      "example1_translation": "他温柔的另一方面，也有严厉之处。",
+      "example2": "便利な反面、危険も伴う。",
+      "example2_translation": "方便的另一方面也伴随着危险。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜限りだ",
+      "meaning_zh": "无比……",
+      "example1": "幸せな限りです。",
+      "example1_translation": "无比幸福。",
+      "example2": "寂しい限りです。",
+      "example2_translation": "无比寂寞。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜を問わず",
+      "meaning_zh": "不论……",
+      "example1": "性別を問わず応募できます。",
+      "example1_translation": "不论性别都可以申请。",
+      "example2": "国籍を問わず参加できる。",
+      "example2_translation": "不论国籍都可以参加。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜にしては",
+      "meaning_zh": "就……而言",
+      "example1": "彼は初心者にしては上手です。",
+      "example1_translation": "就初学者而言，他很厉害。",
+      "example2": "冬にしては暖かい。",
+      "example2_translation": "就冬天而言，很暖和。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜のみならず",
+      "meaning_zh": "不仅……而且……",
+      "example1": "彼は歌がうまいのみならず、絵も上手です。",
+      "example1_translation": "他不仅歌唱得好，而且画得也好。",
+      "example2": "この機械は性能が良いのみならず、デザインも素晴らしい。",
+      "example2_translation": "这个机器不仅性能好，而且设计也很出色。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜にせよ",
+      "meaning_zh": "即使……",
+      "example1": "どんな理由にせよ許されない。",
+      "example1_translation": "无论什么理由都不被允许。",
+      "example2": "雨が降るにせよ、行くつもりだ。",
+      "example2_translation": "即使下雨，也打算去。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜ところで",
+      "meaning_zh": "即使……也……",
+      "example1": "急いだところで間に合わない。",
+      "example1_translation": "即使着急也赶不上。",
+      "example2": "勉強したところで結果は同じだ。",
+      "example2_translation": "即使学习，结果也是一样。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜のもとで",
+      "meaning_zh": "在……下",
+      "example1": "彼の指導のもとで練習しています。",
+      "example1_translation": "在他的指导下进行练习。",
+      "example2": "会社の方針のもとで働いています。",
+      "example2_translation": "在公司的方针下工作。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜がきっかけで",
+      "meaning_zh": "以……为契机",
+      "example1": "映画を見たのがきっかけで日本語を勉強し始めました。",
+      "example1_translation": "因为看了电影，以此为契机开始学习日语。",
+      "example2": "旅行がきっかけで新しい友達ができました。",
+      "example2_translation": "以旅行为契机交到了新朋友。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜に基づいて",
+      "meaning_zh": "根据……",
+      "example1": "データに基づいて計画を立てます。",
+      "example1_translation": "根据数据制定计划。",
+      "example2": "法律に基づいて判断を下します。",
+      "example2_translation": "根据法律进行判断。",
+      "level": "N2"
+    },
+    {
+      "grammar": "〜得ない",
+      "meaning_zh": "不可能……",
+      "example1": "それはあり得ない。",
+      "example1_translation": "那是不可能的。",
+      "example2": "彼が失敗することは考え得ない。",
+      "example2_translation": "考虑不到他会失败。",
+      "level": "N1"
+    },
+    {
+      "grammar": "〜一方だ",
+      "meaning_zh": "越来越……",
+      "example1": "物価は上がる一方だ。",
+      "example1_translation": "物价不断上涨。",
+      "example2": "交通事故が増える一方です。",
+      "example2_translation": "交通事故不断增加。",
+      "level": "N2"
+    }
+  ]
+}
