@@ -17,7 +17,9 @@ from config import DIGEST_TIMEZONE
 
 ROOT = Path(__file__).resolve().parent
 LOGS_DIR = ROOT / "logs"
+REPORTS_DIR = ROOT / "reports"
 MAX_STDERR_LINES = 20
+MIN_MP3_BYTES = 10_000  # 合并后的 podcast mp3 最小合理大小，避免未完成或空文件
 ALL_STEPS = ("digest", "podcast", "tts_sync", "japanese_points")
 
 
@@ -65,13 +67,27 @@ def run_step(
     log_line(log_file, step_name, "success")
 
 
+def check_merged_mp3(log_file: Path, report_date: str) -> None:
+    """检查当日合并后的 podcast mp3 是否已生成且完整，否则打日志并退出。"""
+    log_line(log_file, "mp3_check", "start")
+    mp3_path = REPORTS_DIR / f"podcast_{report_date}.mp3"
+    if not mp3_path.exists():
+        log_line(log_file, "mp3_check", "fail", f"missing {mp3_path}")
+        sys.exit(1)
+    size = mp3_path.stat().st_size
+    if size < MIN_MP3_BYTES:
+        log_line(log_file, "mp3_check", "fail", f"too small: {mp3_path} ({size} bytes)")
+        sys.exit(1)
+    log_line(log_file, "mp3_check", "success")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="每日流水线：digest → podcast → tts --sync → japanese_points")
     parser.add_argument("--themes", default=None, help='自定义摘要主题，逗号分隔，如 "动漫,游戏,科技"')
     parser.add_argument("--enable", default=",".join(ALL_STEPS), help="启用的步骤，逗号分隔：digest,podcast,tts_sync,japanese_points")
     parser.add_argument("--log-file", default=None, help="日志文件路径（默认 logs/YYYY-MM-DD.log）")
-    parser.add_argument("--tts-sync-chunking", default="atomic", choices=("atomic", "sentence"), help="同步朗读分块策略：atomic（原子）或 sentence（按句）")
-    parser.add_argument("--no-push-test", action="store_true", help="跳过最后一步：不将 test/ 提交并 force push 到 GitHub")
+    parser.add_argument("--tts-sync-chunking", default="sentence", choices=("atomic", "sentence"), help="同步朗读分块策略：atomic（原子）或 sentence（按句）")
+    parser.add_argument("--no-push-reports", action="store_true", help="跳过最后一步：不将 reports/ 提交并 force push 到 GitHub")
     args = parser.parse_args()
 
     report_date = report_date_yesterday()
@@ -102,6 +118,7 @@ def main() -> None:
 
     if "tts_sync" in enable:
         run_step("tts", ["--date", report_date, "--sync", "--sync-mode", args.tts_sync_chunking], log_file, ROOT)
+        check_merged_mp3(log_file, report_date)
     else:
         log_line(log_file, "tts_sync", "skipped")
 
@@ -110,12 +127,12 @@ def main() -> None:
     else:
         log_line(log_file, "japanese_points", "skipped")
 
-    if args.no_push_test:
-        log_line(log_file, "push_test", "skipped", "disabled")
+    if args.no_push_reports:
+        log_line(log_file, "push_reports", "skipped", "disabled")
     else:
-        log_line(log_file, "push_test", "start")
+        log_line(log_file, "push_reports", "start")
         add_result = subprocess.run(
-            ["git", "add", "test/"],
+            ["git", "add", "reports/"],
             cwd=str(ROOT),
             capture_output=True,
             text=True,
@@ -124,7 +141,7 @@ def main() -> None:
         )
         if add_result.returncode != 0:
             err = (add_result.stderr or add_result.stdout or "").strip()[:500]
-            log_line(log_file, "push_test", "fail", err)
+            log_line(log_file, "push_reports", "fail", err)
             sys.exit(1)
         diff_result = subprocess.run(
             ["git", "diff", "--staged", "--quiet"],
@@ -132,10 +149,10 @@ def main() -> None:
             capture_output=True,
         )
         if diff_result.returncode == 0:
-            log_line(log_file, "push_test", "skipped", "no changes")
+            log_line(log_file, "push_reports", "skipped", "no changes")
         else:
             commit_result = subprocess.run(
-                ["git", "commit", "-m", f"Add test (run_daily {report_date})"],
+                ["git", "commit", "-m", f"Add reports (run_daily {report_date})"],
                 cwd=str(ROOT),
                 capture_output=True,
                 text=True,
@@ -144,7 +161,7 @@ def main() -> None:
             )
             if commit_result.returncode != 0:
                 err = (commit_result.stderr or commit_result.stdout or "").strip()[:500]
-                log_line(log_file, "push_test", "fail", err)
+                log_line(log_file, "push_reports", "fail", err)
                 sys.exit(1)
             push_result = subprocess.run(
                 ["git", "push", "--force", "origin", "main"],
@@ -156,9 +173,9 @@ def main() -> None:
             )
             if push_result.returncode != 0:
                 err = (push_result.stderr or push_result.stdout or "").strip()[:500]
-                log_line(log_file, "push_test", "fail", err)
+                log_line(log_file, "push_reports", "fail", err)
                 sys.exit(1)
-            log_line(log_file, "push_test", "success")
+            log_line(log_file, "push_reports", "success")
 
     log_line(log_file, "pipeline", "completed")
 
