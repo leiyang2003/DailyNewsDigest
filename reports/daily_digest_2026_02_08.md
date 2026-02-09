@@ -4,56 +4,57 @@
 
 ## 金融
 
-- **米株、週末にかけて上昇もテックの週足は下落**
-  链接：[米株、週末にかけて上昇もテックの週足は下落](https://sergeytereshkin.com/publications/economic-events-and-corporate-reports-february-7-2026)
-  2月7日、米株式市場はダウが約2%上昇し過去最高水準に反発。S&P500＋1.6%、ナスダック＋1.8%と上昇したが、今週はテック指数が下落し続けている。米雇用統計の延期もあり、市場は企業決算に注目。
+- **Asia rallies as Japan shares surge to record peak**
+  链接：[Asia rallies as Japan shares surge to record peak](https://www.investing.com/news/economy-news/asia-rallies-as-japan-shares-surge-to-record-peak-4492534)
+  アジア市場で日本株が急騰し、日経平均は史上最高を更新。テック株中心に買いが進み、金融緩和期待を背景に投資家のリスク選好が高まった。
 
-- **AIへの大量投資でテックセクターに圧迫、金利は据え置き**
-  链接：[AIへの大量投資でテックセクターに圧迫、金利は据え置き](https://sergeytereshkin.com/publications/economic-events-and-corporate-reports-february-7-2026)
-  FRBやECBなど主要中央銀行が金利を据え置きとし、政策は様子見。AI関連企業の大量投資がテック株に重荷となっており、市場のリスク選好が低下。
+- **Japan markets on edge over looser fiscal policy, ex-currency diplomat Watanabe says**
+  链接：[Japan markets on edge over looser fiscal policy, ex-currency diplomat Watanabe says](https://www.investing.com/news/economy-news/japan-markets-on-edge-over-looser-fiscal-policy-ex-currency-diplomat-watanabe-says-4477686)
+  元通貨外交官の渡辺氏は、財政緩和策による日本市場の不安と円安・国債売りへの警戒を指摘。慎重な政策対応が求められている。
 
 ## AI
 
-- **ビッグテック、2026年のAI設備投資に約6,500億ドル計画**
-  链接：[ビッグテック、2026年のAI設備投資に約6,500億ドル計画](https://www.reddit.com/r/ArtificialInteligence/comments/1qyde7v/what_happened_in_ai_today_feb_07_2026_7_minute/)
-  Amazon、Alphabet、Meta、Microsoftが2026年AIインフラに合計約6,500億ドルを投じる見通し。Nvidia株が7.8%急騰したが、4社の時価総額は今週で9500億ドル減少しており、投資効率に懸念も。
+- **Asia rallies as Japan shares surge to record peak (AI関連記述)**
+  链接：[Asia rallies as Japan shares surge to record peak (AI関連記述)](https://www.investing.com/news/economy-news/asia-rallies-as-japan-shares-surge-to-record-peak-4492534)
+  記事中で、NvidiaなどAI関連株の上昇とAI支出への期待が市場を牽引している点が強調された。
 
-- **ElevenLabs、評価額110億ドルで5億ドル調達。AI音声技術拡張へ**
-  链接：[ElevenLabs、評価額110億ドルで5億ドル調達。AI音声技術拡張へ](https://www.reddit.com/r/ArtificialInteligence/comments/1qyde7v/what_happened_in_ai_today_feb_07_2026_7_minute/)
-  音声AIスタートアップElevenLabsがSequoiaなどから5億ドルを調達し、評価額は110億ドルに。音声合成に加え、リアルタイム翻訳や企業向けソリューション展開を進め、音声AI市場の拡大が示される。
+- **Global shares surge... as markets await earnings and AI bubble concerns ease**
+  链接：[Global shares surge... as markets await earnings and AI bubble concerns ease](https://www.2news.com/news/national/asian-shares-surge-led-by-records-in-japan-and-south-korea-as-markets-regain-momentum/article_9c31ee9a-b187-5f33-b211-3aa05ec14abd.html)
+  韓国・日本の株価上昇はAIバブルへの懸念が和らいだことが背景。投資家心理の改善にAI関連動向が貢献している。
 
-## 中米关系
+## 中美关系
 
-- **中国、台湾への米兵器売却に慎重対応を要請―トランプ訪中に影響も**
-  链接：[中国、台湾への米兵器売却に慎重対応を要請―トランプ訪中に影響も](https://www.ft.com/content/06e27fb5-bc9e-4b3d-ac20-7b54757e044e)
-  米国が台湾への兵器売却を進める計画に対し、中国はトランプ米大統領の4月北京訪問に悪影響を与える可能性があるとして慎重な対応を求めた。習近平が電話でトランプに直接伝達。
+- **US accuses China of breaking rules on nuclear weapons by hiding explosions and preparing for more testing**
+  链接：[US accuses China of breaking rules on nuclear weapons by hiding explosions and preparing for more testing](https://www.businessinsider.com/us-accuses-china-of-breaking-nuclear-testing-rules-hiding-explosions-2026-2)
+  米国が中国による2020年6月の核実験実施と痕跡隠蔽を非難する一方で、中国側は否定。新START条約失効後、包括的軍備管理交渉の必要性が高まっている。
 
-- **米、2020年の中国による秘密核実験を非難。新たな軍備管理枠組み求める**
-  链接：[米、2020年の中国による秘密核実験を非難。新たな軍備管理枠組み求める](https://nypost.com/2026/02/06/us-news/us-accuses-china-of-secret-nuke-testing-calls-for-broader-arms-control-deal/)
-  米ディナノ国務次官が、中国が2020年6月に秘密核実験を行っていたと発表。米はロシアも含む新たな軍備管理条約の必要性を訴える。中国側は「根拠のない誇張だ」と反発。
+- **China warns US arms sales to Taiwan could threaten Trump visit in April**
+  链接：[China warns US arms sales to Taiwan could threaten Trump visit in April](https://www.ft.com/content/06e27fb5-bc9e-4b3d-ac20-7b54757e044e)
+  中国は、米国が台湾向けに計画する200億ドル規模の武器売却が4月のトランプ大統領訪中を危うくするとの懸念を表明。習近平氏が直接伝えた。
 
 ## 日本政治
 
-- **日本衆院選、戦後最短の選挙戦。記録的な豪雪下で投票進む**
-  链接：[日本衆院選、戦後最短の選挙戦。記録的な豪雪下で投票進む](https://www.ft.com/content/1d6762c2-7bbf-4457-8799-2bcb694478e1)
-  2月8日投開票の衆院選は戦後最短2週間の選挙戦で、記録的な豪雪の中で実施。午後4時時点での投票率は21.6％とやや低調だが、期日前投票は増加。LDPの安定多数が見込まれる。
+- **Prime Minister Takaichi’s party wins a supermajority in Japan's lower house**
+  链接：[Prime Minister Takaichi’s party wins a supermajority in Japan's lower house](https://apnews.com/article/bbb322b4dc1dcad8f7373ba7aae4d535)
+  高市早苗首相の自民党が衆院で単独過半数（316議席）を獲得し、維新との連立で352議席の超党派優勢を確保。硬軟両面の政策を推進できる強力な政治基盤を得た。
 
-- **出口調査で高支持を集める高市政権、保守・ナショナリズム強化へ**
-  链接：[出口調査で高支持を集める高市政権、保守・ナショナリズム強化へ](https://www.washingtonpost.com/world/2026/02/08/japan-election-sanae-takaichi-victory/)
-  出口調査によると、初の女性首相・高市早苗率いるLDPは下院で約300議席と大勝見込み。経済・軍事強化、台湾・憲法政策の推進など、保守・ナショナリズム路線が加速する可能性。
+- **Japan goes to the polls after shortest election campaign in postwar era**
+  链接：[Japan goes to the polls after shortest election campaign in postwar era](https://www.ft.com/content/1d6762c2-7bbf-4457-8799-2bcb694478e1)
+  戦後最短の2週間選挙戦を経て2月8日に衆院選が実施。大雪の影響がある中、早期投票率は過去最高。政局は自民・維新連立への支持を予想させる展開だった。
 
-- **衆院選でLDP、大勝。歴代最多となる4分の3超の議席確保へ**
-  链接：[衆院選でLDP、大勝。歴代最多となる4分の3超の議席確保へ](https://en.wikipedia.org/wiki/2026_Japanese_general_election)
-  2026年2月8日の衆院選でLDPは少なくとも301議席を獲得し、4分の3超の議席を達成。戦後最多の議席数を記録し、米と歩調を合わせる姿勢が鮮明に。
+- **Japan’s Takaichi Wins Snap Election By Landslide. What You Need To Know**
+  链接：[Japan’s Takaichi Wins Snap Election By Landslide. What You Need To Know](https://time.com/7372956/japan-takaichi-election-win/)
+  高市首相がスナップ選挙を戦略的に実行し、下院で最大328議席を獲得する見通し。女性首相として硬軟併せ持つ政策スタイルが支持されたと分析。
 
 ---
 
 ## 引用链接汇总
 
-1. https://sergeytereshkin.com/publications/economic-events-and-corporate-reports-february-7-2026
-2. https://www.reddit.com/r/ArtificialInteligence/comments/1qyde7v/what_happened_in_ai_today_feb_07_2026_7_minute/
-3. https://www.ft.com/content/06e27fb5-bc9e-4b3d-ac20-7b54757e044e
-4. https://nypost.com/2026/02/06/us-news/us-accuses-china-of-secret-nuke-testing-calls-for-broader-arms-control-deal/
-5. https://www.ft.com/content/1d6762c2-7bbf-4457-8799-2bcb694478e1
-6. https://www.washingtonpost.com/world/2026/02/08/japan-election-sanae-takaichi-victory/
-7. https://en.wikipedia.org/wiki/2026_Japanese_general_election
+1. https://www.investing.com/news/economy-news/asia-rallies-as-japan-shares-surge-to-record-peak-4492534
+2. https://www.investing.com/news/economy-news/japan-markets-on-edge-over-looser-fiscal-policy-ex-currency-diplomat-watanabe-says-4477686
+3. https://www.2news.com/news/national/asian-shares-surge-led-by-records-in-japan-and-south-korea-as-markets-regain-momentum/article_9c31ee9a-b187-5f33-b211-3aa05ec14abd.html
+4. https://www.businessinsider.com/us-accuses-china-of-breaking-nuclear-testing-rules-hiding-explosions-2026-2
+5. https://www.ft.com/content/06e27fb5-bc9e-4b3d-ac20-7b54757e044e
+6. https://apnews.com/article/bbb322b4dc1dcad8f7373ba7aae4d535
+7. https://www.ft.com/content/1d6762c2-7bbf-4457-8799-2bcb694478e1
+8. https://time.com/7372956/japan-takaichi-election-win/
