@@ -1,0 +1,347 @@
+{
+  "report_date": "2026-02-10",
+  "words": [
+    {
+      "word": "税引前利益",
+      "hiragana": "ぜいびきまえりえき",
+      "meaning_zh": "税前利润",
+      "example": "バークレイズが2025年第4四半期の税引前利益を19億ポンドと予想を超えた。",
+      "example_translation": "巴克莱预测2025年第4季度的税前利润将达到19亿英镑，超过预期。",
+      "level": "N1"
+    },
+    {
+      "word": "為替市場",
+      "hiragana": "かわせしじょう",
+      "meaning_zh": "外汇市场",
+      "example": "為替市場ではドル指数が1週間ぶりの安値になっています。",
+      "example_translation": "在外汇市场上，美元指数创下了一周以来的新低。",
+      "level": "N2"
+    },
+    {
+      "word": "金融機関",
+      "hiragana": "きんゆうきかん",
+      "meaning_zh": "金融机构",
+      "example": "中国当局が国内金融機関に米国債の保有削減を促しました。",
+      "example_translation": "中国当局敦促国内金融机构减少美国国债的持有量。",
+      "level": "N2"
+    },
+    {
+      "word": "人民元",
+      "hiragana": "じんみんげん",
+      "meaning_zh": "人民币",
+      "example": "人民元が2.5年ぶりの高値を記録した。",
+      "example_translation": "人民币创下两年半以来的新高。",
+      "level": "N1"
+    },
+    {
+      "word": "資本還元",
+      "hiragana": "しほんかんげん",
+      "meaning_zh": "资本回报",
+      "example": "バークレイズは2028年までに150億ポンド以上の資本還元を目指している。",
+      "example_translation": "巴克莱计划在2028年前实现超过150亿英镑的资本回报。",
+      "level": "N1"
+    },
+    {
+      "word": "人権",
+      "hiragana": "じんけん",
+      "meaning_zh": "人权",
+      "example": "彼は人権問題に積極的に取り組んでいる。",
+      "example_translation": "他积极参与人权问题的处理。",
+      "level": "N2"
+    },
+    {
+      "word": "景気",
+      "hiragana": "けいき",
+      "meaning_zh": "经济状况",
+      "example": "最近の景気はやや回復してきた。",
+      "example_translation": "最近的经济状况稍微有所恢复。",
+      "level": "N2"
+    },
+    {
+      "word": "投資",
+      "hiragana": "とうし",
+      "meaning_zh": "投资",
+      "example": "投資家たちは新たな投資先を探している。",
+      "example_translation": "投资者们正在寻找新的投资对象。",
+      "level": "N2"
+    },
+    {
+      "word": "急騰",
+      "hiragana": "きゅうとう",
+      "meaning_zh": "急剧上涨",
+      "example": "NVIDIAが2.5％も急騰しました。",
+      "example_translation": "英伟达的股价急剧上涨了2.5%。",
+      "level": "N1"
+    },
+    {
+      "word": "協業",
+      "hiragana": "きょうぎょう",
+      "meaning_zh": "协同工作",
+      "example": "STマイクロはAWSとの協業がうまくいっています。",
+      "example_translation": "ST Micro的AWS协同工作进行得很顺利。",
+      "level": "N1"
+    },
+    {
+      "word": "有権者",
+      "hiragana": "ゆうけんしゃ",
+      "meaning_zh": "选民",
+      "example": "憲法改正は有権者の関心を引いている。",
+      "example_translation": "宪法修正案引起了选民的关注。",
+      "level": "N2"
+    },
+    {
+      "word": "政策論争",
+      "hiragana": "せいさくろんそう",
+      "meaning_zh": "政策争论",
+      "example": "政策論争が有権者の間で活発化している。",
+      "example_translation": "选民之间的政策争论活跃。",
+      "level": "N1"
+    },
+    {
+      "word": "再選",
+      "hiragana": "さいせん",
+      "meaning_zh": "再次当选",
+      "example": "吉村洋文さんは再選を果たしました。",
+      "example_translation": "吉村洋文成功再次当选。",
+      "level": "N2"
+    },
+    {
+      "word": "代表職",
+      "hiragana": "だいひょうしょく",
+      "meaning_zh": "代表职位",
+      "example": "野田佳彦さんと斎藤鉄夫さんは代表職を辞任すると表明しました。",
+      "example_translation": "野田佳彦和斎藤鉄夫表示将辞职代表职务。",
+      "level": "N1"
+    },
+    {
+      "word": "中道改革連合",
+      "hiragana": "ちゅうどうかいかくれんごう",
+      "meaning_zh": "中道改革联盟",
+      "example": "中道改革連合が選挙での大敗を受けて改革を求められています。",
+      "example_translation": "中道改革联盟在选举中的大败后被要求改革。",
+      "level": "N1"
+    },
+    {
+      "word": "浮き彫り",
+      "hiragana": "うきぼり",
+      "meaning_zh": "浮现，明显化",
+      "example": "金融緊張が一層浮き彫りになっています。",
+      "example_translation": "金融紧张更加明显化。",
+      "level": "N1"
+    },
+    {
+      "word": "国家戦略",
+      "hiragana": "こっかせんりゃく",
+      "meaning_zh": "国家战略",
+      "example": "米国債の保有縮小は中国の国家戦略の一環と見られている。",
+      "example_translation": "削减美国国债的持有被视为中国国家战略的一部分。",
+      "level": "N2"
+    },
+    {
+      "word": "経済的競争",
+      "hiragana": "けいざいてききょうそう",
+      "meaning_zh": "经济竞争",
+      "example": "両国の経済的競争が激化するかもしれません。",
+      "example_translation": "两国的经济竞争可能会加剧。",
+      "level": "N2"
+    },
+    {
+      "word": "経済面",
+      "hiragana": "けいざいめん",
+      "meaning_zh": "经济方面",
+      "example": "米中関係が経済面で緊張感を増しています。",
+      "example_translation": "中美关系在经济方面的紧张感增加。",
+      "level": "N1"
+    },
+    {
+      "word": "政策",
+      "hiragana": "せいさく",
+      "meaning_zh": "政策",
+      "example": "各国の政策や市場への影響について分析が必要です。",
+      "example_translation": "对各国政策及市场影响的分析是必要的。",
+      "level": "N2"
+    }
+  ],
+  "grammar": [
+    {
+      "grammar": "を受けて",
+      "meaning_zh": "基于，因应",
+      "example1": "大雨の被害を受けて、住民たちは避難を始めた。",
+      "example1_translation": "由于受到大雨的影响，居民们开始避难。",
+      "example2": "彼の発言を受けて、会議は急遽中止された。",
+      "example2_translation": "基于他的发言，会议被紧急取消了。",
+      "level": "N2"
+    },
+    {
+      "grammar": "ばかりに",
+      "meaning_zh": "就是因为……",
+      "example1": "行き先を間違えたばかりに、会議に遅れてしまった。",
+      "example1_translation": "就是因为走错了目的地，结果迟到了会议。",
+      "example2": "一言多くしゃべったばかりに、問題が大きくなった。",
+      "example2_translation": "就是因为多了一句口舌，问题变大了。",
+      "level": "N2"
+    },
+    {
+      "grammar": "に関する",
+      "meaning_zh": "关于",
+      "example1": "環境保護に関する議論が行われた。",
+      "example1_translation": "关于环境保护的讨论进行了。",
+      "example2": "貿易に関する情報を集めています。",
+      "example2_translation": "正在收集有关贸易的信息。",
+      "level": "N2"
+    },
+    {
+      "grammar": "ながらも",
+      "meaning_zh": "尽管……但是",
+      "example1": "安いながらも、この商品は品質が良い。",
+      "example1_translation": "虽然便宜，但是这个商品质量很好。",
+      "example2": "彼は忙しいながらも、手伝ってくれた。",
+      "example2_translation": "他虽然忙，但还是帮了忙。",
+      "level": "N2"
+    },
+    {
+      "grammar": "まま",
+      "meaning_zh": "保持……状态",
+      "example1": "電気をつけたまま寝てしまった。",
+      "example1_translation": "保持开灯的状态下就睡着了。",
+      "example2": "窓を開けたままで外に出てしまった。",
+      "example2_translation": "保持窗户打开的状态下就出门了。",
+      "level": "N2"
+    },
+    {
+      "grammar": "以上は",
+      "meaning_zh": "既然……",
+      "example1": "約束した以上は、最後までやり遂げるべきだ。",
+      "example1_translation": "既然约定了，就应该坚持到最后。",
+      "example2": "参加する以上は、全力で頑張るつもりです。",
+      "example2_translation": "既然参加了，就打算全力以赴。",
+      "level": "N2"
+    },
+    {
+      "grammar": "際には",
+      "meaning_zh": "在……的时候",
+      "example1": "日本に来た際には、ぜひ声をかけてください。",
+      "example1_translation": "到日本来的时候，请务必联系我。",
+      "example2": "手術の際には、医者が詳しく説明してくれた。",
+      "example2_translation": "手术的时候，医生进行了详细的说明。",
+      "level": "N2"
+    },
+    {
+      "grammar": "を通じて",
+      "meaning_zh": "通过……",
+      "example1": "友人を通じて、彼と知り合った。",
+      "example1_translation": "通过朋友，认识了他。",
+      "example2": "インターネットを通じて情報を集める。",
+      "example2_translation": "通过互联网收集信息。",
+      "level": "N2"
+    },
+    {
+      "grammar": "とはいえ",
+      "meaning_zh": "虽然这么说，但是",
+      "example1": "暑いとはいえ、夜は涼しくなります。",
+      "example1_translation": "虽然说热，但是晚上会变凉。",
+      "example2": "便利とはいえ、新しい技術には学ぶ必要があります。",
+      "example2_translation": "虽然方便，但需要学习新技术。",
+      "level": "N1"
+    },
+    {
+      "grammar": "に基づいて",
+      "meaning_zh": "根据……",
+      "example1": "法律に基づいて判断します。",
+      "example1_translation": "依据法律进行判断。",
+      "example2": "この理論に基づいて、新しいモデルを作った。",
+      "example2_translation": "根据这个理论，创建了新模型。",
+      "level": "N2"
+    },
+    {
+      "grammar": "にもかかわらず",
+      "meaning_zh": "尽管……却",
+      "example1": "雨にもかかわらず、試合は続けられた。",
+      "example1_translation": "尽管下雨，比赛却继续进行了。",
+      "example2": "彼は疲れているにもかかわらず、勉強を続けた。",
+      "example2_translation": "尽管他很累，却继续学习。",
+      "level": "N2"
+    },
+    {
+      "grammar": "上で",
+      "meaning_zh": "之后",
+      "example1": "確認の上で、契約を締結します。",
+      "example1_translation": "确认之后签订合约。",
+      "example2": "相談した上で、決定します。",
+      "example2_translation": "商讨之后再决定。",
+      "level": "N1"
+    },
+    {
+      "grammar": "次第",
+      "meaning_zh": "一……就……",
+      "example1": "準備ができ次第、出発しましょう。",
+      "example1_translation": "一准备好，我们就出发吧。",
+      "example2": "着き次第、電話をください。",
+      "example2_translation": "一到，就给我打电话。",
+      "level": "N2"
+    },
+    {
+      "grammar": "まい",
+      "meaning_zh": "不要",
+      "example1": "もう二度と失敗するまい。",
+      "example1_translation": "不要再犯第二次错误。",
+      "example2": "こんな嘘には騙されまい。",
+      "example2_translation": "不要被这种谎言欺骗。",
+      "level": "N1"
+    },
+    {
+      "grammar": "に加えて",
+      "meaning_zh": "加上；不仅",
+      "example1": "雨に加えて、風も激しくなってきた。",
+      "example1_translation": "不仅下雨，风也开始猛烈起来。",
+      "example2": "価格に加えて、品質も重要です。",
+      "example2_translation": "不仅价格，质量也很重要。",
+      "level": "N2"
+    },
+    {
+      "grammar": "をめぐって",
+      "meaning_zh": "围绕……",
+      "example1": "環境問題をめぐって、多くの議論がなされた。",
+      "example1_translation": "围绕环境问题，进行了许多讨论。",
+      "example2": "その事件をめぐって意見が対立する。",
+      "example2_translation": "围绕那个事件意见相左。",
+      "level": "N1"
+    },
+    {
+      "grammar": "にしろ",
+      "meaning_zh": "即使……",
+      "example1": "どんなに悲しいにしろ、前に進まなければならない。",
+      "example1_translation": "即使多么伤心，也必须向前迈进。",
+      "example2": "貧乏にしろ、心は豊かでありたい。",
+      "example2_translation": "即使贫穷，心灵也要富有。",
+      "level": "N1"
+    },
+    {
+      "grammar": "つつある",
+      "meaning_zh": "正在……",
+      "example1": "経済は回復しつつある。",
+      "example1_translation": "经济正在恢复中。",
+      "example2": "彼の考えは変わりつつある。",
+      "example2_translation": "他的想法正在改变。",
+      "level": "N2"
+    },
+    {
+      "grammar": "だけに",
+      "meaning_zh": "正因为……所以更……",
+      "example1": "この料理は手間がかかるだけに、美味しい。",
+      "example1_translation": "这道料理正因为费心思，所以更美味。",
+      "example2": "彼は努力しただけに、成功したときの喜びもひとしおだった。",
+      "example2_translation": "正因为他努力，所以成功时的喜悦更加特别。",
+      "level": "N2"
+    },
+    {
+      "grammar": "末に",
+      "meaning_zh": "最后……",
+      "example1": "考えた末に、彼と別れることにした。",
+      "example1_translation": "经过深思熟虑，决定和他分手。",
+      "example2": "大論争の末に、やっと合意に達した。",
+      "example2_translation": "经过激烈辩论，终于达成共识。",
+      "level": "N1"
+    }
+  ]
+}
