@@ -1,0 +1,69 @@
+{
+  "report_date": "2026-02-11",
+  "items": [
+    {
+      "title": "Record surge in U.S. power costs in January due to cold wave",
+      "url": "https://www.vietnam.vn/ja/diem-tin-kinh-te-the-gioi-noi-bat-ngay-10-2-2026",
+      "summary": "2026年1月、米国の電力コストは寒波による需要急増で2倍以上に跳ね上がり、東海岸では天然ガス価格も数年ぶりの高値となった。",
+      "category": "金融"
+    },
+    {
+      "title": "Japan’s Nikkei rewrites closing high for 2nd straight day",
+      "url": "https://www.nippon.com/en/news/yjj2026021000301/nikkei-rewrites-closing-high-for-2nd-straight-day.html",
+      "summary": "2月10日、日経平均は2日連続で史上最高値の終値を更新し、特に半導体やAI関連銘柄への買いが続いた。",
+      "category": "金融"
+    },
+    {
+      "title": "Investors rush into AI and semiconductors in Japan after election",
+      "url": "https://www.nippon.com/en/news/yjj2026021000301/nikkei-rewrites-closing-high-for-2nd-straight-day.html",
+      "summary": "衆院選勝利を受け、AIや半導体関連銘柄への期待が高まり、投資が加速。ソフトバンクグループや東京エレクトロンなどが特に注目された。",
+      "category": "AI"
+    },
+    {
+      "title": "Japan’s strategic sectors including AI boost Nikkei after election",
+      "url": "https://www.straitstimes.com/business/companies-markets/japans-nikkei-jumps-over-5-to-record-high-after-takaichi-election-win",
+      "summary": "AIや量子コンピューター、半導体、防衛など戦略分野への支出拡大への期待で、日経平均は57,000超を記録。関連企業の株価が上昇。",
+      "category": "AI"
+    },
+    {
+      "title": "Bessent expects productive U.S.–China relationship, not decoupling",
+      "url": "https://www.newsweekjapan.jp/headlines/world/2026/02/587195.php",
+      "summary": "米財務長官ベッセント氏は米中関係を“デカップリングは望まないがリスク低減は必要”とし、公正な競争の下で生産的関係が構築可能との認識を示した。",
+      "category": "中美关系"
+    },
+    {
+      "title": "Foreign firms in China more optimistic on investment outlook",
+      "url": "https://www.afpbb.com/articles/-/3621282",
+      "summary": "米系企業の多数が2025年に黒字達成の見込みで、中国への投資見通しが改善。79％が2026年の米中関係を前向きまたは中立と評価している。",
+      "category": "中美关系"
+    },
+    {
+      "title": "Japanese stocks hit record high as Takaichi wins landslide election victory",
+      "url": "https://www.theguardian.com/world/2026/feb/09/japanese-shares-hit-record-high-as-sanae-takaichi-wins-landslide-japan-election-win",
+      "summary": "衆院選で自民党が歴史的な圧勝を果たし、日経株価が57,000台を突破。円は乱高下したが、首相は財政刺激策と食品税一時停止を掲げている。",
+      "category": "日本政治"
+    },
+    {
+      "title": "Why Japanese stocks are outshining the U.S. market",
+      "url": "https://www.axios.com/2026/02/11/japan-korea-stock-market",
+      "summary": "高市首相再選への期待から日経の上昇率がS&P500を上回り、日本市場への海外資金流入が進む中、ポートフォリオの多様化の動きが鮮明に。",
+      "category": "日本政治"
+    },
+    {
+      "title": "Japanese stocks rise on Takaichi’s snap election landslide",
+      "url": "https://moneyweek.com/investments/japan-stock-markets/japanese-stocks-rise-sanae-takaichi-snap-election",
+      "summary": "高市首相の率いる与党が圧勝し、日経が3.9％上昇。AI・半導体・防衛など戦略投資期待が背景にあり、債務懸念もあるが市場は強く反応。",
+      "category": "日本政治"
+    }
+  ],
+  "urls": [
+    "https://www.vietnam.vn/ja/diem-tin-kinh-te-the-gioi-noi-bat-ngay-10-2-2026",
+    "https://www.nippon.com/en/news/yjj2026021000301/nikkei-rewrites-closing-high-for-2nd-straight-day.html",
+    "https://www.straitstimes.com/business/companies-markets/japans-nikkei-jumps-over-5-to-record-high-after-takaichi-election-win",
+    "https://www.newsweekjapan.jp/headlines/world/2026/02/587195.php",
+    "https://www.afpbb.com/articles/-/3621282",
+    "https://www.theguardian.com/world/2026/feb/09/japanese-shares-hit-record-high-as-sanae-takaichi-wins-landslide-japan-election-win",
+    "https://www.axios.com/2026/02/11/japan-korea-stock-market",
+    "https://moneyweek.com/investments/japan-stock-markets/japanese-stocks-rise-sanae-takaichi-snap-election"
+  ]
+}
